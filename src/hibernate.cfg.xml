@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-configuration PUBLIC "-//Hibernate/Hibernate Configuration DTD 3.0//EN"
+                                         "http://hibernate.sourceforge.net/hibernate-configuration-3.0.dtd">
+<hibernate-configuration>
+ <session-factory name="">
+  <property name="hibernate.connection.driver_class">com.mysql.jdbc.Driver</property>
+  <property name="hibernate.connection.password">j2ee</property>
+  <property name="hibernate.connection.url">jdbc:mysql://localhost/j2ee</property>
+  <property name="hibernate.connection.username">j2ee</property>
+  <property name="hibernate.dialect">org.hibernate.dialect.MySQLDialect</property>
+  <mapping resource="qt/dto/Account.hbm.xml"/>
+  <mapping resource="qt/dto/GopY.hbm.xml"/>
+  <mapping resource="qt/dto/TrangThaiGopY.hbm.xml"/>
+  <mapping resource="qt/dto/DonHang.hbm.xml"/>
+  <mapping resource="qt/dto/NhanXetDienThoai.hbm.xml"/>
+  <mapping resource="qt/dto/PhieuNhapDienThoai.hbm.xml"/>
+  <mapping resource="qt/dto/PhieuNhapPhuKien.hbm.xml"/>
+  <mapping resource="qt/dto/LoaiTinTuc.hbm.xml"/>
+  <mapping resource="qt/dto/TinTuc.hbm.xml"/>
+  <mapping resource="qt/dto/ChiTietDonHang.hbm.xml"/>
+  <mapping resource="qt/dto/HinhThucThanhToan.hbm.xml"/>
+  <mapping resource="qt/dto/TrangThaiDonHang.hbm.xml"/>
+  <mapping resource="qt/dto/SanPham.hbm.xml"/>
+  <mapping resource="qt/dto/ChiTietHinhAnh.hbm.xml"/>
+  <mapping resource="qt/dto/ChiTietPhieuNhapDienThoai.hbm.xml"/>
+  <mapping resource="qt/dto/DienThoai.hbm.xml"/>
+  <mapping resource="qt/dto/PhuKien.hbm.xml"/>
+  <mapping resource="qt/dto/ChiTietPhieuNhapPhuKien.hbm.xml"/>
+  <mapping resource="qt/dto/ChiTietTinKhuyenMaiDienThoai.hbm.xml"/>
+  <mapping resource="qt/dto/TinKhuyenMaiDienThoai.hbm.xml"/>
+  <mapping resource="qt/dto/HangDienThoai.hbm.xml"/>
+  <mapping resource="qt/dto/HeDieuHanh.hbm.xml"/>
+  <mapping resource="qt/dto/KieuDang.hbm.xml"/>
+  <mapping resource="qt/dto/LoaiMang.hbm.xml"/>
+  <mapping resource="qt/dto/LoaiPhuKien.hbm.xml"/>
+  <mapping resource="qt/dto/NhaCungCap.hbm.xml"/>
+  <mapping resource="qt/dto/PhongCach.hbm.xml"/>
+  <mapping resource="qt/dto/TinhTrangSanPham.hbm.xml"/>
+  <mapping resource="qt/dto/TinGiamGiaPhuKien.hbm.xml"/>
+  <mapping resource="qt/dto/TinhNangNoiBat.hbm.xml"/>
+  <mapping resource="qt/dto/DongSanPham.hbm.xml"/>
+ </session-factory>
+</hibernate-configuration>

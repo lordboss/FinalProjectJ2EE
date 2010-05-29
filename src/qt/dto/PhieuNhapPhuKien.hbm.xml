@@ -1,0 +1,38 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+                                   "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+	<!-- Generated May 17, 2010 9:39:32 PM by Hibernate Tools 3.3.0.GA -->
+<hibernate-mapping package="qt.dto">
+	<class name="PhieuNhapPhuKien" table="PHIEUNHAPPHUKIEN">
+		<id name="id" type="integer">
+			<column name="ID" />
+			<generator class="identity" />
+		</id>
+		<property generated="never" lazy="false" name="ngayNhap"
+			type="timestamp">
+			<column name="NgayNhap" not-null="true" />
+		</property>
+		<property generated="never" lazy="false" name="xoa" type="boolean">
+			<column name="Xoa" not-null="true" />
+		</property>
+
+		<!-- Một nhân viên có nhiều phiếu nhập phụ kiện -->
+		<many-to-one cascade="all" class="NhanVien" fetch="select"
+			lazy="false" name="nhanVien">
+			<column name="ID_NhanVien" />
+		</many-to-one>
+
+		<!-- Một nhà cung cấp có nhiều phiếu nhập phụ kiện -->
+		<many-to-one cascade="all" class="NhaCungCap" fetch="select"
+			lazy="false" name="nhaCungCap">
+			<column name="ID_NhaCungCap" />
+		</many-to-one>
+
+		<!-- Một phiếu nhập phụ kiện có nhiều chi tiết nhập phụ kiện -->
+		<set cascade="all,delete-orphan" fetch="select" inverse="true"
+			lazy="false" name="dsChiTietPhieuNhapPhuKien" sort="unsorted">
+			<key column="ID_PhieuNhapPhuKien" />
+			<one-to-many class="ChiTietPhieuNhapPhuKien" />
+		</set>
+	</class>
+</hibernate-mapping>

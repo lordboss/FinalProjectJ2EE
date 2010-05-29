@@ -1,0 +1,369 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+                                   "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+	<!-- Generated May 17, 2010 9:39:32 PM by Hibernate Tools 3.3.0.GA -->
+<hibernate-mapping package="qt.dto">
+	<class abstract="true" name="SanPham" table="SanPham"
+		polymorphism="implicit">
+		<id name="id" type="integer">
+			<column name="ID" />
+			<generator class="identity" />
+		</id>
+		<property generated="never" lazy="false" name="ten" type="string">
+			<column length="100" name="Ten" not-null="true" />
+		</property>
+		<property generated="never" lazy="false" name="giaNhap" type="double">
+			<column name="GiaNhap" not-null="true" />
+		</property>
+		<property generated="never" lazy="false" name="giaHienHanh"
+			type="double">
+			<column name="GiaHienHanh" not-null="true" />
+		</property>
+		<property generated="never" lazy="false" name="baoHanh" type="int">
+			<column name="BaoHanh" />
+		</property>
+		<property generated="never" lazy="false" name="xoa" type="boolean">
+			<column name="Xoa" />
+		</property>
+
+		<set cascade="all,delete-orphan" fetch="select" lazy="false"
+			name="dsNhaCungCap" sort="unsorted" table="SanPham_NhaCungCap">
+			<key column="ID_SanPham" />
+			<many-to-many class="NhaCungCap" column="ID_NhaCungCap"
+				unique="false" />
+		</set>
+
+		<set cascade="all,delete-orphan" fetch="select" inverse="true"
+			lazy="false" name="dsChiTietDonHang" sort="unsorted">
+			<key column="ID_SanPham" />
+			<one-to-many class="ChiTietDonHang" />
+		</set>
+
+		<many-to-one cascade="all" class="TinhTrangSanPham" fetch="select"
+			lazy="false" name="tinhTrangSanPham">
+			<column name="ID_TinhTrang" />
+		</many-to-one>
+
+		<set cascade="all,delete-orphan" fetch="select" inverse="true"
+			lazy="false" name="dsHinhAnh" sort="unsorted">
+			<key column="ID_SanPham" />
+			<one-to-many class="ChiTietHinhAnh" />
+		</set>
+
+		<!-- Inheritance mapping for class DienThoai -->
+		<joined-subclass name="DienThoai" table="DienThoai">
+			<key column="ID_SanPham" not-null="true" />
+			<many-to-one cascade="all" class="HangDienThoai" fetch="select"
+				lazy="false" name="hangDienThoai">
+				<column name="ID_HangDienThoai" />
+			</many-to-one>
+			<!-- Multi-media -->
+			<component class="MultiMedia" name="multiMedia">
+				<property generated="never" lazy="false" name="ngheNhac"
+					type="string">
+					<column length="25" name="NgheNhac" />
+				</property>
+				<property generated="never" lazy="false" name="xemPhim"
+					type="string">
+					<column length="25" name="XemPhim" />
+				</property>
+				<property generated="never" lazy="false" name="FMRadio"
+					type="boolean">
+					<column name="FMRadio" />
+				</property>
+				<property generated="never" lazy="false" name="xemTivi"
+					type="boolean">
+					<column name="XemTivi" />
+				</property>
+				<property generated="never" lazy="false" name="troChoi"
+					type="string">
+					<column length="100" name="TroChoi" />
+				</property>
+				<property generated="never" lazy="false" name="loaNgoai"
+					type="boolean">
+					<column name="LoaNgoai" />
+				</property>
+				<property generated="never" lazy="false" name="ghiAm" type="string">
+					<column length="100" name="GhiAm" />
+				</property>
+				<property generated="never" lazy="false" name="ghiAmCuocGoi"
+					type="boolean">
+					<column name="GhiAmCuocGoi" />
+				</property>
+				<property generated="never" lazy="false" name="videoCall"
+					type="boolean">
+					<column name="VideoCall" />
+				</property>
+				<property generated="never" lazy="false" name="quayPhim"
+					type="string">
+					<column length="100" name="QuayPhim" />
+				</property>
+			</component>
+			<!-- Camera -->
+			<component class="Camera" name="camera">
+				<property generated="never" lazy="false" name="doPhanGiaiMayAnh"
+					type="double">
+					<column name="DoPhanGiaiMayAnh" />
+				</property>
+				<property generated="never" lazy="false" name="moTaMayAnh"
+					type="string">
+					<column length="100" name="MoTaMayAnh" />
+				</property>
+			</component>
+			<!-- Nhac chuong -->
+			<component class="NhacChuong" name="nhacChuong">
+				<property generated="never" lazy="false" name="nhacChuong"
+					type="integer">
+					<column name="NhacChuong" />
+				</property>
+				<property generated="never" lazy="false" name="dinhDangNhacChuong"
+					type="string">
+					<column length="25" name="DinhDangNhacChuong" />
+				</property>
+				<property generated="never" lazy="false" name="taiNhacChuong"
+					type="boolean">
+					<column name="TaiNhacChuong" />
+				</property>
+				<property generated="never" lazy="false" name="baoRung"
+					type="boolean">
+					<column name="BaoRung" />
+				</property>
+			</component>
+			<many-to-one cascade="all" class="KieuDang" fetch="select"
+				lazy="false" name="kieuDang">
+				<column name="ID_KieuDang" />
+			</many-to-one>
+			<many-to-one cascade="all" class="PhongCach" fetch="select"
+				lazy="false" name="phongCach">
+				<column name="ID_PhongCach" />
+			</many-to-one>
+			<!-- Storage -->
+			<component class="LuuTru" name="luuTru">
+				<property generated="never" lazy="false" name="danhBa"
+					type="string">
+					<column name="DanhBa" not-null="true" length="50" />
+				</property>
+				<property generated="never" lazy="false" name="tinNhan"
+					type="string">
+					<column length="150" name="TinNhan" not-null="true" />
+				</property>
+				<property generated="never" lazy="false" name="boNhoTrong"
+					type="string">
+					<column name="BoNhoTrong" length="30" />
+				</property>
+				<property generated="never" lazy="false" name="theNho"
+					type="string">
+					<column length="150" name="TheNho" />
+				</property>
+			</component>
+			<many-to-one cascade="all" class="LoaiMang" fetch="select"
+				lazy="false" name="loaiMang">
+				<column name="ID_LoaiMang" />
+			</many-to-one>
+			<!-- Connectivity -->
+			<component class="KetNoi" name="ketNoi">
+				<property generated="never" lazy="false" name="haiSim"
+					type="boolean">
+					<column name="HaiSim" />
+				</property>
+				<property generated="never" lazy="false" name="GPRS" type="boolean">
+					<column name="GPRS" />
+				</property>
+				<property generated="never" lazy="false" name="trinhDuyet"
+					type="boolean">
+					<column name="TrinhDuyet" />
+				</property>
+				<property generated="never" lazy="false" name="EDGE" type="boolean">
+					<column name="EDGE" />
+				</property>
+				<property generated="never" lazy="false" name="hoTro3G"
+					type="string">
+					<column length="40" name="HoTro3G" />
+				</property>
+				<property generated="never" lazy="false" name="UMTS" type="boolean">
+					<column name="UMTS" />
+				</property>
+				<property generated="never" lazy="false" name="WCDMA" type="boolean">
+					<column name="WCDMA" />
+				</property>
+				<property generated="never" lazy="false" name="wifi" type="string">
+					<column length="25" name="Wifi" />
+				</property>
+				<property generated="never" lazy="false" name="GPS" type="string">
+					<column length="25" name="GPS" />
+				</property>
+				<property generated="never" lazy="false" name="hongNgoai"
+					type="boolean">
+					<column name="HongNgoai" />
+				</property>
+				<property generated="never" lazy="false" name="bluetooth"
+					type="boolean">
+					<column name="Bluetooth" />
+				</property>
+				<property generated="never" lazy="false" name="USB" type="boolean">
+					<column name="USB" />
+				</property>
+			</component>
+			<!-- Apps -->
+			<property generated="never" lazy="false" name="javaApp"
+				type="boolean">
+				<column name="JavaApp" />
+			</property>
+			<property generated="never" lazy="false" name="office" type="boolean">
+				<column name="Office" />
+			</property>
+			<!-- Man Hinh -->
+			<component class="ManHinh" name="manHinh">
+				<property generated="never" lazy="false" name="loaiManHinh"
+					type="string">
+					<column length="25" name="LoaiManHinh" />
+				</property>
+				<property generated="never" lazy="false" name="soMauManHinh"
+					type="integer">
+					<column name="SoMauManHinh" />
+				</property>
+				<property generated="never" lazy="false" name="chieuRongManHinh"
+					type="integer">
+					<column name="ChieuRongManHinh" />
+				</property>
+				<property generated="never" lazy="false" name="chieuCaoManHinh"
+					type="integer">
+					<column name="ChieuCaoManHinh" />
+				</property>
+				<property generated="never" lazy="false" name="camUng"
+					type="boolean">
+					<column name="CamUng" />
+				</property>
+				<property generated="never" lazy="false" name="chiTietCamUng"
+					type="boolean">
+					<column length="200" name="ChiTietCamUng" />
+				</property>
+			</component>
+			<!-- PIN -->
+			<component class="Pin" name="pin">
+				<property generated="never" lazy="false" name="loaiPin"
+					type="string">
+					<column length="100" name="LoaiPin" />
+				</property>
+				<property generated="never" lazy="false" name="dungLuong"
+					type="integer">
+					<column name="DungLuong" />
+				</property>
+				<property generated="never" lazy="false" name="thoiGianDamThoai"
+					type="integer">
+					<column name="ThoiGianDamThoai" />
+				</property>
+				<property generated="never" lazy="false" name="thoiGianCho"
+					type="integer">
+					<column name="ThoiGianCho" />
+				</property>
+			</component>
+			<!-- Size -->
+			<component class="KichCo" name="kichCo">
+				<property generated="never" lazy="false" name="chieuRongDienThoai"
+					type="integer">
+					<column name="ChieuRongDienThoai" />
+				</property>
+				<property generated="never" lazy="false" name="chieuDaiDienThoai"
+					type="integer">
+					<column name="ChieuDaiDienThoai" />
+				</property>
+				<property generated="never" lazy="false" name="chieuCaoDienThoai"
+					type="integer">
+					<column name="ChieuCaoDienThoai" />
+				</property>
+				<property generated="never" lazy="false" name="trongLuong"
+					type="integer">
+					<column name="TrongLuong" />
+				</property>
+			</component>
+			<many-to-one cascade="all" class="HeDieuHanh" fetch="select"
+				lazy="false" name="heDieuHanh">
+				<column name="ID_HeDieuHanh" />
+			</many-to-one>
+			<many-to-one cascade="all" class="DongSanPham" fetch="select"
+				lazy="false" name="dongSanPham">
+				<column name="ID_DongSanPham" />
+			</many-to-one>
+			<property generated="never" lazy="false" name="ngonNgu"
+				type="string">
+				<column length="40" name="NgonNgu" />
+			</property>
+			<property name="boBanHangChuan" generated="never" lazy="false"
+				type="string">
+				<column name="BoBanHangChuan" length="500" />
+			</property>
+
+			<set cascade="all,delete-orphan" fetch="select" lazy="false"
+				name="dsPhuKienTuongThich" sort="unsorted" table="DienThoai_PhuKien">
+				<key column="ID_DienThoai" />
+				<many-to-many class="PhuKien" column="ID_PhuKien"
+					unique="false" />
+			</set>
+
+			<set cascade="all,delete-orphan" fetch="select" inverse="true"
+				lazy="false" name="dsNhanXet" sort="unsorted">
+				<key column="ID_DienThoai" />
+				<one-to-many class="NhanXetDienThoai" />
+			</set>
+
+			<set cascade="all,delete-orphan" fetch="select" inverse="true"
+				lazy="false" name="dsTinhNangNoiBat" sort="unsorted">
+				<key column="ID_DienThoai" />
+				<one-to-many class="TinhNangNoiBat" />
+			</set>
+
+			<set cascade="all,delete-orphan" fetch="select" inverse="true"
+				lazy="false" name="dsChiTietKhuyenMai" sort="unsorted">
+				<key column="ID_DienThoai" />
+				<one-to-many class="ChiTietTinKhuyenMaiDienThoai" />
+			</set>
+
+			<set cascade="all,delete-orphan" fetch="select" inverse="true"
+				lazy="false" name="dsChiTietPhieuNhap" sort="unsorted">
+				<key column="ID_DienThoai" />
+				<one-to-many class="ChiTietPhieuNhapDienThoai" />
+			</set>
+		</joined-subclass>
+
+
+		<!-- Inheritance mapping for class PhuKien -->
+		<joined-subclass name="PhuKien" table="PhuKien">
+			<key column="ID_SanPham" not-null="true" />
+			<many-to-one cascade="all" class="LoaiPhuKien" fetch="select"
+				lazy="false" name="loaiPhuKien">
+				<column name="ID_LoaiPhuKien" />
+			</many-to-one>
+			<property generated="never" lazy="false" name="mauSac" type="string">
+				<column length="50" name="MauSac" />
+			</property>
+			<property generated="never" lazy="false" name="tinhNang"
+				type="string">
+				<column length="1000" name="TinhNang" not-null="true" />
+			</property>
+			<property generated="never" lazy="false" name="huongDanSuDung"
+				type="string">
+				<column length="1000" name="HuongDanSuDung" />
+			</property>
+
+			<set cascade="all,delete-orphan" fetch="select" lazy="false"
+				name="dsDienThoaiTuongThich" sort="unsorted" table="DienThoai_PhuKien">
+				<key column="ID_PhuKien" />
+				<many-to-many class="DienThoai" column="ID_DienThoai"
+					unique="false" />
+			</set>
+
+			<set cascade="all,delete-orphan" fetch="select" inverse="true"
+				lazy="false" name="dsChiTietNhapPhuKien" sort="unsorted">
+				<key column="ID_PhuKien" />
+				<one-to-many class="ChiTietPhieuNhapPhuKien" />
+			</set>
+
+			<set cascade="all,delete-orphan" fetch="select" inverse="true"
+				lazy="false" name="dsTinGiamGiaPhuKien" sort="unsorted">
+				<key column="ID_PhuKien" />
+				<one-to-many class="TinGiamGiaPhuKien" />
+			</set>
+		</joined-subclass>
+	</class>
+</hibernate-mapping>

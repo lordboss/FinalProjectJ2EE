@@ -1,0 +1,23 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+                                   "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+	<!-- Generated May 17, 2010 9:39:32 PM by Hibernate Tools 3.3.0.GA -->
+<hibernate-mapping package="qt.dto">
+	<class name="PhongCach" table="PhongCach">
+		<id name="id" type="integer">
+			<column name="ID" />
+			<generator class="identity" />
+		</id>
+		<property generated="never" lazy="false" length="50" name="ten"
+			type="string">
+			<column name="Ten" not-null="true" />
+		</property>
+
+		<!-- Một phong cách có nhiều loại điện thoại -->
+		<set cascade="all,delete-orphan" fetch="select" inverse="true"
+			lazy="false" name="dsDienThoai" sort="unsorted">
+			<key column="ID_PhongCach" />
+			<one-to-many class="DienThoai" />
+		</set>
+	</class>
+</hibernate-mapping>

@@ -1,0 +1,139 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+                                   "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+	<!-- Generated May 17, 2010 9:39:32 PM by Hibernate Tools 3.3.0.GA -->
+<hibernate-mapping package="qt.dto">
+	<class abstract="true" name="Account" table="Account"
+		polymorphism="implicit">
+		<id name="id" type="integer">
+			<column name="ID" />
+			<generator class="identity" />
+		</id>
+		<property generated="never" lazy="false" length="40" name="username"
+			type="string">
+			<column name="Username" not-null="true" />
+		</property>
+		<property generated="never" lazy="false" length="500" name="pass"
+			type="string">
+			<column name="Pass" not-null="true" />
+		</property>
+		<property generated="never" lazy="false" name="trangThai"
+			type="integer">
+			<column name="TrangThai" not-null="true" />
+		</property>
+		<property generated="never" lazy="false" length="20" name="ho"
+			type="string">
+			<column name="Ho" not-null="true" />
+		</property>
+		<property generated="never" lazy="false" length="40" name="dem"
+			type="string">
+			<column name="Dem" />
+		</property>
+		<property generated="never" lazy="false" length="20" name="ten"
+			type="string">
+			<column name="Ten" not-null="true" />
+		</property>
+		<property generated="never" lazy="false" length="80" name="email"
+			type="string">
+			<column name="Email" not-null="true" />
+		</property>
+		<property generated="never" lazy="false" name="xoa" type="boolean">
+			<column name="Xoa" not-null="true" />
+		</property>
+
+
+		<!-- Inheritance Mapping for class KhachHang -->
+		<joined-subclass name="KhachHang" table="KhachHang">
+			<key column="ID_Account" />
+
+			<!-- Một khách hàng có nhiều góp ý -->
+			<set cascade="all,delete-orphan" fetch="select" inverse="true"
+				lazy="false" name="dsGopY" sort="unsorted">
+				<key column="ID_KhachHang" />
+				<one-to-many class="GopY" />
+			</set>
+
+			<!-- Một khách hàng có nhiều đơn hàng -->
+			<set cascade="all,delete-orphan" fetch="select" inverse="true"
+				lazy="false" name="dsDonHang" sort="unsorted">
+				<key column="ID_KhachHang" />
+				<one-to-many class="DonHang" />
+			</set>
+
+			<!-- Một khách hàng có nhiều nhận xét điện thoại -->
+			<set cascade="all,delete-orphan" fetch="select" inverse="true"
+				lazy="false" name="dsNhanXetDienThoai" sort="unsorted">
+				<key column="ID_KhachHang" />
+				<one-to-many class="NhanXetDienThoai" />
+			</set>
+		</joined-subclass>
+
+
+		<!-- Inheritance Mapping for class NhanVien -->
+		<joined-subclass name="NhanVien" table="NhanVien">
+			<key column="ID_Account" />
+			<property generated="never" lazy="false" length="15" name="cmnd"
+				type="string">
+				<column name="CMND" not-null="true" />
+			</property>
+			<property generated="never" lazy="false" length="150" name="diaChi"
+				type="string">
+				<column name="DiaChi" not-null="true" />
+			</property>
+			<property generated="never" lazy="false" length="20"
+				name="soDienThoai" type="string">
+				<column name="DienThoai" not-null="true" />
+			</property>
+
+			<!-- Một nhân viên có nhiều phiếu nhập điện thoại -->
+			<set cascade="all" inverse="true" fetch="select" lazy="false"
+				name="dsPhieuNhapDienThoai" sort="unsorted">
+				<key column="ID_NhanVien" />
+				<one-to-many class="PhieuNhapDienThoai" />
+			</set>
+
+			<!-- Một nhân viên có nhiều phiếu nhập phụ kiện -->
+			<set cascade="all" inverse="true" fetch="select" lazy="false"
+				name="dsPhieuNhapPhuKien" sort="unsorted">
+				<key column="ID_NhanVien" />
+				<one-to-many class="PhieuNhapPhuKien" />
+			</set>
+		</joined-subclass>
+
+
+		<!-- Inheritance Mapping for class NhanVienQuanLy -->
+		<joined-subclass name="NhanVienQuanLy" table="NhanVienQuanLy">
+			<key column="ID_Account" />
+			<property generated="never" lazy="false" length="15" name="cmnd"
+				type="string">
+				<column name="CMND" not-null="true" />
+			</property>
+			<property generated="never" lazy="false" length="150" name="diaChi"
+				type="string">
+				<column name="DiaChi" not-null="true" />
+			</property>
+			<property generated="never" lazy="false" length="20"
+				name="soDienThoai" type="string">
+				<column name="DienThoai" not-null="true" />
+			</property>
+		</joined-subclass>
+
+
+		<!-- Inheritance Mapping for class NhanVienQuanTri -->
+		<joined-subclass name="NhanVienQuanTri" table="NhanVienQuanTri">
+			<key column="ID_Account" />
+			<property generated="never" lazy="false" length="15" name="cmnd"
+				type="string">
+				<column name="CMND" not-null="true" />
+			</property>
+			<property generated="never" lazy="false" length="150" name="diaChi"
+				type="string">
+				<column name="DiaChi" not-null="true" />
+			</property>
+			<property generated="never" lazy="false" length="20"
+				name="soDienThoai" type="string">
+				<column name="DienThoai" not-null="true" />
+			</property>
+		</joined-subclass>
+	</class>
+</hibernate-mapping>

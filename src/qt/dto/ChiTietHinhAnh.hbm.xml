@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+                                   "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+	<!-- Generated May 17, 2010 9:39:32 PM by Hibernate Tools 3.3.0.GA -->
+<hibernate-mapping package="qt.dto">
+	<class name="ChiTietHinhAnh" table="CT_HinhAnh">
+		<id name="id" type="integer">
+			<column name="ID" />
+			<generator class="identity" />
+		</id>
+		<!--
+			Một hình ảnh thuộc về một loại SanPham Một SanPham có nhiều hình ảnh
+		-->
+		<many-to-one cascade="all" class="SanPham" fetch="select"
+			lazy="false" name="sanPham">
+			<column name="ID_SanPham" />
+		</many-to-one>
+		<property generated="never" lazy="false" length="50" name="hinhAnh"
+			type="string">
+			<column name="HinhAnh" not-null="true" />
+		</property>
+		<property generated="never" lazy="false" name="xoa"
+			type="boolean">
+			<column name="Xoa" not-null="true" />
+		</property>
+	</class>
+</hibernate-mapping>

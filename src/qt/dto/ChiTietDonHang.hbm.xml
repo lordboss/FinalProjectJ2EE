@@ -1,0 +1,31 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+                                   "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+	<!-- Generated May 17, 2010 9:39:32 PM by Hibernate Tools 3.3.0.GA -->
+<hibernate-mapping package="qt.dto">
+	<class name="ChiTietDonHang" table="CT_DonHang">
+		<id name="id" type="integer" unsaved-value="null">
+			<column name="ID" />
+			<generator class="identity" />
+		</id>
+		<property generated="never" lazy="false" name="soLuong" type="integer">
+			<column name="SoLuong" />
+		</property>
+		<property generated="never" lazy="false" name="xoa" type="boolean">
+			<column name="Xoa" />
+		</property>
+		
+		<!-- Một sản phẩm có thể có mặt trong nhiều chi tiết đơn hàng -->
+		<many-to-one cascade="all" class="SanPham" fetch="select"
+			lazy="false" name="sanPham">
+			<column name="ID_SanPham" />
+		</many-to-one>
+		
+		<!-- Một đơn hàng có nhiều chi tiết đơn hàng -->
+		<!-- Một chi tiết đơn hàng thuộc về một đơn hàng duy nhất -->
+		<many-to-one cascade="all" class="DonHang" fetch="select"
+			lazy="false" name="donHang">
+			<column name="ID_DonHang" />
+		</many-to-one>
+	</class>
+</hibernate-mapping>

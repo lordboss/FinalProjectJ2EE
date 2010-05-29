@@ -1,0 +1,64 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+                                   "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+	<!-- Generated May 17, 2010 9:39:32 PM by Hibernate Tools 3.3.0.GA -->
+<hibernate-mapping package="qt.dto">
+	<class name="DonHang" table="DonHang">
+		<id name="id" type="integer">
+			<column name="ID" />
+			<generator class="identity" />
+		</id>
+		<property generated="never" lazy="false" name="ngayTao" type="timestamp">
+			<column name="NgayTao" not-null="true" />
+		</property>
+		<component class="NguoiNhan" name="nguoiNhan">
+			<property generated="never" lazy="false" length="50" name="hoTen"
+				type="string">
+				<column name="HoTenNguoiNhan" not-null="true" />
+			</property>
+			<property generated="never" lazy="false" length="15"
+				name="soDienThoai" type="string">
+				<column name="SoDienThoaiNguoiNhan" not-null="true" />
+			</property>
+		</component>
+		<property generated="never" lazy="false" length="150"
+			name="diaChiGiaoHang" type="string">
+			<column name="DiaChiGiaoHang" not-null="true" />
+		</property>
+		<property generated="never" lazy="false" name="thoiGianGiaoHang"
+			type="timestamp">
+			<column name="ThoiGianGiaoHang" not-null="true" />
+		</property>
+		<property generated="never" lazy="false" name="xoa" type="boolean">
+			<column name="Xoa" not-null="true" />
+		</property>
+
+		<!-- Một đơn hàng có một loại hình thức thanh toán -->
+		<many-to-one cascade="all" class="HinhThucThanhToan"
+			fetch="select" lazy="false" name="hinhThucThanhToan">
+			<column name="ID_HinhThucThanhToan" />
+		</many-to-one>
+
+		<!-- Một đơn hàng tại một thời điểm có một trạng thái nhất định -->
+		<many-to-one cascade="all" class="TrangThaiDonHang" fetch="select"
+			lazy="false" name="trangThai">
+			<column name="ID_TrangThai" />
+		</many-to-one>
+
+		<!-- Một đơn hàng có nhiều chi tiết đơn hàng -->
+		<set cascade="all,delete-orphan" fetch="select" inverse="true"
+			lazy="false" name="dsChiTietDonHang" sort="unsorted">
+			<key column="ID_DonHang" />
+			<one-to-many class="ChiTietDonHang" />
+		</set>
+
+		<!--
+			Một khách hàng có nhiều đơn hàng. Một đơn hàng thuộc về một khách
+			hàng duy nhất
+		-->
+		<many-to-one cascade="all" class="KhachHang" fetch="select"
+			lazy="false" name="khachHang">
+			<column name="ID_KhachHang" />
+		</many-to-one>
+	</class>
+</hibernate-mapping>

@@ -1,0 +1,36 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+                                   "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+	<!-- Generated May 17, 2010 9:39:32 PM by Hibernate Tools 3.3.0.GA -->
+<hibernate-mapping package="qt.dto">
+	<class name="TinKhuyenMaiDienThoai" table="TinKhuyenMaiDienThoai">
+		<id name="id" type="integer">
+			<column name="ID" />
+			<generator class="identity" />
+		</id>
+		<property generated="never" lazy="false" name="noiDung" type="string">
+			<column length="500" name="NoiDung" not-null="true" />
+		</property>
+		<property generated="never" lazy="false" name="ngayBatDau"
+			type="timestamp">
+			<column name="NgayBatDau" not-null="true" />
+		</property>
+		<property generated="never" lazy="false" name="ngayKetThuc"
+			type="timestamp">
+			<column name="NgayKetThuc" not-null="true" />
+		</property>
+		<property generated="never" lazy="false" name="hienThi" type="boolean">
+			<column name="HienThi" not-null="true" />
+		</property>
+		<property generated="never" lazy="false" name="xoa" type="boolean">
+			<column name="Xoa" not-null="true" />
+		</property>
+
+		<!-- Một tin khuyến mãi có nhiều chi tiết tin -->
+		<set cascade="all,delete-orphan" fetch="select" inverse="true"
+			lazy="false" name="dsChiTietTinKhuyenMaiDienThoai" sort="unsorted">
+			<key column="ID_TinKhuyenMaiDienThoai" />
+			<one-to-many class="ChiTietTinKhuyenMaiDienThoai" />
+		</set>
+	</class>
+</hibernate-mapping>

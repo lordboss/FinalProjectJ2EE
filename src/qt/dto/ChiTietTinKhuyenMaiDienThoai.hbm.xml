@@ -1,0 +1,39 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+                                   "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+	<!-- Generated May 17, 2010 9:39:32 PM by Hibernate Tools 3.3.0.GA -->
+<hibernate-mapping package="qt.dto">
+	<class name="ChiTietTinKhuyenMaiDienThoai" table="CT_TinKhuyenMaiDienThoai">
+		<id name="id" type="integer">
+			<column name="ID" />
+			<generator class="identity" />
+		</id>
+		
+		<!-- Mỗi tin khuyến mãi có nhiều chi tiết tin -->
+		<!-- Mỗi chi tiết tin thuộc về một tin khuyến mãi duy nhất -->
+		<many-to-one cascade="all" class="TinKhuyenMaiDienThoai"
+			fetch="select" lazy="false" name="tinKhuyenMai">
+			<column name="ID_TinKhuyenMaiDienThoai" />
+		</many-to-one>
+		
+		<!--
+			Mỗi điện thoại có nhiều chi tiết khuyến mãi Mỗi chi tiết khuyến mãi
+			tưng ứng với một điện thoại duy nhất
+		-->
+		<many-to-one cascade="all" class="DienThoai" fetch="select"
+			lazy="false" name="dienThoai">
+			<column name="ID_DienThoai" />
+		</many-to-one>
+		
+		<property generated="never" lazy="false" length="200" name="chiTiet"
+			type="string">
+			<column name="ChiTiet" not-null="true" />
+		</property>
+		<property generated="never" lazy="false" name="mucGiam" type="double">
+			<column name="MucGiam" not-null="true" />
+		</property>
+		<property generated="never" lazy="false" name="xoa" type="boolean">
+			<column name="Xoa" not-null="true" />
+		</property>
+	</class>
+</hibernate-mapping>

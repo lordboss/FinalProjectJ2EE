@@ -1,0 +1,355 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:p="http://www.springframework.org/schema/p"
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-3.0.xsd">
+
+	<bean id="viewResolver"
+		class="org.springframework.web.servlet.view.InternalResourceViewResolver"
+		p:prefix="/WEB-INF/views/" p:suffix=".jsp" />
+
+	<!--
+		It's better way to store all messages used in webApp in one place
+	-->
+	<!-- /WEB-INF/classes/messages.properties -->
+	<bean id="messageSource"
+		class="org.springframework.context.support.ResourceBundleMessageSource">
+		<property name="basename" value="messages" />
+	</bean>
+
+	<!-- Configure MySql Connection -->
+	<bean id="myDataSource" class="com.mysql.jdbc.jdbc2.optional.MysqlDataSource">
+		<property name="url" value="jdbc:mysql://localhost/j2ee" />
+		<property name="user" value="j2ee" />
+		<property name="password" value="j2ee" />
+	</bean>
+
+	<!-- Hibernate properties -->
+	<!--
+		In test-context we allow output generated sql to console for debug
+		purpose
+	-->
+	<bean id="myHibernateProperties"
+		class="org.springframework.beans.factory.config.PropertiesFactoryBean">
+		<property name="properties">
+			<props>
+				<prop key="hibernate.dialect">org.hibernate.dialect.MySQLDialect</prop>
+				<prop key="hibernate.show_sql">false</prop>
+				<prop key="hibernate.c3p0.minPoolSize">5</prop>
+				<prop key="hibernate.c3p0.maxPoolSize">20</prop>
+				<prop key="hibernate.c3p0.timeout">600</prop>
+				<prop key="hibernate.c3p0.max_statement">50</prop>
+				<prop key="hibernate.c3p0.testConnectionOnCheckout">false</prop>
+			</props>
+		</property>
+	</bean>
+
+	<!--
+		To integrate Spring’s aspect-oriented transaction control with
+		Hibernate’s ORM, Spring provides a special session factory,
+		LocalSessionFactoryBean.
+	-->
+	<bean id="mySessionFactory"
+		class="org.springframework.orm.hibernate3.LocalSessionFactoryBean">
+
+		<!-- Make reference to myDataSource bean -->
+		<property name="dataSource" ref="myDataSource" />
+
+		<property name="hibernateProperties">
+			<ref bean="myHibernateProperties" />
+		</property>
+
+		<!-- Here are the list of Hibernate mapping files -->
+		<!-- Must references all OR mapping files. -->
+		<property name="mappingResources">
+			<list>
+				<value>qt/dto/Account.hbm.xml</value>
+				<value>qt/dto/GopY.hbm.xml</value>
+				<value>qt/dto/TrangThaiGopY.hbm.xml</value>
+				<value>qt/dto/DonHang.hbm.xml</value>
+				<value>qt/dto/NhanXetDienThoai.hbm.xml</value>
+				<value>qt/dto/PhieuNhapDienThoai.hbm.xml</value>
+				<value>qt/dto/PhieuNhapPhuKien.hbm.xml</value>
+				<value>qt/dto/LoaiTinTuc.hbm.xml</value>
+				<value>qt/dto/TinTuc.hbm.xml</value>
+				<value>qt/dto/ChiTietDonHang.hbm.xml</value>
+				<value>qt/dto/HinhThucThanhToan.hbm.xml</value>
+				<value>qt/dto/TrangThaiDonHang.hbm.xml</value>
+				<value>qt/dto/SanPham.hbm.xml</value>
+				<value>qt/dto/ChiTietHinhAnh.hbm.xml</value>
+				<value>qt/dto/ChiTietPhieuNhapDienThoai.hbm.xml</value>
+				<value>qt/dto/DienThoai.hbm.xml</value>
+				<value>qt/dto/PhuKien.hbm.xml</value>
+				<value>qt/dto/ChiTietPhieuNhapPhuKien.hbm.xml</value>
+				<value>qt/dto/ChiTietTinKhuyenMaiDienThoai.hbm.xml</value>
+				<value>qt/dto/TinKhuyenMaiDienThoai.hbm.xml</value>
+				<value>qt/dto/HangDienThoai.hbm.xml</value>
+				<value>qt/dto/HeDieuHanh.hbm.xml</value>
+				<value>qt/dto/KieuDang.hbm.xml</value>
+				<value>qt/dto/LoaiMang.hbm.xml</value>
+				<value>qt/dto/LoaiPhuKien.hbm.xml</value>
+				<value>qt/dto/NhaCungCap.hbm.xml</value>
+				<value>qt/dto/PhongCach.hbm.xml</value>
+				<value>qt/dto/TinhTrangSanPham.hbm.xml</value>
+				<value>qt/dto/TinGiamGiaPhuKien.hbm.xml</value>
+				<value>qt/dto/TinhNangNoiBat.hbm.xml</value>
+				<value>qt/dto/DongSanPham.hbm.xml</value>
+			</list>
+		</property>
+	</bean>
+
+	<tx:annotation-driven transaction-manager="myTxManager" />
+	<bean id="myTxManager"
+		class="org.springframework.orm.hibernate3.HibernateTransactionManager">
+		<property name="sessionFactory" ref="mySessionFactory" />
+	</bean>
+
+	<!--
+		<bean id="transactionManager"
+		class="org.springframework.orm.hibernate.HibernateTransactionManager">
+		<property name="sessionFactory"> <ref bean="mySessionFactory" />
+		</property> </bean>
+	-->
+
+	<!-- Vùng DAO Kiếm :) -->
+	<bean id="dienThoaiDAO" class="qt.dao.DienThoaiDAO">
+		<property name="factory" ref="mySessionFactory" />
+	</bean>
+
+	<bean id="gopYDAO" class="qt.dao.GopYDAO">
+		<property name="factory" ref="mySessionFactory" />
+	</bean>
+
+	<bean id="trangThaiGopYDAO" class="qt.dao.TrangThaiGopYDAO">
+		<property name="factory" ref="mySessionFactory" />
+	</bean>
+
+	<bean id="khachHangDAO" class="qt.dao.KhachHangDAO">
+		<property name="factory" ref="mySessionFactory" />
+	</bean>
+
+	<bean id="tinTucDAO" class="qt.dao.TinTucDAO">
+		<property name="factory" ref="mySessionFactory" />
+	</bean>
+
+	<bean id="loaiTinTucDAO" class="qt.dao.LoaiTinTucDAO">
+		<property name="factory" ref="mySessionFactory" />
+	</bean>
+
+	<bean id="hangDienThoaiDAO" class="qt.dao.HangDienThoaiDAO">
+		<property name="factory" ref="mySessionFactory" />
+	</bean>
+
+	<bean id="kieuDangDAO" class="qt.dao.KieuDangDAO">
+		<property name="factory" ref="mySessionFactory" />
+	</bean>
+
+	<bean id="heDieuHanhDAO" class="qt.dao.HeDieuHanhDAO">
+		<property name="factory" ref="mySessionFactory" />
+	</bean>
+
+	<bean id="phongCachDAO" class="qt.dao.PhongCachDAO">
+		<property name="factory" ref="mySessionFactory" />
+	</bean>
+
+	<bean id="loaiMangDAO" class="qt.dao.LoaiMangDAO">
+		<property name="factory" ref="mySessionFactory" />
+	</bean>
+
+	<bean id="tinhTrangSanPhamDAO" class="qt.dao.TinhTrangSanPhamDAO">
+		<property name="factory" ref="mySessionFactory" />
+	</bean>
+
+	<bean id="trangThaiDonHangDAO" class="qt.dao.TrangThaiDonHangDAO">
+		<property name="factory" ref="mySessionFactory" />
+	</bean>
+
+	<bean id="hinhThucThanhToanDAO" class="qt.dao.HinhThucThanhToanDAO">
+		<property name="factory" ref="mySessionFactory" />
+	</bean>
+
+	<bean id="loaiPhuKienDAO" class="qt.dao.LoaiPhuKienDAO">
+		<property name="factory" ref="mySessionFactory" />
+	</bean>
+
+	<bean id="nhaCungCapDAO" class="qt.dao.NhaCungCapDAO">
+		<property name="factory" ref="mySessionFactory" />
+	</bean>
+
+	<bean id="nhanXetDienThoaiDAO" class="qt.dao.NhanXetDienThoaiDAO">
+		<property name="factory" ref="mySessionFactory" />
+	</bean>
+
+	<bean id="tinGiamGiaPhuKienDAO" class="qt.dao.TinGiamGiaPhuKienDAO">
+		<property name="factory" ref="mySessionFactory" />
+	</bean>
+
+	<bean id="chiTietHinhAnhDAO" class="qt.dao.ChiTietHinhAnhDAO">
+		<property name="factory" ref="mySessionFactory" />
+	</bean>
+
+	<bean id="phieuNhapDienThoaiDAO" class="qt.dao.PhieuNhapDienThoaiDAO">
+		<property name="factory" ref="mySessionFactory" />
+	</bean>
+
+	<bean id="chiTietPhieuNhapDienThoaiDAO" class="qt.dao.ChiTietPhieuNhapDienThoaiDAO">
+		<property name="factory" ref="mySessionFactory" />
+	</bean>
+
+	<bean id="phieuNhapPhuKienDAO" class="qt.dao.PhieuNhapPhuKienDAO">
+		<property name="factory" ref="mySessionFactory" />
+	</bean>
+
+	<bean id="chiTietPhieuNhapPhuKienDAO" class="qt.dao.ChiTietPhieuNhapPhuKienDAO">
+		<property name="factory" ref="mySessionFactory" />
+	</bean>
+
+	<bean id="chiTietTinKhuyenMaiDienThoaiDAO" class="qt.dao.ChiTietTinKhuyenMaiDienThoaiDAO">
+		<property name="factory" ref="mySessionFactory" />
+	</bean>
+
+	<bean id="donHangDAO" class="qt.dao.DonHangDAO">
+		<property name="factory" ref="mySessionFactory" />
+	</bean>
+
+	<bean id="chiTietDonHangDAO" class="qt.dao.ChiTietDonHangDAO">
+		<property name="factory" ref="mySessionFactory" />
+	</bean>
+
+	<bean id="phuKienDAO" class="qt.dao.PhuKienDAO">
+		<property name="factory" ref="mySessionFactory" />
+	</bean>
+
+	<bean id="accountDAO" class="qt.dao.AccountDAO">
+		<property name="factory" ref="mySessionFactory" />
+	</bean>
+
+	<bean id="nhanVienDAO" class="qt.dao.NhanVienDAO">
+		<property name="factory" ref="mySessionFactory" />
+	</bean>
+
+	<bean id="nhanVienQuanLyDAO" class="qt.dao.NhanVienQuanLyDAO">
+		<property name="factory" ref="mySessionFactory" />
+	</bean>
+
+	<bean id="nhanVienQuanTriDAO" class="qt.dao.NhanVienQuanTriDAO">
+		<property name="factory" ref="mySessionFactory" />
+	</bean>
+
+	<bean id="sanPhamDAO" class="qt.dao.SanPhamDAO">
+		<property name="factory" ref="mySessionFactory" />
+	</bean>
+
+	<bean id="tinKhuyenMaiDienThoaiDAO" class="qt.dao.TinKhuyenMaiDienThoaiDAO">
+		<property name="factory" ref="mySessionFactory" />
+	</bean>
+
+	<bean id="tinhNangNoiBatDAO" class="qt.dao.TinhNangNoiBatDAO">
+		<property name="factory" ref="mySessionFactory" />
+	</bean>
+
+	<!-- BUS bean -->
+	<bean id="accountBUS" class="qt.bus.AccountBUS">
+		<property name="accountDAO" ref="accountDAO" />
+	</bean>
+	<bean id="chiTietDonHangBUS" class="qt.bus.ChiTietDonHangBUS">
+		<property name="chiTietDonHangDAO" ref="chiTietDonHangDAO" />
+	</bean>
+	<bean id="chiTietHinhAnhBUS" class="qt.bus.ChiTietHinhAnhBUS">
+		<property name="chiTietHinhAnhDAO" ref="chiTietHinhAnhDAO" />
+	</bean>
+	<bean id="chiTietPhieuNhapDienThoaiBUS" class="qt.bus.ChiTietPhieuNhapDienThoaiBUS">
+		<property name="chiTietPhieuNhapDienThoaiDAO" ref="chiTietPhieuNhapDienThoaiDAO" />
+	</bean>
+	<bean id="chiTietPhieuNhapPhuKienBUS" class="qt.bus.ChiTietPhieuNhapPhuKienBUS">
+		<property name="chiTietPhieuNhapPhuKienDAO" ref="chiTietPhieuNhapPhuKienDAO" />
+	</bean>
+	<bean id="chiTietTinKhuyenMaiDienThoaiBUS" class="qt.bus.ChiTietTinKhuyenMaiDienThoaiBUS">
+		<property name="chiTietTinKhuyenMaiDienThoaiDAO" ref="chiTietTinKhuyenMaiDienThoaiDAO" />
+	</bean>
+	<bean id="dienThoaiBUS" class="qt.bus.DienThoaiBUS">
+		<property name="dienThoaiDAO" ref="dienThoaiDAO" />
+	</bean>
+	<bean id="donHangBUS" class="qt.bus.DonHangBUS">
+		<property name="donHangDAO" ref="donHangDAO" />
+	</bean>
+	<bean id="gopYBUS" class="qt.bus.GopYBUS">
+		<property name="gopYDAO" ref="gopYDAO" />
+	</bean>
+	<bean id="hangDienThoaiBUS" class="qt.bus.HangDienThoaiBUS">
+		<property name="hangDienThoaiDAO" ref="hangDienThoaiDAO" />
+	</bean>
+	<bean id="heDieuHanhBUS" class="qt.bus.HeDieuHanhBUS">
+		<property name="heDieuHanhDAO" ref="heDieuHanhDAO" />
+	</bean>
+	<bean id="hinhThucThanhToanBUS" class="qt.bus.HinhThucThanhToanBUS">
+		<property name="hinhThucThanhToanDAO" ref="hinhThucThanhToanDAO" />
+	</bean>
+	<bean id="khachHangBUS" class="qt.bus.KhachHangBUS">
+		<property name="khachHangDAO" ref="khachHangDAO" />
+	</bean>
+	<bean id="kieuDangBUS" class="qt.bus.KieuDangBUS">
+		<property name="kieuDangDAO" ref="kieuDangDAO" />
+	</bean>
+	<bean id="loaiMangBUS" class="qt.bus.LoaiMangBUS">
+		<property name="loaiMangDAO" ref="loaiMangDAO" />
+	</bean>
+	<bean id="loaiPhuKienBUS" class="qt.bus.LoaiPhuKienBUS">
+		<property name="loaiPhuKienDAO" ref="loaiPhuKienDAO" />
+	</bean>
+	<bean id="loaiTinTucBUS" class="qt.bus.LoaiTinTucBUS">
+		<property name="loaiTinTucDAO" ref="loaiTinTucDAO" />
+	</bean>
+	<bean id="nhaCungCapBUS" class="qt.bus.NhaCungCapBUS">
+		<property name="nhaCungCapDAO" ref="nhaCungCapDAO" />
+	</bean>
+	<bean id="nhanVienBUS" class="qt.bus.NhanVienBUS">
+		<property name="nhanVienDAO" ref="nhanVienDAO" />
+	</bean>
+	<bean id="nhanVienQuanLyBUS" class="qt.bus.NhanVienQuanLyBUS">
+		<property name="nhanVienQuanLyDAO" ref="nhanVienQuanLyDAO" />
+	</bean>
+	<bean id="nhanVienQuanTriBUS" class="qt.bus.NhanVienQuanTriBUS">
+		<property name="nhanVienQuanTriDAO" ref="nhanVienQuanTriDAO" />
+	</bean>
+	<bean id="nhanXetDienThoaiBUS" class="qt.bus.NhanXetDienThoaiBUS">
+		<property name="nhanXetDienThoaiDAO" ref="nhanXetDienThoaiDAO" />
+	</bean>
+	<bean id="phieuNhapDienThoaiBUS" class="qt.bus.PhieuNhapDienThoaiBUS">
+		<property name="phieuNhapDienThoaiDAO" ref="phieuNhapDienThoaiDAO" />
+	</bean>
+	<bean id="phieuNhapPhuKienBUS" class="qt.bus.PhieuNhapPhuKienBUS">
+		<property name="phieuNhapPhuKienDAO" ref="phieuNhapPhuKienDAO" />
+	</bean>
+	<bean id="phongCachBUS" class="qt.bus.PhongCachBUS">
+		<property name="phongCachDAO" ref="phongCachDAO" />
+	</bean>
+	<bean id="phuKienBUS" class="qt.bus.PhuKienBUS">
+		<property name="phuKienDAO" ref="phuKienDAO" />
+	</bean>
+	<bean id="sanPhamBUS" class="qt.bus.SanPhamBUS">
+		<property name="sanPhamDAO" ref="sanPhamDAO" />
+	</bean>
+	<bean id="tinGiamGiaPhuKienBUS" class="qt.bus.TinGiamGiaPhuKienBUS">
+		<property name="tinGiamGiaPhuKienDAO" ref="tinGiamGiaPhuKienDAO" />
+	</bean>
+	<bean id="tinhNangNoiBatBUS" class="qt.bus.TinhNangNoiBatBUS">
+		<property name="tinhNangNoiBatDAO" ref="tinhNangNoiBatDAO" />
+	</bean>
+	<bean id="tinhTrangSanPhamBUS" class="qt.bus.TinhTrangSanPhamBUS">
+		<property name="tinhTrangSanPhamDAO" ref="tinhTrangSanPhamDAO" />
+	</bean>
+	<bean id="tinKhuyenMaiDienThoaiBUS" class="qt.bus.TinKhuyenMaiDienThoaiBUS">
+		<property name="tinKhuyenMaiDienThoaiDAO" ref="tinKhuyenMaiDienThoaiDAO" />
+	</bean>
+	<bean id="tinTucBUS" class="qt.bus.TinTucBUS">
+		<property name="tinTucDAO" ref="tinTucDAO" />
+	</bean>
+	<bean id="trangThaiDonHangBUS" class="qt.bus.TrangThaiDonHangBUS">
+		<property name="trangThaiDonHangDAO" ref="trangThaiDonHangDAO" />
+	</bean>
+	<bean id="trangThaiGopYBUS" class="qt.bus.TrangThaiGopYBUS">
+		<property name="trangThaiGopYDAO" ref="trangThaiGopYDAO" />
+	</bean>
+</beans>

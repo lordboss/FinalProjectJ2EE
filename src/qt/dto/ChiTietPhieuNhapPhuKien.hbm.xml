@@ -1,0 +1,34 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+                                   "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+	<!-- Generated May 17, 2010 9:39:32 PM by Hibernate Tools 3.3.0.GA -->
+<hibernate-mapping package="qt.dto">
+	<class name="ChiTietPhieuNhapPhuKien" table="CT_PhieuNhapPhuKien">
+		<id name="id" type="integer">
+			<column name="ID" />
+			<generator class="identity" />
+		</id>
+
+		<!-- Một phiếu nhập phụ kiện có nhiều chi tiết nhập -->
+		<!-- Một chi tiết nhập thuộc về một phiếu nhập phụ kiện duy nhất -->
+		<many-to-one cascade="all" class="PhieuNhapPhuKien" fetch="select"
+			lazy="false" name="phieuNhapPhuKien">
+			<column name="ID_PhieuNhapPhuKien" />
+		</many-to-one>
+
+		<!--
+			Một phụ kiện có nhiều chi tiết nhập Mỗi chi tiết nhập ứng với một phụ
+			kiện duy nhất
+		-->
+		<many-to-one cascade="all" class="PhuKien" name="phuKien">
+			<column name="ID_PhuKien" />
+		</many-to-one>
+		
+		<property generated="never" lazy="false" name="soLuong" type="integer">
+			<column name="SoLuong" not-null="true" />
+		</property>
+		<property generated="never" lazy="false" name="xoa" type="boolean">
+			<column name="Xoa" not-null="true" />
+		</property>
+	</class>
+</hibernate-mapping>

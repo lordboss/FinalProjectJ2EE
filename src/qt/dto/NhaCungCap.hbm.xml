@@ -1,0 +1,54 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+                                   "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+	<!-- Generated May 17, 2010 9:39:32 PM by Hibernate Tools 3.3.0.GA -->
+<hibernate-mapping package="qt.dto">
+	<class name="NhaCungCap" table="NhaCungCap">
+		<id name="id" type="integer">
+			<column name="ID" />
+			<generator class="identity" />
+		</id>
+		<property generated="never" lazy="false" name="ten" type="string">
+			<column length="80" name="Ten" not-null="true" />
+		</property>
+		<property generated="never" lazy="false" name="diaChi" type="string">
+			<column length="80" name="DiaChi" not-null="true" />
+		</property>
+		<property generated="never" lazy="false" name="dienThoai"
+			type="string">
+			<column length="20" name="DienThoai" not-null="true" />
+		</property>
+		<property generated="never" lazy="false" name="email" type="string">
+			<column length="40" name="Email" not-null="true" />
+		</property>
+		<property generated="never" lazy="false" name="ghiChu" type="string">
+			<column length="200" name="GhiChu" />
+		</property>
+		<property generated="never" lazy="false" name="xoa" type="boolean">
+			<column name="Xoa" />
+		</property>
+
+		<!-- Một nhà cung cấp có nhiều phiếu nhập điện thoại -->
+		<set cascade="all,delete-orphan" fetch="select" inverse="true"
+			lazy="false" name="dsPhieuNhapDienThoai" sort="unsorted">
+			<key column="ID_NhaCungCap" />
+			<one-to-many class="PhieuNhapDienThoai" />
+		</set>
+
+		<!-- Một nhà cung cấp có nhiều phiếu nhập phụ kiện -->
+		<set cascade="all,delete-orphan" fetch="select" inverse="true"
+			lazy="false" name="dsPhieuNhapPhuKien" sort="unsorted">
+			<key column="ID_NhaCungCap" />
+			<one-to-many class="PhieuNhapPhuKien" />
+		</set>
+
+		<!-- Một nhà cung cấp có thể cung ứng nhiều điện thoại. -->
+		<!-- Một loại điện thoại có thể được cung ứng bởi nhiều nhà sản xuất -->
+		<set cascade="all,delete-orphan" fetch="select" lazy="false" name="dsSanPham"
+			sort="unsorted" table="SanPham_NhaCungCap">
+			<key column="ID_NhaCungCap" />
+			<many-to-many class="SanPham" column="ID_SanPham"
+				unique="false" />
+		</set>
+	</class>
+</hibernate-mapping>
