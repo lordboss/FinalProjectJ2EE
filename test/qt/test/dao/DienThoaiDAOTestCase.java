@@ -31,7 +31,6 @@ public class DienThoaiDAOTestCase extends
 
 	@Override
 	protected void onSetUpInTransaction() throws Exception {
-		// TODO Auto-generated method stub
 		super.executeSqlScript("file:db/j2eeTest.sql", true);
 		
 		System.out.println("Executing mySQL script done!");
