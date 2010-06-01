@@ -20,17 +20,17 @@ pageEncoding="UTF-8" %>
             <div id="navigation">
                 <ul>
                     <li>
-                        <a href="#">TRANG CHỦ</a>
+                        <a href="index.jsp">TRANG CHỦ</a>
                     </li>
                 </ul>
                 <ul>
                     <li>
-                        <a href="#">ĐIỆN THOẠI</a>
+                        <a href="phoneList.html">ĐIỆN THOẠI</a>
                     </li>
                 </ul>
                 <ul>
                     <li>
-                        <a>PHỤ KIỆN</a>
+                        <a href="accesoryList.html">PHỤ KIỆN</a>
                     </li>
                 </ul>
                 <ul>
@@ -211,10 +211,104 @@ pageEncoding="UTF-8" %>
                 
                 <!-- Middle Column -->
                 <div id="content">
-                    <h2>Demo</h2>
-                    <p>
-                        Content...
-                    </p>
+                    <div class="block01">
+						<div class="blockTitle">Danh sách điện thoại</div>
+						<div class="contentCenter">
+							<c:forEach var="p" items="${model.pageList}" varStatus="loop">
+								<div class="<c:choose><c:when test="${ loop.index eq 0 }"><c:out value="phoneItemLeft"/></c:when><c:otherwise><c:out value="phoneItemCenter"/></c:otherwise></c:choose>">
+									<!-- New model or not -->
+									<c:choose>
+										<c:when test="${p.tinhTrangSanPham.id eq 3}">
+											<div class="isNewModel"></div>
+										</c:when>
+										<c:otherwise>
+											<div class="isNotNewModel"></div>
+										</c:otherwise>
+									</c:choose>
+									<!-- Image and Name -->
+									<div class="phoneImageAndName">
+										<div class="phoneImage">
+											<center><a href="#"><img src="img/dienthoai/Motorola_Droid_1.jpg" width="50px" height="75px"/></a></center>
+										</div>
+										<div class="phoneName"><center><c:out value="${p.ten}"/></center></div>
+									</div>
+									<!-- Price -->
+									<div class="phonePrice"><center><c:out value="${p.giaHienHanh}"/></center></div>
+								</div>
+							</c:forEach>
+						</div>
+						
+						<!-- Paging content -->
+						<div class="paging">
+							<a href="?page=first">First</a>
+							<c:if test="${!model.firstPage}">
+								<a href="?page=prev">&lt;&lt; Prev</a>
+							</c:if> 
+							<c:forEach var="currentPage" begin="${model.firstLinkedPage}" end="${model.lastLinkedPage}">
+								<c:choose>
+									<c:when test="${currentPage == model.page}">
+										<b><c:out value="${currentPage + 1}"/></b>
+									</c:when>
+									<c:otherwise>
+										<a href="?page=<c:url value="${currentPage}"></c:url>"><c:out value="${currentPage+1}"/></a>
+									</c:otherwise>
+								</c:choose>
+							</c:forEach>
+							<c:if test="${!model.lastPage}">
+								<a href="?page=next">Next &gt;&gt;</a>
+							</c:if>
+							<a href="?page=last">Last</a>
+						</div>
+					</div>
+					<!-- Demo -->
+					<div class="block01">
+						<div class="blockTitle">Danh sách phụ kiện</div>
+						<div class="contentCenter">
+							<c:forEach var="p" items="${model.pageList}" varStatus="loop">
+								<div class="<c:choose><c:when test="${ loop.index eq 0 }"><c:out value="phoneItemLeft"/></c:when><c:otherwise><c:out value="phoneItemCenter"/></c:otherwise></c:choose>">
+									<!-- New model or not -->
+									<c:choose>
+										<c:when test="${p.tinhTrangSanPham.id eq 1}">
+											<div class="isNewModel"></div>
+										</c:when>
+										<c:otherwise>
+											<div class="isNotNewModel"></div>
+										</c:otherwise>
+									</c:choose>
+									<!-- Image and Name -->
+									<div class="phoneImageAndName">
+										<div class="phoneImage">
+											<center><a href="#"><img src="img/dienthoai/Motorola_Droid_1.jpg" width="50px" height="75px"/></a></center>
+										</div>
+										<div class="phoneName"><center><c:out value="${p.ten}"/></center></div>
+									</div>
+									<!-- Price -->
+									<div class="phonePrice"><center><c:out value="${p.giaHienHanh}"/></center></div>
+								</div>
+							</c:forEach>
+						</div>
+						<!-- Paging content -->
+						<div class="paging">
+							<a href="?page=first">First</a>
+							<c:if test="${!model.firstPage}">
+								<a href="?page=prev">&lt;&lt; Prev</a>
+							</c:if> 
+							<c:forEach var="currentPage" begin="${model.firstLinkedPage}" end="${model.lastLinkedPage}">
+								<c:choose>
+									<c:when test="${currentPage == model.page}">
+										<b><c:out value="${currentPage + 1}"/></b>
+									</c:when>
+									<c:otherwise>
+										<a href="?page=<c:url value="${currentPage}"></c:url>"><c:out value="${currentPage+1}"/></a>
+									</c:otherwise>
+								</c:choose>
+							</c:forEach>
+							<c:if test="${!model.lastPage}">
+								<a href="?page=next">Next &gt;&gt;</a>
+							</c:if>
+							<a href="?page=last">Last</a>
+						</div>
+					</div>
                 </div> <!-- end midlle column -->
                 
                 <!-- Right Column -->
@@ -226,14 +320,14 @@ pageEncoding="UTF-8" %>
                         	<a href="#">Tìm Chọn Sản Phẩm</a>
                         </div>
                         <div class="stepTwo">
-                        	<a href="#">Đăng Kí & Thanh Toán</a>
+                        	<a href="#">Đăng Kí &amp; Thanh Toán</a>
                         </div>
                         <div class="stepThree">
                         	<a href="#">Xác Nhận</a>
                         </div>
                     </div>
                    	<div class="block">
-                        <div class="blockTitle">Điện Thoại & Phụ Kiện</div>
+                        <div class="blockTitle">Điện Thoại &amp; Phụ Kiện</div>
                         <div>
                         	<div class="blockSubTitle">Phụ Kiện</div>
                             <div>
@@ -245,7 +339,7 @@ pageEncoding="UTF-8" %>
                                 <div class="blockLineElement"><a href="#">Thiết bị kết nối PC</a></div>
                                 <div class="blockLineElement"><a href="#">Tai nghe</a></div>
                                 <div class="blockLineElement"><a href="#">Loa</a></div>
-                                <div class="blockLineElement"><a href="#">Thẻ nhớ & Đầu đọc thẻ</a></div>
+                                <div class="blockLineElement"><a href="#">Thẻ nhớ &amp; Đầu đọc thẻ</a></div>
                                 <div class="blockLineElement"><a href="#">Phụ kiện khác</a></div>
                             </div>
                             

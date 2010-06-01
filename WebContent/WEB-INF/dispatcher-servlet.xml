@@ -352,4 +352,12 @@
 	<bean id="trangThaiGopYBUS" class="qt.bus.TrangThaiGopYBUS">
 		<property name="trangThaiGopYDAO" ref="trangThaiGopYDAO" />
 	</bean>
+	
+	<!-- Handler Mapping -->
+	<bean name="/phoneList.html" class="qt.web.PhoneListController">
+		<property name="dienThoaiBUS" ref="dienThoaiBUS"/>
+	</bean>
+	<bean name="/index.html" class="qt.web.PhoneListController">
+		<property name="dienThoaiBUS" ref="dienThoaiBUS"/>
+	</bean>
 </beans>

@@ -5,10 +5,10 @@
     width: 100%;
     background: #333;
     text-align: center;
-	font-size:12px;
-	font-weight:bold;
-	font-family: Arial, Times New Roman, Tahoma, Verdana;
-	text-transform:uppercase;
+    font-size: 12px;
+    font-weight: bold;
+    font-family: Arial, Times New Roman, Tahoma, Verdana;
+    text-transform: uppercase;
 }
 
 #navigation ul {
@@ -199,15 +199,16 @@ table tbody tr td a:hover {
     color: #FF6633;
 }
 
+/* body container */
 #container {
     margin: 0 auto;
     width: 1200px;
     min-width: 1200px;
     max-width: 1200px;
-    background: #fff;
     border-color: silver;
     border-width: 1px;
     border-style: solid;
+	background: #fff;
 }
 
 #header {
@@ -226,12 +227,13 @@ table tbody tr td a:hover {
     min-height: 800px;
 }
 
+
+/* Middle column: Main content of website */ 
 #content {
     float: left;
-    width: 764px;
+    width: 785px;
     min-width: 700px;
     min-height: 850px;
-    padding: 20px 10px 10px 10px;
     margin-top: 4px;
     margin-left: 2px;
     margin-right: 2px;
@@ -241,8 +243,11 @@ table tbody tr td a:hover {
     border-right-width: 1px;
     border-left-style: solid;
     border-left-width: 1px;
-    background-color: #CCCCCC;
+	border-top-style: solid;
+	border-top-width:1px; 
+    background-color:#ffffff;
 }
+
 
 #content h2 {
     margin: 0;
@@ -258,10 +263,6 @@ table tbody tr td a:hover {
     margin-top: 1px;
     margin-bottom: 2px;
     display: inline;
-    /* border-color: orange;
-     border-left-style: solid;
-     border-left-width: 2px;*/
-    /*background-color:#FFCCCC;*/
 }
 
 #leftAside {
@@ -274,10 +275,6 @@ table tbody tr td a:hover {
     margin-top: 1px;
     margin-bottom: 2px;
     display: inline;
-    /*border-color: orange;
-     border-right-style: solid;
-     border-right-width: 2px;*/
-    /*background-color:#33CCFF;*/
 }
 
 #aside h3 {
@@ -344,6 +341,7 @@ table tbody tr td a:hover {
     text-transform: uppercase;
 }
 
+/* Left or Right menu block */
 .block {
     background: none repeat scroll 0 50% #EEEEEE;
     border-color: #2C2C2C #9F9F9F #E5E5E5;
@@ -354,6 +352,18 @@ table tbody tr td a:hover {
     text-align: left;
     margin-top: 3px;
     margin-bottom: 2px;
+}
+
+/* View phones or accesories */
+.block01 {
+    background-color:#ffffff;
+    border-color: #2C2C2C #9F9F9F #E5E5E5;
+    border-style: solid;
+    border-width: 4px 1px;
+    border-bottom-color: #000000;
+    border-bottom-width: 2px;
+    text-align: left;
+    margin-bottom: 5px;
 }
 
 /*.SIM_Line {
@@ -583,4 +593,82 @@ table tbody tr td a:hover {
 .pageTittle a:visited {
     color: #FFFFFF;
     text-decoration: none;
+}
+
+/* Phone  List */
+.phoneItemLeft {
+    float: left;
+    vertical-align: top;
+    width: 24%;
+    border-bottom: 1px solid #DDDDDD;
+    height: 150px;
+}
+.phoneImageAndName {
+	width:100%; 
+	padding:0px;
+	height:100px;	
+}
+.phoneImage {
+	width:100%; 
+	padding-top:5px; 
+	height:75px;
+}
+.phoneItemCenter {
+    float: left;
+    vertical-align: top;
+    width: 24%;
+    border-bottom: 1px solid #DDDDDD;
+    border-left: 1px solid #DDDDDD;
+    height: 150px;
+}
+
+.phoneRow {
+    height: 146px;
+    padding: 0 0 0 14px;
+    text-align: center;
+}
+
+.isNotNewModel {
+    background-color: Transparent;
+    height: 22px;
+    width: 100%;
+}
+.isNewModel {
+	background:url("icon/New.gif") no-repeat scroll right center Transparent;
+	height:22px;
+	width:100%;
+}
+.phonePrice {
+    color: #FF0000;#d58cfe
+    font-weight: bold;
+}
+
+.phoneName {
+    color: #0080FF;
+    font-size: 9pt;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+.contentCenter {
+    border-left: 1px solid #000000;
+    border-right: 1px solid #000000;
+    font-family: Arial, Times New Roman, Tahoma, Verdana;
+    font-size: 8.5pt;
+    padding: 2px 4px 5px 2px;
+}
+
+.paging {
+	clear:both;
+	background-color:#e8f2fe;
+	font-family:arial,sans-serif;
+	font-size:small;
+	text-align:right;
+	padding-right:5px;
+}
+.paging a {
+	text-decoration:none;
+}
+.paging a:hover {
+	text-decoration:underline;
 }
