@@ -357,7 +357,11 @@
 	<bean name="/phoneList.html" class="qt.web.PhoneListController">
 		<property name="dienThoaiBUS" ref="dienThoaiBUS"/>
 	</bean>
-	<bean name="/index.html" class="qt.web.PhoneListController">
+
+	<bean name="/home.html" class="qt.web.ProductListController">
 		<property name="dienThoaiBUS" ref="dienThoaiBUS"/>
+		<property name="phuKienBUS" ref="phuKienBUS"/>
+		<property name="loaiPhuKienBUS" ref="loaiPhuKienBUS"/>
 	</bean>
+	 
 </beans>

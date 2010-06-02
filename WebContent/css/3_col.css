@@ -231,7 +231,7 @@ table tbody tr td a:hover {
 /* Middle column: Main content of website */ 
 #content {
     float: left;
-    width: 785px;
+    width: 787px;
     min-width: 700px;
     min-height: 850px;
     margin-top: 4px;
@@ -239,10 +239,12 @@ table tbody tr td a:hover {
     margin-right: 2px;
     display: inline;
     border-color: #999999;
-    border-right-style: solid;
+    /*
+	border-right-style: solid;
     border-right-width: 1px;
     border-left-style: solid;
     border-left-width: 1px;
+	*/
 	border-top-style: solid;
 	border-top-width:1px; 
     background-color:#ffffff;
@@ -359,7 +361,7 @@ table tbody tr td a:hover {
     background-color:#ffffff;
     border-color: #2C2C2C #9F9F9F #E5E5E5;
     border-style: solid;
-    border-width: 4px 1px;
+    border-width: 1px 1px;
     border-bottom-color: #000000;
     border-bottom-width: 2px;
     text-align: left;
@@ -388,6 +390,21 @@ table tbody tr td a:hover {
     padding-bottom: 3px;
     padding-left: 10px;
     padding-top: 3px;
+}
+
+.blockSubTitle01 {
+    background: none repeat scroll 0 50% #e8f2fe;
+    border-left: 1px solid #000000;
+	border-top: 1px solid #000000;
+    color: #000000;
+    font-family: Arial, Times New Roman, Tahoma, Verdana;
+    font-size: 9pt;
+    font-weight: bolder;
+    margin: 0;
+    padding-bottom: 3px;
+    padding-left: 10px;
+    padding-top: 3px;
+	text-transform:uppercase;
 }
 
 .blockLineElement {
@@ -595,31 +612,35 @@ table tbody tr td a:hover {
     text-decoration: none;
 }
 
-/* Phone  List */
-.phoneItemLeft {
+/* Phone & Accessory  List */
+.itemLeft {
     float: left;
     vertical-align: top;
     width: 24%;
     border-bottom: 1px solid #DDDDDD;
+	border-left:1px solid #DDDDDD;
     height: 150px;
+	text-align:center;
 }
-.phoneImageAndName {
+.itemImageAndName {
 	width:100%; 
 	padding:0px;
 	height:100px;	
+	text-align:center;
 }
-.phoneImage {
+.itemImage {
 	width:100%; 
 	padding-top:5px; 
 	height:75px;
 }
-.phoneItemCenter {
+.itemCenter {
     float: left;
     vertical-align: top;
     width: 24%;
     border-bottom: 1px solid #DDDDDD;
     border-left: 1px solid #DDDDDD;
     height: 150px;
+	text-align:center;
 }
 
 .phoneRow {
@@ -638,26 +659,40 @@ table tbody tr td a:hover {
 	height:22px;
 	width:100%;
 }
-.phonePrice {
-    color: #FF0000;#d58cfe
-    font-weight: bold;
+.itemPrice {
+    color:#FF0000;
+	font-family:Arial,Times New Roman,Tahoma,Verdana;
+	font-size:8pt;
+	font-weight:bold;
+	padding:5px 0;
 }
 
-.phoneName {
+.itemName {
     color: #0080FF;
     font-size: 9pt;
     font-weight: bold;
     text-decoration: none;
+	text-align:center;
+}
+
+.itemName01 {
+    color: #0080FF;
+    font-size: 8pt;
+    text-decoration: none;
+	text-align:center;
 }
 
 .contentCenter {
-    border-left: 1px solid #000000;
-    border-right: 1px solid #000000;
+    /*border-left: 1px solid #000000;
+    border-right: 1px solid #000000;*/
     font-family: Arial, Times New Roman, Tahoma, Verdana;
     font-size: 8.5pt;
     padding: 2px 4px 5px 2px;
+	clear:both;
 }
-
+.subContent {
+	clear:both;
+}
 .paging {
 	clear:both;
 	background-color:#e8f2fe;

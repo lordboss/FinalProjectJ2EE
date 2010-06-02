@@ -213,10 +213,10 @@ pageEncoding="UTF-8" %>
                 <!-- Middle Column -->
                 <div id="content">
 					<div class="block01">
-						<div class="blockTitle">Danh sách điện thoại</div>
-						<div class="contentCenter">
+						<div class="blockTitle" id="phoneListTitle">Danh sách điện thoại</div>
+						<div class="contentCenter" id="phoneListContainer">
 							<c:forEach var="p" items="${model.pageList}" varStatus="loop">
-								<div class="<c:choose><c:when test="${ loop.index eq 0 }"><c:out value="phoneItemLeft"/></c:when><c:otherwise><c:out value="phoneItemCenter"/></c:otherwise></c:choose>">
+								<div class="<c:choose><c:when test="${ loop.index eq 0 }"><c:out value="itemLeft"/></c:when><c:otherwise><c:out value="itemCenter"/></c:otherwise></c:choose>">
 									<!-- New model or not -->
 									<c:choose>
 										<c:when test="${p.tinhTrangSanPham.id eq 3}">
@@ -227,67 +227,24 @@ pageEncoding="UTF-8" %>
 										</c:otherwise>
 									</c:choose>
 									<!-- Image and Name -->
-									<div class="phoneImageAndName">
-										<div class="phoneImage">
-											<center><a href="#"><img src="img/dienthoai/Motorola_Droid_1.jpg" width="50px" height="75px"/></a></center>
+									<div class="itemImageAndName">
+										<div class="itemImage">
+											<c:if test="${fn:length(p.dsHinhAnh) > 0}">
+												<c:forEach var="img" items="${p.dsHinhAnh}" begin="1" end="1" varStatus="loopCount">
+											        <c:if test="${loopCount.index eq 1}">
+											         	<a href="#"><img src="img/dienthoai/<c:out value="${ img.hinhAnh }"/>" width="50px" height="75px"/></a>
+											        </c:if>
+											    </c:forEach>
+											</c:if>
 										</div>
-										<div class="phoneName"><center><c:out value="${p.ten}"/></center></div>
+										<div class="itemName"><c:out value="${p.ten}"/></div>
 									</div>
 									<!-- Price -->
-									<div class="phonePrice"><center><c:out value="${p.giaHienHanh}"/></center></div>
+									<div class="itemPrice"><fmt:formatNumber value="${p.giaHienHanh}" minFractionDigits="0" maxFractionDigits="0"/> VND</div>
 								</div>
 							</c:forEach>
 						</div>
 						
-						<!-- Paging content -->
-						<div class="paging">
-							<a href="?page=first"><b>First</b></a>
-							<c:if test="${!model.firstPage}">
-								<a href="?page=prev">&lt;&lt; Prev</a>
-							</c:if> 
-							<c:forEach var="currentPage" begin="${model.firstLinkedPage}" end="${model.lastLinkedPage}">
-								<c:choose>
-									<c:when test="${currentPage == model.page}">
-										<b><c:out value="${currentPage + 1}"/></b>
-									</c:when>
-									<c:otherwise>
-										<a href="?page=<c:url value="${currentPage}"></c:url>"><c:out value="${currentPage+1}"/></a>
-									</c:otherwise>
-								</c:choose>
-							</c:forEach>
-							<c:if test="${!model.lastPage}">
-								<a href="?page=next">Next &gt;&gt;</a>
-							</c:if>
-							<a href="?page=last">Last</a>
-						</div>
-					</div>
-					<!-- Demo -->
-					<div class="block01">
-						<div class="blockTitle">Danh sách phụ kiện</div>
-						<div class="contentCenter">
-							<c:forEach var="p" items="${model.pageList}" varStatus="loop">
-								<div class="<c:choose><c:when test="${ loop.index eq 0 }"><c:out value="phoneItemLeft"/></c:when><c:otherwise><c:out value="phoneItemCenter"/></c:otherwise></c:choose>">
-									<!-- New model or not -->
-									<c:choose>
-										<c:when test="${p.tinhTrangSanPham.id eq 1}">
-											<div class="isNewModel"></div>
-										</c:when>
-										<c:otherwise>
-											<div class="isNotNewModel"></div>
-										</c:otherwise>
-									</c:choose>
-									<!-- Image and Name -->
-									<div class="phoneImageAndName">
-										<div class="phoneImage">
-											<center><a href="#"><img src="img/dienthoai/Motorola_Droid_1.jpg" width="50px" height="75px"/></a></center>
-										</div>
-										<div class="phoneName"><center><c:out value="${p.ten}"/></center></div>
-									</div>
-									<!-- Price -->
-									<div class="phonePrice"><center><c:out value="${p.giaHienHanh}"/></center></div>
-								</div>
-							</c:forEach>
-						</div>
 						<!-- Paging content -->
 						<div class="paging">
 							<a href="?page=first"><b>First</b></a>
