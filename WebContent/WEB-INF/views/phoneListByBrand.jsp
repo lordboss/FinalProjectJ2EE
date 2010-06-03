@@ -47,7 +47,7 @@ pageEncoding="UTF-8" %>
                 </ul>
                 <ul>
                     <li>
-                        <a href="accesoryList.html">PHỤ KIỆN</a>
+                        <a href="accessoryList.html">PHỤ KIỆN</a>
                     </li>
                 </ul>
                 <ul>

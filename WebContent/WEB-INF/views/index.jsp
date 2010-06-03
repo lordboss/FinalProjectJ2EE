@@ -17,6 +17,37 @@ pageEncoding="UTF-8" %>
 				$("div#accessoryListTitle").click(function(){
 					$("div#accessoryListContainer").toggle("fast");
 				});
+
+				$("div#subTitle0").click(function(){
+					$("div#subContent0").toggle("fast");
+				});
+				$("div#subTitle1").click(function(){
+					$("div#subContent1").toggle("fast");
+				});
+				$("div#subTitle2").click(function(){
+					$("div#subContent2").toggle("fast");
+				});
+				$("div#subTitle3").click(function(){
+					$("div#subContent3").toggle("fast");
+				});
+				$("div#subTitle4").click(function(){
+					$("div#subContent4").toggle("fast");
+				});
+				$("div#subTitle5").click(function(){
+					$("div#subContent5").toggle("fast");
+				});
+				$("div#subTitle6").click(function(){
+					$("div#subContent6").toggle("fast");
+				});
+				$("div#subTitle7").click(function(){
+					$("div#subContent7").toggle("fast");
+				});
+				$("div#subTitle8").click(function(){
+					$("div#subContent8").toggle("fast");
+				});
+				$("div#subTitle9").click(function(){
+					$("div#subContent9").toggle("fast");
+				});
 			});
         </script>
     </head>
@@ -41,7 +72,7 @@ pageEncoding="UTF-8" %>
                 </ul>
                 <ul>
                     <li>
-                        <a href="accesoryList.html">PHỤ KIỆN</a>
+                        <a href="accessoryList.html">PHỤ KIỆN</a>
                     </li>
                 </ul>
                 <ul>
@@ -302,10 +333,10 @@ pageEncoding="UTF-8" %>
 					<div class="block01">
 						<div class="blockTitle" id="accessoryListTitle">Danh sách phụ kiện</div>
 							<div class="contentCenter" id="accessoryListContainer">
-								<c:forEach var="aType" items="${model.dsLoaiPhuKien}">
+								<c:forEach var="aType" items="${model.dsLoaiPhuKien}" varStatus="loop01">
 									<div class="subContent">
-										<div class="blockSubTitle01"><c:out value="${aType.ten}"/></div>
-										<div class="subContent">
+										<div class="blockSubTitle01" id="subTitle<c:out value="${loop01.index}"/>"><c:out value="${aType.ten}"/></div>
+										<div class="subContent" id="subContent<c:out value="${loop01.index}"/>">
 											<c:forEach var="a" items="${aType.dsPhuKien}" varStatus="loop">
 												<div class="<c:choose><c:when test="${ loop.index eq 0 }"><c:out value="itemLeft"/></c:when><c:otherwise><c:out value="itemCenter"/></c:otherwise></c:choose>">
 													<!-- New model or not -->
