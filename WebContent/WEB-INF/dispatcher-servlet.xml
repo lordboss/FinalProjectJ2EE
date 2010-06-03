@@ -343,5 +343,8 @@
 		<property name="phuKienBUS" ref="phuKienBUS"/>
 		<property name="loaiPhuKienBUS" ref="loaiPhuKienBUS"/>
 	</bean>
-	 
+	
+	<bean name="/phoneListByBrand.html" class="qt.web.PhoneListByBrandController">
+		<property name="dongSanPhamBUS" ref="dongSanPhamBUS"/>
+	</bean>
 </beans>

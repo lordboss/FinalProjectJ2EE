@@ -15,7 +15,6 @@ import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.Controller;
 
 import qt.bus.DienThoaiBUS;
-import qt.bus.HangDienThoaiBUS;
 import qt.dto.DienThoai;
 
 /**
@@ -26,7 +25,6 @@ public class PhoneListController implements Controller {
 
 	private Log logger = LogFactory.getLog(getClass());
 	private DienThoaiBUS dienThoaiBUS;
-	private HangDienThoaiBUS hangDienThoaiBUS;
 
 	@SuppressWarnings("unchecked")
 	@Override
@@ -97,20 +95,6 @@ public class PhoneListController implements Controller {
 	 */
 	public DienThoaiBUS getDienThoaiBUS() {
 		return dienThoaiBUS;
-	}
-
-	/**
-	 * @param hangDienThoaiBUS the hangDienThoaiBUS to set
-	 */
-	public void setHangDienThoaiBUS(HangDienThoaiBUS hangDienThoaiBUS) {
-		this.hangDienThoaiBUS = hangDienThoaiBUS;
-	}
-
-	/**
-	 * @return the hangDienThoaiBUS
-	 */
-	public HangDienThoaiBUS getHangDienThoaiBUS() {
-		return hangDienThoaiBUS;
 	}
 
 }
