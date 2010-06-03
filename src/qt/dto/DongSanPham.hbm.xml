@@ -13,7 +13,7 @@
 			<column name="Ten" not-null="true" />
 		</property>
 
-		<!-- Một loại mạng có nhiều điện thoại -->
+		<!-- Một dòng sản phẩm có nhiều điện thoại -->
 		<set cascade="all,delete-orphan" fetch="select" inverse="true"
 			lazy="false" name="dsDienThoai" sort="unsorted">
 			<key column="ID_DongSanPham" />

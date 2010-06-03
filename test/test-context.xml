@@ -248,6 +248,10 @@
 	<bean id="tinhNangNoiBatDAO" class="qt.dao.TinhNangNoiBatDAO">
 		<property name="factory" ref="mySessionFactory" />
 	</bean>
+	
+	<bean id="dongSanPhamDAO" class="qt.dao.DongSanPhamDAO">
+		<property name="factory" ref="mySessionFactory" />
+	</bean>
 
 	<!-- BUS bean -->
 	<bean id="accountBUS" class="qt.bus.AccountBUS">
@@ -351,5 +355,8 @@
 	</bean>
 	<bean id="trangThaiGopYBUS" class="qt.bus.TrangThaiGopYBUS">
 		<property name="trangThaiGopYDAO" ref="trangThaiGopYDAO" />
+	</bean>
+	<bean id="dongSanPhamBUS" class="qt.bus.DongSanPhamBUS">
+		<property name="dongSanPhamDAO" ref="dongSanPhamDAO"/>
 	</bean>
 </beans>
