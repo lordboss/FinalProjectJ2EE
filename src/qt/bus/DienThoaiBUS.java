@@ -9,6 +9,7 @@ import qt.dao.DienThoaiDAO;
 import qt.dto.DienThoai;
 import qt.dto.FunctionalityCriteria;
 import qt.dto.PhoneCriteria;
+import qt.dto.QuickSearchCriteria;
 
 /**
  * @author tqthe
@@ -116,6 +117,17 @@ public class DienThoaiBUS {
 			double giaTu, double giaDen) {
 
 		return dienThoaiDAO.quickSearch(idHangDienThoai, ten, giaTu, giaDen);
+	}
+
+	/**
+	 * Tìm kiếm nhanh
+	 * 
+	 * @param c
+	 *            Tiêu chí tìm kiếm
+	 * @return Danh sách các điện thoại thỏa tiêu chí tìm kiếm
+	 */
+	public List<DienThoai> quickSearch(QuickSearchCriteria c) {
+		return dienThoaiDAO.quickSearch(c);
 	}
 
 	/**

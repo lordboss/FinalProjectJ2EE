@@ -271,12 +271,11 @@ pageEncoding="UTF-8" %>
                 
                 <!-- Middle Column -->
                 <div id="content">
-                	
                 	<!-- List of phones -->
 					<div class="block01">
 						<div class="blockTitle" id="phoneListTitle">Danh sách điện thoại</div>
 						<div class="contentCenter" id="phoneListContainer">
-							<c:forEach var="p" items="${model.dsDienThoai}" varStatus="loop">
+							<c:forEach var="p" items="${model.kq}" varStatus="loop">
 								<div class="<c:choose><c:when test="${ loop.index eq 0 }"><c:out value="itemLeft"/></c:when><c:otherwise><c:out value="itemCenter"/></c:otherwise></c:choose>">
 									<!-- New model or not -->
 									<c:choose>
@@ -305,87 +304,6 @@ pageEncoding="UTF-8" %>
 								</div>
 							</c:forEach>
 						</div>
-						<div style="clear:both;"></div>
-					</div>
-					
-					<!-- List of accessories -->
-					<!-- 
-					<div class="block01">
-						<div class="blockTitle" id="accessoryListTitle">Danh sách phụ kiện</div>
-						<div class="contentCenter" id="accessoryListContainer">
-							<c:forEach var="a" items="${model.dsPhuKien}" varStatus="loop">
-								<div class="<c:choose><c:when test="${ loop.index eq 0 }"><c:out value="itemLeft"/></c:when><c:otherwise><c:out value="itemCenter"/></c:otherwise></c:choose>">
-									
-									<c:choose>
-										<c:when test="${a.tinhTrangSanPham.id eq 3}">
-											<div class="isNewModel"></div>
-										</c:when>
-										<c:otherwise>
-											<div class="isNotNewModel"></div>
-										</c:otherwise>
-									</c:choose>
-									
-									<div class="itemImageAndName">
-										
-										<div class="itemImage">
-											<c:forEach var="img" items="${a.dsHinhAnh}" begin="0" end="1" varStatus="loopCount">
-										        <c:if test="${loopCount.index eq 0}">
-										         	<a href="#"><img src="img/phukien/<c:out value="${ img.hinhAnh }"/>" width="50px" height="75px"/></a>
-										        </c:if>
-										    </c:forEach>
-									    </div>
-									    
-										<div class="itemName01"><c:out value="${a.ten}"/></div>
-									</div>
-									
-									<div class="itemPrice"><fmt:formatNumber value="${a.giaHienHanh}" minFractionDigits="0" maxFractionDigits="0"/> VND</div>
-								</div>
-							</c:forEach>
-						</div>
-						<div style="clear:both;"></div>
-					</div>
-					 -->
-					 
-					<!-- List of accessories with sub categories -->
-					<div class="block01">
-						<div class="blockTitle" id="accessoryListTitle">Danh sách phụ kiện</div>
-							<div class="contentCenter" id="accessoryListContainer">
-								<c:forEach var="aType" items="${model.dsLoaiPhuKien}" varStatus="loop01">
-									<div class="subContent">
-										<div class="blockSubTitle01" id="subTitle<c:out value="${loop01.index}"/>"><c:out value="${aType.ten}"/></div>
-										<div class="subContent" id="subContent<c:out value="${loop01.index}"/>">
-											<c:forEach var="a" items="${aType.dsPhuKien}" varStatus="loop">
-												<div class="<c:choose><c:when test="${ loop.index eq 0 }"><c:out value="itemLeft"/></c:when><c:otherwise><c:out value="itemCenter"/></c:otherwise></c:choose>">
-													<!-- New model or not -->
-													<c:choose>
-														<c:when test="${a.tinhTrangSanPham.id eq 3}">
-															<div class="isNewModel"></div>
-														</c:when>
-														<c:otherwise>
-															<div class="isNotNewModel"></div>
-														</c:otherwise>
-													</c:choose>
-													<!-- Image & Name-->
-													<div class="itemImageAndName">
-														<!-- Choose one image from list -->
-														<div class="itemImage">
-															<c:forEach var="img" items="${a.dsHinhAnh}" begin="0" end="1" varStatus="loopCount">
-														        <c:if test="${loopCount.index eq 0}">
-														         	<a href="#"><img src="img/phukien/<c:out value="${ img.hinhAnh }"/>" width="50px" height="75px"/></a>
-														        </c:if>
-														    </c:forEach>
-													    </div>
-													    <!-- Name -->
-														<div class="itemName01"><c:out value="${a.ten}"/></div>
-													</div>
-													<!-- Price -->
-													<div class="itemPrice"><fmt:formatNumber value="${a.giaHienHanh}" minFractionDigits="0" maxFractionDigits="0"/> VND</div>
-												</div>
-											</c:forEach>
-										</div>
-									</div>
-								</c:forEach>
-							</div>
 						<div style="clear:both;"></div>
 					</div>
                 </div> <!-- end midlle column -->

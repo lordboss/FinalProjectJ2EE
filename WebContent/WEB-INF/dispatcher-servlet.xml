@@ -36,7 +36,7 @@
 			<props>
 				<prop key="hibernate.dialect">org.hibernate.dialect.MySQLDialect</prop>
 				<!-- For debug purpose only -->
-				<prop key="hibernate.show_sql">true</prop> 
+				<prop key="hibernate.show_sql">false</prop> 
 				<prop key="hibernate.c3p0.minPoolSize">5</prop>
 				<prop key="hibernate.c3p0.maxPoolSize">20</prop>
 				<prop key="hibernate.c3p0.timeout">600</prop>
@@ -342,6 +342,7 @@
 		<property name="dienThoaiBUS" ref="dienThoaiBUS"/>
 		<property name="phuKienBUS" ref="phuKienBUS"/>
 		<property name="loaiPhuKienBUS" ref="loaiPhuKienBUS"/>
+		<property name="hangDienThoaiBUS" ref="hangDienThoaiBUS"/>
 	</bean>
 	
 	<bean name="/phoneListByBrand.html" class="qt.web.PhoneListByBrandController">
@@ -350,5 +351,10 @@
 	
 	<bean name="/accessoryList.html" class="qt.web.AccessoryListController">
 		<property name="loaiPhuKienBUS" ref="loaiPhuKienBUS"/>
+	</bean>
+	
+	<bean name="/quickSearch.html" class="qt.web.QuickSearchController">
+        <property name="dienThoaiBUS" ref="dienThoaiBUS"/>
+        <property name="hangDienThoaiBUS" ref="hangDienThoaiBUS"/>
 	</bean>
 </beans>

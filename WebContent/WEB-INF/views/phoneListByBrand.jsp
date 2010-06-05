@@ -234,34 +234,41 @@ pageEncoding="UTF-8" %>
 						<div class="block01">
 							<div class="blockTitle" id="divTitle<c:out value="${loop01.index}"/>">Hàng <c:out value="${b.ten}"/></div>
 							<div class="contentCenter" id="divContainer<c:out value="${loop01.index}"/>">
-								<c:forEach var="p" items="${b.dsDienThoai}" varStatus="loop">
-									<div class="<c:choose><c:when test="${ loop.index eq 0 }"><c:out value="itemLeft"/></c:when><c:otherwise><c:out value="itemCenter"/></c:otherwise></c:choose>">
-										<!-- New model or not -->
-										<c:choose>
-											<c:when test="${p.tinhTrangSanPham.id eq 3}">
-												<div class="isNewModel"></div>
-											</c:when>
-											<c:otherwise>
-												<div class="isNotNewModel"></div>
-											</c:otherwise>
-										</c:choose>
-										<!-- Image and Name -->
-										<div class="itemImageAndName">
-											<div class="itemImage">
-												<c:if test="${fn:length(p.dsHinhAnh) > 0}">
-													<c:forEach var="img" items="${p.dsHinhAnh}" begin="1" end="1" varStatus="loopCount">
-												        <c:if test="${loopCount.index eq 1}">
-												         	<a href="#"><img src="img/dienthoai/<c:out value="${ img.hinhAnh }"/>" width="50px" height="75px"/></a>
-												        </c:if>
-												    </c:forEach>
-												</c:if>
+								<c:choose>
+									<c:when test="${fn:length(b.dsDienThoai) > 0}">
+										<c:forEach var="p" items="${b.dsDienThoai}" varStatus="loop">
+											<div class="<c:choose><c:when test="${ loop.index eq 0 }"><c:out value="itemLeft"/></c:when><c:otherwise><c:out value="itemCenter"/></c:otherwise></c:choose>">
+												<!-- New model or not -->
+												<c:choose>
+													<c:when test="${p.tinhTrangSanPham.id eq 3}">
+														<div class="isNewModel"></div>
+													</c:when>
+													<c:otherwise>
+														<div class="isNotNewModel"></div>
+													</c:otherwise>
+												</c:choose>
+												<!-- Image and Name -->
+												<div class="itemImageAndName">
+													<div class="itemImage">
+														<c:if test="${fn:length(p.dsHinhAnh) > 0}">
+															<c:forEach var="img" items="${p.dsHinhAnh}" begin="1" end="1" varStatus="loopCount">
+														        <c:if test="${loopCount.index eq 1}">
+														         	<a href="#"><img src="img/dienthoai/<c:out value="${ img.hinhAnh }"/>" width="50px" height="75px"/></a>
+														        </c:if>
+														    </c:forEach>
+														</c:if>
+													</div>
+													<div class="itemName"><c:out value="${p.ten}"/></div>
+												</div>
+												<!-- Price -->
+												<div class="itemPrice"><fmt:formatNumber value="${p.giaHienHanh}" minFractionDigits="0" maxFractionDigits="0"/> VND</div>
 											</div>
-											<div class="itemName"><c:out value="${p.ten}"/></div>
-										</div>
-										<!-- Price -->
-										<div class="itemPrice"><fmt:formatNumber value="${p.giaHienHanh}" minFractionDigits="0" maxFractionDigits="0"/> VND</div>
-									</div>
-								</c:forEach>
+										</c:forEach>
+									</c:when>
+									<c:otherwise>
+										<c:out value="Chưa có sản phẩm!"></c:out>
+									</c:otherwise>
+								</c:choose>
 							</div>
 							<div style="clear:both;"></div>
 						</div>

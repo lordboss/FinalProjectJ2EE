@@ -11,6 +11,7 @@ import qt.dao.DienThoaiDAO;
 import qt.dto.DienThoai;
 import qt.dto.FunctionalityCriteria;
 import qt.dto.PhoneCriteria;
+import qt.dto.QuickSearchCriteria;
 
 /**
  * @author tqthe
@@ -32,9 +33,21 @@ public class PrintDsDienThoai {
 
 		System.out.println("BOOM!!!");
 		// findByFuntionality(tDao);
-		advancedSearch(tDao);
+		// advancedSearch(tDao);
+		quickSearch(tDao);
 	}
 
+	public static void quickSearch(DienThoaiDAO tDao) {
+		QuickSearchCriteria c = new QuickSearchCriteria();
+		c.setTenDienThoai("Nokia");
+		c.setGiaTu(1000000.0);
+		c.setGiaDen(15000000.0);
+		c.setIdHangDienThoai(1);
+		
+		List<DienThoai> ds = tDao.quickSearch(1, "Nokia", 9000000.0, 15000000.0);
+		printDsDienThoai(ds);
+	}
+	
 	public static void findByFuntionality(DienThoaiDAO tDao) {
 		FunctionalityCriteria c = new FunctionalityCriteria();
 

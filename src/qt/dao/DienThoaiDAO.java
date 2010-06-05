@@ -17,6 +17,7 @@ import qt.dto.DienThoai;
 import qt.dto.FunctionalityCriteria;
 import qt.dto.MediaCriteria;
 import qt.dto.PhoneCriteria;
+import qt.dto.QuickSearchCriteria;
 
 /**
  * @author tqthe
@@ -392,27 +393,63 @@ public class DienThoaiDAO {
 		Session session = factory.getCurrentSession();
 		Criteria criteria = session.createCriteria(DienThoai.class);
 
-		Criterion manufacture = null;
 		if (idHangDienThoai > 0) {
-			manufacture = Restrictions.eq("hangDienThoai.id", idHangDienThoai);
+			Criterion manufacture = Restrictions.eq("hangDienThoai.id",
+					idHangDienThoai);
 			criteria.add(manufacture);
 		}
 
-		Criterion name = null;
 		if (ten != null) {
-			name = Restrictions.eq("ten", ten);
+			Criterion name = Restrictions.like("ten", "%" + ten + "%");
 			criteria.add(name);
 		}
 
-		Criterion minPrice = null;
 		if (giaTu >= 0.0) {
-			minPrice = Restrictions.ge("giaHienHanh", giaTu);
+			Criterion minPrice = Restrictions.ge("giaHienHanh", giaTu);
 			criteria.add(minPrice);
 		}
 
-		Criterion maxPrice = null;
 		if (giaDen >= 0.0) {
-			maxPrice = Restrictions.le("giaHienHanh", giaDen);
+			Criterion maxPrice = Restrictions.le("giaHienHanh", giaDen);
+			criteria.add(maxPrice);
+		}
+		criteria.add(Restrictions.eq("xoa", false));
+
+		return criteria.list();
+	}
+
+	/**
+	 * Tìm kiếm nhanh
+	 * 
+	 * @param c
+	 *            Tiêu chí tìm kiếm
+	 * @return Danh sách các điện thoại thỏa tiêu chí tìm kiếm
+	 */
+	@SuppressWarnings("unchecked")
+	public List<DienThoai> quickSearch(QuickSearchCriteria c) {
+
+		Session session = factory.getCurrentSession();
+		Criteria criteria = session.createCriteria(DienThoai.class);
+
+		if (c.getIdHangDienThoai() > 0) {
+			Criterion manufacture = Restrictions.eq("hangDienThoai.id", c
+					.getIdHangDienThoai());
+			criteria.add(manufacture);
+		}
+
+		if (c.getTenDienThoai() != null) {
+			Criterion name = Restrictions.like("ten", "%" + c.getTenDienThoai()
+					+ "%");
+			criteria.add(name);
+		}
+
+		if (c.getGiaTu() >= 0.0) {
+			Criterion minPrice = Restrictions.ge("giaHienHanh", c.getGiaTu());
+			criteria.add(minPrice);
+		}
+
+		if (c.getGiaDen() >= 0.0) {
+			Criterion maxPrice = Restrictions.le("giaHienHanh", c.getGiaDen());
 			criteria.add(maxPrice);
 		}
 		criteria.add(Restrictions.eq("xoa", false));
