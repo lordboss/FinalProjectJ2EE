@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 pageEncoding="UTF-8" %>
-<%@ include file="/WEB-INF/views/include.jsp" %>
+<%@ include file="/WEB-INF/views/include/include.jsp" %>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -12,9 +12,7 @@ pageEncoding="UTF-8" %>
     <body>
         <div id="container">
         	<!-- Header -->
-            <div id="header">
-                <h1 class="pageTittle"><a href="#">Thế Giới Di Động</a></h1>
-            </div>
+            <%@ include file="/WEB-INF/views/include/header.jsp" %>
             
 			<!-- Menu -->
             <div id="navigation">
@@ -49,165 +47,7 @@ pageEncoding="UTF-8" %>
             <div id="content-container">
             
             	<!-- Left column -->
-            	<div id="leftAside">
-                    <div class="block">
-                        <div class="blockTitle">Tìm kiếm nhanh ĐTDD</div>
-                        <input type="text" id="phoneName" name="phoneName" class="input02" value="Tên Điện Thoại"/>
-                        <select class="input01">
-                            <option value="-1">Hãng Điện Thoại</option>
-                            <option value="1">Nokia</option>
-                            <option value="2">LG</option>
-                        </select>
-                        <select class="input01">
-                            <option value="">Giá từ</option>
-                            <option value="">1 triệu</option>
-                            <option value="">2 triệu</option>
-                            <option value="">3 triệu</option>
-                        </select>
-                        <br/>
-                        <select class="input01">
-                            <option value="">Đến</option>
-                            <option value="">1 triệu</option>
-                            <option value="">2 triệu</option>
-                            <option value="">3 triệu</option>
-                        </select>
-                        <center><input type="submit" value="Tìm Kiếm"/></center>
-                    </div>
-                    <div class="block">
-                        <div class="blockTitle">Tìm kiếm chuyên sâu</div>
-                        <div>
-                        	<div class="blockSubTitle">Phong Cách</div>
-                            <div>
-                            	<div class="blockLineElement"><a href="#">Doanh Nhân</a></div>
-                                <div class="blockLineElement"><a href="#">Cá Tính</a></div>
-                                <div class="blockLineElement"><a href="#">Nam Tính</a></div>
-                                <div class="blockLineElement"><a href="#">Nữ Tính</a></div>
-                                <div class="blockLineElement"><a href="#">Thời Trang</a></div>
-                                <div class="blockLineElement"><a href="#">Trẻ Trung</a></div>
-                            </div>
-                            
-                            <div class="blockSubTitle">Kiểu Dáng</div>
-                            <div>
-                            	<div class="blockLineElement"><a href="#">Kiểu Nắp Gập</a></div>
-                                <div class="blockLineElement"><a href="#">Kiểu Thanh</a></div>
-                                <div class="blockLineElement"><a href="#">Kiểu Trượt</a></div>
-                                <div class="blockLineElement"><a href="#">Kiểu Cảm Ứng</a></div>
-                                <div class="blockLineElement"><a href="#">Kiểu Nắp Xoay</a></div>
-                                <div class="blockLineElement"><a href="#">Kiểu Thân Xoay</a></div>
-                            </div>
-                            <div class="blockSubTitle">Chức Năng</div>
-                            <table style="width:100%">
-                            	<tbody>
-                                	<tr>
-                                    	<td class="blockSearchFunction_Line">
-                                        	<img class="blockSearchFunction_Image" src="img/icon/icon_cam.gif"/>Camera
-                                        </td>
-                                       	<td class="blockSearchFunction_Line">
-                                        	<input type="checkbox"/>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                    	<td class="blockSearchFunction_Line">
-                                        	<img class="blockSearchFunction_Image" src="img/icon/icon_nhac.gif"/>Nghe Nhạc
-                                        </td>
-                                       	<td class="blockSearchFunction_Line">
-                                        	<input type="checkbox"/>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                    	<td class="blockSearchFunction_Line">
-                                        	<img class="blockSearchFunction_Image" src="img/icon/icon_FM.gif"/>Đài FM
-                                        </td>
-                                       	<td class="blockSearchFunction_Line">
-                                        	<input type="checkbox"/>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                    	<td class="blockSearchFunction_Line">
-                                        	<img class="blockSearchFunction_Image" src="img/icon/icon_the.gif"/>Hổ Trợ Thẻ Nhớ
-                                        </td>
-                                       	<td class="blockSearchFunction_Line">
-                                        	<input type="checkbox"/>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                    	<td class="blockSearchFunction_Line">
-                                        	<img class="blockSearchFunction_Image" src="img/icon/icon_wifi.gif"/>Wifi
-                                        </td>
-                                       	<td class="blockSearchFunction_Line">
-                                        	<input type="checkbox"/>
-                                        </td>
-                                    </tr>
-                                     <tr>
-                                    	<td class="blockSearchFunction_Line">
-                                        	<img class="blockSearchFunction_Image" src="img/icon/icon_3G.gif"/>Mạng 3G
-                                        </td>
-                                       	<td class="blockSearchFunction_Line">
-                                        	<input type="checkbox"/>
-                                        </td>
-                                    </tr>
-                                     <tr>
-                                    	<td class="blockSearchFunction_Line">
-                                        	<img class="blockSearchFunction_Image" src="img/icon/icon_bt.gif"/>Bluetooth
-                                        </td>
-                                       	<td class="blockSearchFunction_Line">
-                                        	<input type="checkbox"/>
-                                        </td>
-                                    </tr>
-                                     <tr>
-                                    	<td class="blockSearchFunction_Line">
-                                        	<img class="blockSearchFunction_Image" src="img/icon/icon_office.gif"/>Ứng Dụng Văn Phòng
-                                        </td>
-                                       	<td class="blockSearchFunction_Line">
-                                        	<input type="checkbox"/>
-                                        </td>
-                                    </tr>
-                                     <tr>
-                                    	<td class="blockSearchFunction_Line">
-                                        	<img class="blockSearchFunction_Image" src="img/icon/icon_GPS.gif"/>Định Vị
-                                        </td>
-                                       	<td class="blockSearchFunction_Line">
-                                        	<input type="checkbox"/>
-                                        </td>
-                                    </tr>
-                                     <tr>
-                                    	<td class="blockSearchFunction_Line">
-                                        	<img class="blockSearchFunction_Image" src="img/icon/icon_touchscreen.gif"/>Cảm Ứng
-                                        </td>
-                                       	<td class="blockSearchFunction_Line">
-                                        	<input type="checkbox"/>
-                                        </td>
-                                    </tr>
-                                     <tr>
-                                    	<td class="blockSearchFunction_Line">
-                                        	<img class="blockSearchFunction_Image" src="img/icon/icon_TV.gif"/>Xem Tivi
-                                        </td>
-                                       	<td class="blockSearchFunction_Line">
-                                        	<input type="checkbox"/>
-                                        </td>
-                                    </tr>
-                                     <tr>
-                                    	<td class="blockSearchFunction_Line">
-                                        	<img class="blockSearchFunction_Image" src="img/icon/icon_java.gif"/>Ứng dụng Java
-                                        </td>
-                                       	<td class="blockSearchFunction_Line">
-                                        	<input type="checkbox"/>
-                                        </td>
-                                    </tr>
-                                     <tr>
-                                    	<td class="blockSearchFunction_Line">
-                                        	<img class="blockSearchFunction_Image" src="img/icon/icon_2SIM.gif"/>2 SIM
-                                        </td>
-                                       	<td class="blockSearchFunction_Line">
-                                        	<input type="checkbox"/>
-                                        </td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                            <center><input type="submit" value="Tìm Kiếm"/></center>
-                        </div>
-                    </div>
-                </div> <!-- end left column -->
+            	<%@ include file="/WEB-INF/views/include/leftColumn.jsp" %>
                 
                 
                 <!-- Middle Column -->
@@ -271,73 +111,11 @@ pageEncoding="UTF-8" %>
                 
                 
                 <!-- Right Column -->
-                <div id="rightAside">
-                    <div class="block">
-                        <div class="blockTitle">Thông Tin Đặt Hàng</div>
-                        <div class="smallFont">Hướng Dẩn Đặt Hàng</div>
-                        <div class="stepOne">
-                        	<a href="#">Tìm Chọn Sản Phẩm</a>
-                        </div>
-                        <div class="stepTwo">
-                        	<a href="#">Đăng Kí &amp; Thanh Toán</a>
-                        </div>
-                        <div class="stepThree">
-                        	<a href="#">Xác Nhận</a>
-                        </div>
-                    </div>
-                   	<div class="block">
-                        <div class="blockTitle">Điện Thoại &amp; Phụ Kiện</div>
-                        <div>
-                        	<div class="blockSubTitle">Phụ Kiện</div>
-                            <div>
-                            	<div class="blockLineElement"><a href="#">Bao da</a></div>
-                                <div class="blockLineElement"><a href="#">Vỏ máy</a></div>
-                                <div class="blockLineElement"><a href="#">Pin</a></div>
-                                <div class="blockLineElement"><a href="#">Sạc</a></div>
-                                <div class="blockLineElement"><a href="#">Đồ trang trí</a></div>
-                                <div class="blockLineElement"><a href="#">Thiết bị kết nối PC</a></div>
-                                <div class="blockLineElement"><a href="#">Tai nghe</a></div>
-                                <div class="blockLineElement"><a href="#">Loa</a></div>
-                                <div class="blockLineElement"><a href="#">Thẻ nhớ &amp; Đầu đọc thẻ</a></div>
-                                <div class="blockLineElement"><a href="#">Phụ kiện khác</a></div>
-                            </div>
-                            
-                            <div class="blockSubTitle">Điện thoại</div>
-                            <div>
-                            	<div class="blockLineElement"><a href="#">Hàng siêu cấp</a></div>
-                                <div class="blockLineElement"><a href="#">Hàng cao cấp</a></div>
-                                <div class="blockLineElement"><a href="#">Hàng trung cấp</a></div>
-                                <div class="blockLineElement"><a href="#">Hàng phổ thông</a></div>
-                            </div>
-                   	 	</div>            
-                	</div>
-                    <div class="block">
-                        <div class="blockTitle">So Sánh Nhận Xét Điện Thoại</div>
-                        <div class="blockSubTitle">Chọn sản phẩm ĐTDĐ bạn cần để xem: Báo giá, Nhận xét, So sánh</div>
-                        <select class="input01">
-                        	<option>Chọn nhà sản xuất</option>
-                        </select>
-                        <br/>
-                        <select class="input01">
-                            <option>Chọn điện thoại</option>
-                        </select>
-                    </div>
-                    <div class="block">
-                    	<div class="blockTitle">Góp Ý - Liên Hệ</div>
-                        <div class="lineSuggestion"><a href="#">Góp Ý</a></div>
-                        <div class="lineContact"><a href="#">Liên Hệ</a></div>
-                    </div>
-            	</div> <!-- end right column -->
+                <%@ include file="/WEB-INF/views/include/rightColumn.jsp" %>
             </div> <!-- end content -->
             
-            <!-- Fotter -->
-            <div id="footer">
-                Owner: Trần Quang Thể
-                <br/>
-                StudentID: 0612431
-                <br/>
-                Email: <a href="mailto:tran.q.the@gmail.com">tran.q.the@gmail.com</a>
-            </div>
+            <!-- Footer -->
+            <%@ include file="/WEB-INF/views/include/footer.jsp" %>
         </div>
     </body>
 </html>

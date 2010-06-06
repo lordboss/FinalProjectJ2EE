@@ -707,3 +707,7 @@ table tbody tr td a:hover {
 .paging a:hover {
 	text-decoration:underline;
 }
+
+a img {
+	border:none;
+}

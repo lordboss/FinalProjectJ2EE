@@ -21,7 +21,6 @@ import qt.bus.HangDienThoaiBUS;
 import qt.bus.LoaiPhuKienBUS;
 import qt.bus.PhuKienBUS;
 import qt.dto.DienThoai;
-import qt.dto.HangDienThoai;
 import qt.dto.LoaiPhuKien;
 import qt.dto.PhuKien;
 
@@ -36,7 +35,6 @@ public class ProductListController implements Controller {
 	private PhuKienBUS phuKienBUS;
 	private LoaiPhuKienBUS loaiPhuKienBUS;
 	
-	private HangDienThoaiBUS hangDienThoaiBUS;
 	
 	@Override
 	public ModelAndView handleRequest(HttpServletRequest request,
@@ -49,12 +47,10 @@ public class ProductListController implements Controller {
 		List<DienThoai> dsDienThoai = dienThoaiBUS.findAll();
 		List<PhuKien> dsPhuKien = phuKienBUS.findAll();
 		List<LoaiPhuKien> dsLoaiPhuKien = loaiPhuKienBUS.findAll();
-		List<HangDienThoai> dsHangDienThoai = hangDienThoaiBUS.findAll();
 		
 		model.put("dsDienThoai", dsDienThoai);
 		model.put("dsPhuKien", dsPhuKien);
 		model.put("dsLoaiPhuKien", dsLoaiPhuKien);
-		model.put("dsHangDienThoai", dsHangDienThoai);
 		
 		return new ModelAndView("index", "model", model);
 	}
@@ -99,20 +95,6 @@ public class ProductListController implements Controller {
 	 */
 	public LoaiPhuKienBUS getLoaiPhuKienBUS() {
 		return loaiPhuKienBUS;
-	}
-
-	/**
-	 * @param hangDienThoaiBUS the hangDienThoaiBUS to set
-	 */
-	public void setHangDienThoaiBUS(HangDienThoaiBUS hangDienThoaiBUS) {
-		this.hangDienThoaiBUS = hangDienThoaiBUS;
-	}
-
-	/**
-	 * @return the hangDienThoaiBUS
-	 */
-	public HangDienThoaiBUS getHangDienThoaiBUS() {
-		return hangDienThoaiBUS;
 	}
 
 }
