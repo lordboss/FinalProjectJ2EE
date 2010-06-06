@@ -342,7 +342,6 @@
 		<property name="dienThoaiBUS" ref="dienThoaiBUS"/>
 		<property name="phuKienBUS" ref="phuKienBUS"/>
 		<property name="loaiPhuKienBUS" ref="loaiPhuKienBUS"/>
-		<property name="hangDienThoaiBUS" ref="hangDienThoaiBUS"/>
 	</bean>
 	
 	<bean name="/phoneListByBrand.html" class="qt.web.PhoneListByBrandController">
@@ -356,5 +355,10 @@
 	<bean name="/quickSearch.html" class="qt.web.QuickSearchController">
         <property name="dienThoaiBUS" ref="dienThoaiBUS"/>
         <property name="hangDienThoaiBUS" ref="hangDienThoaiBUS"/>
+	</bean>
+	
+	<bean name="/searchByStyle.html" class="qt.web.SearchByStyleController">
+		<property name="dienThoaiBUS" ref="dienThoaiBUS"/>
+		<property name="phongCachBUS" ref="phongCachBUS"/>
 	</bean>
 </beans>

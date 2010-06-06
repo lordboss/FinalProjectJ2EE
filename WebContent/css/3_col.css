@@ -711,3 +711,12 @@ table tbody tr td a:hover {
 a img {
 	border:none;
 }
+
+.notFound {
+	clear:both;
+	background-color:#e8f2fe;
+	font-family:arial,sans-serif;
+	font-size:20px;
+	color:#fe6e6a;
+	text-align:center;
+}

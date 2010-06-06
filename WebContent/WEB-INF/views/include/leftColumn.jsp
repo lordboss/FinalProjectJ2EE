@@ -61,12 +61,12 @@ pageEncoding="UTF-8" %>
         	<!-- Theo phong cách -->
         	<div class="blockSubTitle">Phong Cách</div>
             <div>
-            	<div class="blockLineElement"><a href="#">Doanh Nhân</a></div>
-                <div class="blockLineElement"><a href="#">Cá Tính</a></div>
-                <div class="blockLineElement"><a href="#">Nam Tính</a></div>
-                <div class="blockLineElement"><a href="#">Nữ Tính</a></div>
-                <div class="blockLineElement"><a href="#">Thời Trang</a></div>
-                <div class="blockLineElement"><a href="#">Trẻ Trung</a></div>
+            	<div class="blockLineElement"><a href="searchByStyle.html?styleId=2">Doanh Nhân</a></div>
+                <div class="blockLineElement"><a href="searchByStyle.html?styleId=3">Cá Tính</a></div>
+                <div class="blockLineElement"><a href="searchByStyle.html?styleId=4">Nam Tính</a></div>
+                <div class="blockLineElement"><a href="searchByStyle.html?styleId=5">Nữ Tính</a></div>
+                <div class="blockLineElement"><a href="searchByStyle.html?styleId=6">Thời Trang</a></div>
+                <div class="blockLineElement"><a href="searchByStyle.html?styleId=7">Trẻ Trung</a></div>
             </div>
             
             <!-- Theo kiểu dáng -->

@@ -17,7 +17,6 @@ import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.Controller;
 
 import qt.bus.DienThoaiBUS;
-import qt.bus.HangDienThoaiBUS;
 import qt.bus.LoaiPhuKienBUS;
 import qt.bus.PhuKienBUS;
 import qt.dto.DienThoai;
