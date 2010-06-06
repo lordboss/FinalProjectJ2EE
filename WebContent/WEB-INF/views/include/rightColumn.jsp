@@ -37,10 +37,10 @@ pageEncoding="UTF-8" %>
 	        
 	        <div class="blockSubTitle">Điện thoại</div>
 	        <div>
-		    	<div class="blockLineElement"><a href="#">Hàng siêu cấp</a></div>
-		        <div class="blockLineElement"><a href="#">Hàng cao cấp</a></div>
-		        <div class="blockLineElement"><a href="#">Hàng trung cấp</a></div>
-		        <div class="blockLineElement"><a href="#">Hàng phổ thông</a></div>
+		    	<div class="blockLineElement"><a href="searchByPhoneBrand.html?id=1">Hàng siêu cấp</a></div>
+		        <div class="blockLineElement"><a href="searchByPhoneBrand.html?id=2">Hàng cao cấp</a></div>
+		        <div class="blockLineElement"><a href="searchByPhoneBrand.html?id=3">Hàng trung cấp</a></div>
+		        <div class="blockLineElement"><a href="searchByPhoneBrand.html?id=4">Hàng phổ thông</a></div>
 			</div>
 		</div>            
    	</div>

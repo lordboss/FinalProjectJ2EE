@@ -129,6 +129,17 @@ public class DienThoaiBUS {
 	public List<DienThoai> quickSearch(QuickSearchCriteria c) {
 		return dienThoaiDAO.quickSearch(c);
 	}
+	
+	/**
+	 * Tìm các DienThoai theo DongSanPham.
+	 * 
+	 * @param idDongSanPham
+	 *            id của DongSanPham.
+	 * @return Danh sách DienThoai.
+	 */
+	public List<DienThoai> findByDongSanPham(int idDongSanPham) {
+		return dienThoaiDAO.findByDongSanPham(idDongSanPham);
+	}
 
 	/**
 	 * Tìm các DienThoai theo PhongCach.

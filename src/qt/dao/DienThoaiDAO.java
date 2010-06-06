@@ -458,6 +458,22 @@ public class DienThoaiDAO {
 	}
 
 	/**
+	 * Tìm các DienThoai theo DongSanPham.
+	 * 
+	 * @param idDongSanPham
+	 *            id của DongSanPham.
+	 * @return Danh sách DienThoai.
+	 */
+	@SuppressWarnings("unchecked")
+	public List<DienThoai> findByDongSanPham(int idDongSanPham) {
+		return factory
+				.getCurrentSession()
+				.createQuery(
+						"from DienThoai p where p.dongSanPham.id = :id and p.xoa = false")
+				.setInteger("id", idDongSanPham).list();
+	}
+
+	/**
 	 * Tìm các DienThoai theo PhongCach.
 	 * 
 	 * @param idPhongCach

@@ -375,4 +375,9 @@
 		<property name="loaiPhuKienBUS" ref="loaiPhuKienBUS"/>
 		<property name="phuKienBUS" ref="phuKienBUS"/>
 	</bean>
+	
+	<bean name="/searchByPhoneBrand.html" class="qt.web.SearchByPhoneBrandController">
+		<property name="dienThoaiBUS" ref="dienThoaiBUS"/>
+		<property name="dongSanPhamBUS" ref="dongSanPhamBUS"/>
+	</bean>
 </beans>
