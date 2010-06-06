@@ -66,7 +66,7 @@ pageEncoding="UTF-8" %>
                 	
                 	<!-- List of phones -->
 					<div class="block01">
-						<div class="blockTitle" id="listTitle">Kết quả tìm kiếm theo phong cách <c:out value="${ model.style }"/></div>
+						<div class="blockTitle" id="listTitle">Kết quả tìm kiếm theo phong cách <c:out value="${ model.style }"/> (<c:out value="${fn:length(model.result)}"/> kết quả)</div>
 						<div class="contentCenter" id="listContainer">
 							<c:choose>
 								<c:when test="${fn:length(model.result) > 0}">

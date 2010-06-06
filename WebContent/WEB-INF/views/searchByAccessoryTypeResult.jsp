@@ -13,8 +13,11 @@ pageEncoding="UTF-8" %>
         <script type="text/javascript" src="js/jquery-1.4.2.js"></script>
         <script type="text/javascript">
         	$(document).ready(function() {
-				$("div#listTitle").click(function(){
-					$("div#listContainer").toggle("fast");
+				$("div#accessoryListTitle").click(function(){
+					$("div#accessoryListContainer").toggle("fast");
+				});
+				$("div#subTitle1").click(function(){
+					$("div#subContent1").toggle("fast");
 				});
 			});
         </script>
@@ -63,47 +66,53 @@ pageEncoding="UTF-8" %>
                 
                 <!-- Middle Column -->
                 <div id="content">
-                	
-                	<!-- List of phones -->
+					<!-- List of accessories with sub categories -->
 					<div class="block01">
-						<div class="blockTitle" id="listTitle">Kết quả tìm kiếm theo thiết kế <c:out value="${ model.design }"/> (<c:out value="${fn:length(model.result)}"/> kết quả)</div>
-						<div class="contentCenter" id="listContainer">
-							<c:choose>
-								<c:when test="${fn:length(model.result) > 0}">
-									<c:forEach var="p" items="${model.result}" varStatus="loop">
-										<div class="<c:choose><c:when test="${ loop.index eq 0 }"><c:out value="itemLeft"/></c:when><c:otherwise><c:out value="itemCenter"/></c:otherwise></c:choose>">
-											<!-- New model or not -->
-											<c:choose>
-												<c:when test="${p.tinhTrangSanPham.id eq 3}">
-													<div class="isNewModel"></div>
-												</c:when>
-												<c:otherwise>
-													<div class="isNotNewModel"></div>
-												</c:otherwise>
-											</c:choose>
-											<!-- Image and Name -->
-											<div class="itemImageAndName">
-												<div class="itemImage">
-													<c:if test="${fn:length(p.dsHinhAnh) > 0}">
-														<c:forEach var="img" items="${p.dsHinhAnh}" begin="1" end="1" varStatus="loopCount">
-													        <c:if test="${loopCount.index eq 1}">
-													         	<a href="#"><img src="img/dienthoai/<c:out value="${ img.hinhAnh }"/>" width="50px" height="75px"/></a>
-													        </c:if>
-													    </c:forEach>
-													</c:if>
-												</div>
-												<div class="itemName"><c:out value="${p.ten}"/></div>
-											</div>
-											<!-- Price -->
-											<div class="itemPrice"><fmt:formatNumber value="${p.giaHienHanh}" minFractionDigits="0" maxFractionDigits="0"/> VND</div>
-										</div>
-									</c:forEach>
-								</c:when>
-								<c:otherwise>
-									<div class="notFound">Không tìm thấy dữ liệu!</div>
-								</c:otherwise>
-							</c:choose>
-						</div>
+						<div class="blockTitle" id="accessoryListTitle">Kết quả tìm kiếm phụ kiện <c:out value="${model.name} (${fn:length(model.result)})"/></div>
+							<div class="contentCenter" id="accessoryListContainer">
+								<div class="subContent">
+									<div class="blockSubTitle01" id="subTitle1"/>
+										<c:out value="${model.name} (${fn:length(model.result)} kết quả)"/>
+									</div>
+									<div class="subContent" id="subContent1">
+										<c:choose>
+											<c:when test="${fn:length(model.result) > 0}">
+												<c:forEach var="a" items="${model.result}" varStatus="loop">
+													<div class="<c:choose><c:when test="${ loop.index eq 0 }"><c:out value="itemLeft"/></c:when><c:otherwise><c:out value="itemCenter"/></c:otherwise></c:choose>">
+														<!-- New model or not -->
+														<c:choose>
+															<c:when test="${a.tinhTrangSanPham.id eq 3}">
+																<div class="isNewModel"></div>
+															</c:when>
+															<c:otherwise>
+																<div class="isNotNewModel"></div>
+															</c:otherwise>
+														</c:choose>
+														<!-- Image & Name-->
+														<div class="itemImageAndName">
+															<!-- Choose one image from list -->
+															<div class="itemImage">
+																<c:forEach var="img" items="${a.dsHinhAnh}" begin="0" end="1" varStatus="loopCount">
+															        <c:if test="${loopCount.index eq 0}">
+															         	<a href="#"><img src="img/phukien/<c:out value="${ img.hinhAnh }"/>" width="50px" height="75px"/></a>
+															        </c:if>
+															    </c:forEach>
+														    </div>
+														    <!-- Name -->
+															<div class="itemName01"><c:out value="${a.ten}"/></div>
+														</div>
+														<!-- Price -->
+														<div class="itemPrice"><fmt:formatNumber value="${a.giaHienHanh}" minFractionDigits="0" maxFractionDigits="0"/> VND</div>
+													</div>
+												</c:forEach>
+											</c:when>
+											<c:otherwise>
+												<div class="notFound">Không tìm thấy phụ kiện!</div>
+											</c:otherwise>
+										</c:choose>
+									</div>
+								</div>
+							</div>
 						<div style="clear:both;"></div>
 					</div>
                 </div> <!-- end midlle column -->

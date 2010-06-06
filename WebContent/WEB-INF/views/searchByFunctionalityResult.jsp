@@ -64,7 +64,7 @@ pageEncoding="UTF-8" %>
                 <div id="content">
                 	<!-- List of phones -->
 					<div class="block01">
-						<div class="blockTitle" id="phoneListTitle">Kết quả tìm kiếm điện thoại theo chức năng</div>
+						<div class="blockTitle" id="phoneListTitle">Kết quả tìm kiếm điện thoại theo chức năng (<c:out value="${fn:length(result)}"/> kết quả)</div>
 						<div class="contentCenter" id="phoneListContainer">
 							<c:choose>
 								<c:when test="${fn:length(result) > 0}">

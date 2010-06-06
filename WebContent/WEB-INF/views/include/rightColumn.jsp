@@ -23,16 +23,16 @@ pageEncoding="UTF-8" %>
 	    <div>
 	    	<div class="blockSubTitle">Phụ Kiện</div>
 	        <div>
-	        	<div class="blockLineElement"><a href="#">Bao da</a></div>
-	            <div class="blockLineElement"><a href="#">Vỏ máy</a></div>
-	            <div class="blockLineElement"><a href="#">Pin</a></div>
-	            <div class="blockLineElement"><a href="#">Sạc</a></div>
-	            <div class="blockLineElement"><a href="#">Đồ trang trí</a></div>
-	            <div class="blockLineElement"><a href="#">Thiết bị kết nối PC</a></div>
-	            <div class="blockLineElement"><a href="#">Tai nghe</a></div>
-	            <div class="blockLineElement"><a href="#">Loa</a></div>
-	            <div class="blockLineElement"><a href="#">Thẻ nhớ &amp; Đầu đọc thẻ</a></div>
-	            <div class="blockLineElement"><a href="#">Phụ kiện khác</a></div>
+	        	<div class="blockLineElement"><a href="searchByAccessoryType.html?id=1">Bao da</a></div>
+	            <div class="blockLineElement"><a href="searchByAccessoryType.html?id=2">Vỏ máy</a></div>
+	            <div class="blockLineElement"><a href="searchByAccessoryType.html?id=3">Pin</a></div>
+	            <div class="blockLineElement"><a href="searchByAccessoryType.html?id=4">Sạc</a></div>
+	            <div class="blockLineElement"><a href="searchByAccessoryType.html?id=5">Đồ trang trí</a></div>
+	            <div class="blockLineElement"><a href="searchByAccessoryType.html?id=6">Thiết bị kết nối PC</a></div>
+	            <div class="blockLineElement"><a href="searchByAccessoryType.html?id=7">Tai nghe</a></div>
+	            <div class="blockLineElement"><a href="searchByAccessoryType.html?id=8">Loa</a></div>
+	            <div class="blockLineElement"><a href="searchByAccessoryType.html?id=9">Thẻ nhớ &amp; Đầu đọc thẻ</a></div>
+	            <div class="blockLineElement"><a href="searchByAccessoryType.html?id=10">Phụ kiện khác</a></div>
 	        </div>
 	        
 	        <div class="blockSubTitle">Điện thoại</div>
