@@ -366,4 +366,9 @@
 		<property name="dienThoaiBUS" ref="dienThoaiBUS"/>
 		<property name="kieuDangBUS" ref="kieuDangBUS"/>
 	</bean>
+	
+	<bean name="/searchByFunctionality.html" class="qt.web.SearchByFunctionalityController">
+		<property name="dienThoaiBUS" ref="dienThoaiBUS"/>
+	</bean>
+	
 </beans>

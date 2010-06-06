@@ -82,115 +82,117 @@ pageEncoding="UTF-8" %>
             
             <!-- Theo kiểu dáng -->
             <div class="blockSubTitle">Chức Năng</div>
-            <table style="width:100%">
-            	<tbody>
-                	<tr>
-                    	<td class="blockSearchFunction_Line">
-                        	<img class="blockSearchFunction_Image" src="img/icon/icon_cam.gif"/>Camera
-                        </td>
-                       	<td class="blockSearchFunction_Line">
-                        	<input type="checkbox"/>
-                        </td>
-                    </tr>
-                    <tr>
-                    	<td class="blockSearchFunction_Line">
-                        	<img class="blockSearchFunction_Image" src="img/icon/icon_nhac.gif"/>Nghe Nhạc
-                        </td>
-                       	<td class="blockSearchFunction_Line">
-                        	<input type="checkbox"/>
-                        </td>
-                    </tr>
-                    <tr>
-                    	<td class="blockSearchFunction_Line">
-                        	<img class="blockSearchFunction_Image" src="img/icon/icon_FM.gif"/>Đài FM
-                        </td>
-                       	<td class="blockSearchFunction_Line">
-                        	<input type="checkbox"/>
-                        </td>
-                    </tr>
-                    <tr>
-                    	<td class="blockSearchFunction_Line">
-                        	<img class="blockSearchFunction_Image" src="img/icon/icon_the.gif"/>Hổ Trợ Thẻ Nhớ
-                        </td>
-                       	<td class="blockSearchFunction_Line">
-                        	<input type="checkbox"/>
-                        </td>
-                    </tr>
-                    <tr>
-                    	<td class="blockSearchFunction_Line">
-                        	<img class="blockSearchFunction_Image" src="img/icon/icon_wifi.gif"/>Wifi
-                        </td>
-                       	<td class="blockSearchFunction_Line">
-                        	<input type="checkbox"/>
-                        </td>
-                    </tr>
-                     <tr>
-                    	<td class="blockSearchFunction_Line">
-                        	<img class="blockSearchFunction_Image" src="img/icon/icon_3G.gif"/>Mạng 3G
-                        </td>
-                       	<td class="blockSearchFunction_Line">
-                        	<input type="checkbox"/>
-                        </td>
-                    </tr>
-                     <tr>
-                    	<td class="blockSearchFunction_Line">
-                        	<img class="blockSearchFunction_Image" src="img/icon/icon_bt.gif"/>Bluetooth
-                        </td>
-                       	<td class="blockSearchFunction_Line">
-                        	<input type="checkbox"/>
-                        </td>
-                    </tr>
-                     <tr>
-                    	<td class="blockSearchFunction_Line">
-                        	<img class="blockSearchFunction_Image" src="img/icon/icon_office.gif"/>Ứng Dụng Văn Phòng
-                        </td>
-                       	<td class="blockSearchFunction_Line">
-                        	<input type="checkbox"/>
-                        </td>
-                    </tr>
-                     <tr>
-                    	<td class="blockSearchFunction_Line">
-                        	<img class="blockSearchFunction_Image" src="img/icon/icon_GPS.gif"/>Định Vị
-                        </td>
-                       	<td class="blockSearchFunction_Line">
-                        	<input type="checkbox"/>
-                        </td>
-                    </tr>
-                     <tr>
-                    	<td class="blockSearchFunction_Line">
-                        	<img class="blockSearchFunction_Image" src="img/icon/icon_touchscreen.gif"/>Cảm Ứng
-                        </td>
-                       	<td class="blockSearchFunction_Line">
-                        	<input type="checkbox"/>
-                        </td>
-                    </tr>
-                     <tr>
-                    	<td class="blockSearchFunction_Line">
-                        	<img class="blockSearchFunction_Image" src="img/icon/icon_TV.gif"/>Xem Tivi
-                        </td>
-                       	<td class="blockSearchFunction_Line">
-                        	<input type="checkbox"/>
-                        </td>
-                    </tr>
-                     <tr>
-                    	<td class="blockSearchFunction_Line">
-                        	<img class="blockSearchFunction_Image" src="img/icon/icon_java.gif"/>Ứng dụng Java
-                        </td>
-                       	<td class="blockSearchFunction_Line">
-                        	<input type="checkbox"/>
-                        </td>
-                    </tr>
-                     <tr>
-                    	<td class="blockSearchFunction_Line">
-                        	<img class="blockSearchFunction_Image" src="img/icon/icon_2SIM.gif"/>2 SIM
-                        </td>
-                       	<td class="blockSearchFunction_Line">
-                        	<input type="checkbox"/>
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
-            <center><input type="submit" value="Tìm Kiếm"/></center>
+            <form method="get" action="searchByFunctionality.html">
+	            <table style="width:100%">
+	            	<tbody>
+	                	<tr>
+	                    	<td class="blockSearchFunction_Line">
+	                        	<img class="blockSearchFunction_Image" src="img/icon/icon_cam.gif"/>Camera
+	                        </td>
+	                       	<td class="blockSearchFunction_Line">
+	                        	<input type="checkbox" id="hasCamera" name="hasCamera"/>
+	                        </td>
+	                    </tr>
+	                    <tr>
+	                    	<td class="blockSearchFunction_Line">
+	                        	<img class="blockSearchFunction_Image" src="img/icon/icon_nhac.gif"/>Nghe Nhạc
+	                        </td>
+	                       	<td class="blockSearchFunction_Line">
+	                        	<input type="checkbox" id="hasMusicPlayer" name="hasMusicPlayer"/>
+	                        </td>
+	                    </tr>
+	                    <tr>
+	                    	<td class="blockSearchFunction_Line">
+	                        	<img class="blockSearchFunction_Image" src="img/icon/icon_FM.gif"/>Đài FM
+	                        </td>
+	                       	<td class="blockSearchFunction_Line">
+	                        	<input type="checkbox" id="hasFM" name="hasFM"/>
+	                        </td>
+	                    </tr>
+	                    <tr>
+	                    	<td class="blockSearchFunction_Line">
+	                        	<img class="blockSearchFunction_Image" src="img/icon/icon_the.gif"/>Hổ Trợ Thẻ Nhớ
+	                        </td>
+	                       	<td class="blockSearchFunction_Line">
+	                        	<input type="checkbox" id="hasMemoryCard" name="hasMemoryCard"/>
+	                        </td>
+	                    </tr>
+	                    <tr>
+	                    	<td class="blockSearchFunction_Line">
+	                        	<img class="blockSearchFunction_Image" src="img/icon/icon_wifi.gif"/>Wifi
+	                        </td>
+	                       	<td class="blockSearchFunction_Line">
+	                        	<input type="checkbox" id="hasWifi" name="hasWifi"/>
+	                        </td>
+	                    </tr>
+	                     <tr>
+	                    	<td class="blockSearchFunction_Line">
+	                        	<img class="blockSearchFunction_Image" src="img/icon/icon_3G.gif"/>Mạng 3G
+	                        </td>
+	                       	<td class="blockSearchFunction_Line">
+	                        	<input type="checkbox" id="has3G" name="has3G"/>
+	                        </td>
+	                    </tr>
+	                     <tr>
+	                    	<td class="blockSearchFunction_Line">
+	                        	<img class="blockSearchFunction_Image" src="img/icon/icon_bt.gif"/>Bluetooth
+	                        </td>
+	                       	<td class="blockSearchFunction_Line">
+	                        	<input type="checkbox" id="hasBluetooth" name="hasBluetooth"/>
+	                        </td>
+	                    </tr>
+	                     <tr>
+	                    	<td class="blockSearchFunction_Line">
+	                        	<img class="blockSearchFunction_Image" src="img/icon/icon_office.gif"/>Ứng Dụng Văn Phòng
+	                        </td>
+	                       	<td class="blockSearchFunction_Line">
+	                        	<input type="checkbox" id="hasOfficeApp" name="hasOfficeApp"/>
+	                        </td>
+	                    </tr>
+	                     <tr>
+	                    	<td class="blockSearchFunction_Line">
+	                        	<img class="blockSearchFunction_Image" src="img/icon/icon_GPS.gif"/>Định Vị
+	                        </td>
+	                       	<td class="blockSearchFunction_Line">
+	                        	<input type="checkbox" id="hasGPS" name="hasGPS"/>
+	                        </td>
+	                    </tr>
+	                     <tr>
+	                    	<td class="blockSearchFunction_Line">
+	                        	<img class="blockSearchFunction_Image" src="img/icon/icon_touchscreen.gif"/>Cảm Ứng
+	                        </td>
+	                       	<td class="blockSearchFunction_Line">
+	                        	<input type="checkbox" id="hasTouchscreen" name="hasTouchscreen"/>
+	                        </td>
+	                    </tr>
+	                     <tr>
+	                    	<td class="blockSearchFunction_Line">
+	                        	<img class="blockSearchFunction_Image" src="img/icon/icon_TV.gif"/>Xem Tivi
+	                        </td>
+	                       	<td class="blockSearchFunction_Line">
+	                        	<input type="checkbox" id="hasTivi" name="hasTivi"/>
+	                        </td>
+	                    </tr>
+	                     <tr>
+	                    	<td class="blockSearchFunction_Line">
+	                        	<img class="blockSearchFunction_Image" src="img/icon/icon_java.gif"/>Ứng dụng Java
+	                        </td>
+	                       	<td class="blockSearchFunction_Line">
+	                        	<input type="checkbox" id="hasJavaApp" name="hasJavaApp"/>
+	                        </td>
+	                    </tr>
+	                     <tr>
+	                    	<td class="blockSearchFunction_Line">
+	                        	<img class="blockSearchFunction_Image" src="img/icon/icon_2SIM.gif"/>2 SIM
+	                        </td>
+	                       	<td class="blockSearchFunction_Line">
+	                        	<input type="checkbox" id="has2Sim" name="has2Sim"/>
+	                        </td>
+	                    </tr>
+	                </tbody>
+	            </table>
+	            <center><input type="submit" value="Tìm Kiếm"/></center>
+            </form>
         </div>
     </div>
 </div> <!-- end left column -->
