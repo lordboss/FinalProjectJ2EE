@@ -714,9 +714,8 @@ a img {
 
 .notFound {
 	clear:both;
-	background-color:#e8f2fe;
 	font-family:arial,sans-serif;
-	font-size:20px;
-	color:#fe6e6a;
+	font-size:15px;
+	color:red;
 	text-align:center;
 }

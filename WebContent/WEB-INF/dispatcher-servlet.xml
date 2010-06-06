@@ -361,4 +361,9 @@
 		<property name="dienThoaiBUS" ref="dienThoaiBUS"/>
 		<property name="phongCachBUS" ref="phongCachBUS"/>
 	</bean>
+	
+	<bean name="/searchByDesign.html" class="qt.web.SearchByDesignController">
+		<property name="dienThoaiBUS" ref="dienThoaiBUS"/>
+		<property name="kieuDangBUS" ref="kieuDangBUS"/>
+	</bean>
 </beans>

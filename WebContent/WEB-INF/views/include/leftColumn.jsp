@@ -72,12 +72,12 @@ pageEncoding="UTF-8" %>
             <!-- Theo kiểu dáng -->
             <div class="blockSubTitle">Kiểu Dáng</div>
             <div>
-            	<div class="blockLineElement"><a href="#">Kiểu Nắp Gập</a></div>
-                <div class="blockLineElement"><a href="#">Kiểu Thanh</a></div>
-                <div class="blockLineElement"><a href="#">Kiểu Trượt</a></div>
-                <div class="blockLineElement"><a href="#">Kiểu Cảm Ứng</a></div>
-                <div class="blockLineElement"><a href="#">Kiểu Nắp Xoay</a></div>
-                <div class="blockLineElement"><a href="#">Kiểu Thân Xoay</a></div>
+            	<div class="blockLineElement"><a href="searchByDesign.html?designId=2">Kiểu Nắp Gập</a></div>
+                <div class="blockLineElement"><a href="searchByDesign.html?designId=3">Kiểu Thanh</a></div>
+                <div class="blockLineElement"><a href="searchByDesign.html?designId=4">Kiểu Trượt</a></div>
+                <div class="blockLineElement"><a href="searchByDesign.html?designId=5">Kiểu Cảm Ứng</a></div>
+                <div class="blockLineElement"><a href="searchByDesign.html?designId=6">Kiểu Nắp Xoay</a></div>
+                <div class="blockLineElement"><a href="searchByDesign.html?designId=7">Kiểu Thân Xoay</a></div>
             </div>
             
             <!-- Theo kiểu dáng -->

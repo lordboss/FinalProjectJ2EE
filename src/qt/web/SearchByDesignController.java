@@ -17,49 +17,49 @@ import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.Controller;
 
 import qt.bus.DienThoaiBUS;
-import qt.bus.PhongCachBUS;
+import qt.bus.KieuDangBUS;
 import qt.dto.DienThoai;
-import qt.dto.PhongCach;
+import qt.dto.KieuDang;
 
 /**
  * @author tqthe
  *
  */
-public class SearchByStyleController implements Controller {
+public class SearchByDesignController implements Controller {
 
 	private Log logger = LogFactory.getLog(getClass());
 	private DienThoaiBUS dienThoaiBUS;
-	private PhongCachBUS phongCachBUS;
+	private KieuDangBUS kieuDangBUS;
 	
 	@Override
 	public ModelAndView handleRequest(HttpServletRequest request,
 			HttpServletResponse response) throws Exception {
 		
-		logger.info("Handle search by style at " + new Date().toString());
+		logger.info("Handler search by design at " + new Date().toString());
 		
-		int styleId = 2; // default in case invalid id
+		int designId = 2;
 		
 		try {
-			styleId = Integer.parseInt(request.getParameter("styleId"));
+			designId = Integer.parseInt(request.getParameter("designId"));
 		} catch (Exception e) {
 			e.printStackTrace();
-			logger.error("Invalid styleId");
+			logger.error("Invalid designId");
 		}
 		
-		List<DienThoai> result = dienThoaiBUS.findByPhongCach(styleId);
-		PhongCach p =  phongCachBUS.findById(styleId);
-		String style = "Doanh nhân";
-		if (p != null) {
-			style = p.getTen();
+		List<DienThoai> result = dienThoaiBUS.findByKieuDang(designId);
+		String design = "Nấp gập";
+		KieuDang d = kieuDangBUS.findById(designId);
+		if (d != null) {
+			design = d.getTen();
 		}
 		
 		Map<String, Object> model = new HashMap<String, Object>();
-
 		model.put("result", result);
-		model.put("style", style);
+		model.put("design", design);
 		
-		return new ModelAndView("searchByStyleResult", "model", model);
+		return new ModelAndView("searchByDesignResult", "model", model);
 	}
+
 
 	/**
 	 * @param dienThoaiBUS the dienThoaiBUS to set
@@ -68,6 +68,7 @@ public class SearchByStyleController implements Controller {
 		this.dienThoaiBUS = dienThoaiBUS;
 	}
 
+
 	/**
 	 * @return the dienThoaiBUS
 	 */
@@ -75,18 +76,20 @@ public class SearchByStyleController implements Controller {
 		return dienThoaiBUS;
 	}
 
-	/**
-	 * @param phongCachBUS the phongCachBUS to set
-	 */
-	public void setPhongCachBUS(PhongCachBUS phongCachBUS) {
-		this.phongCachBUS = phongCachBUS;
-	}
 
 	/**
-	 * @return the phongCachBUS
+	 * @param kieuDangBUS the kieuDangBUS to set
 	 */
-	public PhongCachBUS getPhongCachBUS() {
-		return phongCachBUS;
+	public void setKieuDangBUS(KieuDangBUS kieuDangBUS) {
+		this.kieuDangBUS = kieuDangBUS;
+	}
+
+
+	/**
+	 * @return the kieuDangBUS
+	 */
+	public KieuDangBUS getKieuDangBUS() {
+		return kieuDangBUS;
 	}
 
 }

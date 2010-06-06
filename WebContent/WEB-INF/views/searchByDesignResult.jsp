@@ -13,8 +13,8 @@ pageEncoding="UTF-8" %>
         <script type="text/javascript" src="js/jquery-1.4.2.js"></script>
         <script type="text/javascript">
         	$(document).ready(function() {
-				$("div#phoneListTitle").click(function(){
-					$("div#phoneListContainer").toggle("fast");
+				$("div#listTitle").click(function(){
+					$("div#listContainer").toggle("fast");
 				});
 			});
         </script>
@@ -56,19 +56,21 @@ pageEncoding="UTF-8" %>
             <!-- Content -->
             <div id="content-container">
             
-            	<!-- Left column -->
-            	<%@ include file="/WEB-INF/views/include/leftColumn.jsp" %>
+            	<!-- Include Left Column -->
+                <%@ include file="/WEB-INF/views/include/leftColumn.jsp" %>
+            	
                 
                 
                 <!-- Middle Column -->
                 <div id="content">
+                	
                 	<!-- List of phones -->
 					<div class="block01">
-						<div class="blockTitle" id="phoneListTitle">Kết quả tìm kiếm nhanh điện thoại</div>
-						<div class="contentCenter" id="phoneListContainer">
+						<div class="blockTitle" id="listTitle">Kết quả tìm kiếm theo thiết kế <c:out value="${ model.design }"/></div>
+						<div class="contentCenter" id="listContainer">
 							<c:choose>
-								<c:when test="${fn:length(model.kq) > 0}">
-									<c:forEach var="p" items="${model.kq}" varStatus="loop">
+								<c:when test="${fn:length(model.result) > 0}">
+									<c:forEach var="p" items="${model.result}" varStatus="loop">
 										<div class="<c:choose><c:when test="${ loop.index eq 0 }"><c:out value="itemLeft"/></c:when><c:otherwise><c:out value="itemCenter"/></c:otherwise></c:choose>">
 											<!-- New model or not -->
 											<c:choose>
@@ -106,13 +108,13 @@ pageEncoding="UTF-8" %>
 					</div>
                 </div> <!-- end midlle column -->
                 
-                
-                <!-- Right Column -->
+                <!-- Include Right Column -->
                 <%@ include file="/WEB-INF/views/include/rightColumn.jsp" %>
+                
             </div> <!-- end content -->
             
             <!-- Footer -->
-            <%@ include file="/WEB-INF/views/include/footer.jsp" %>
+            <%@include file="/WEB-INF/views/include/footer.jsp" %>
         </div>
     </body>
 </html>

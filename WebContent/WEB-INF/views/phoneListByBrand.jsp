@@ -106,7 +106,7 @@ pageEncoding="UTF-8" %>
 										</c:forEach>
 									</c:when>
 									<c:otherwise>
-										<c:out value="Chưa có sản phẩm!"></c:out>
+										<div class="notFound">Chưa có sản phẩm nào!</div>
 									</c:otherwise>
 								</c:choose>
 							</div>
