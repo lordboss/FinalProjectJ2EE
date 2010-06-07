@@ -1,6 +1,6 @@
 package qt.dto;
 
-// Generated May 27, 2010 8:56:45 PM by Hibernate Tools 3.3.0.GA
+// Generated Jun 8, 2010 3:50:20 AM by Hibernate Tools 3.3.0.GA
 
 import java.util.HashSet;
 import java.util.Set;
@@ -48,8 +48,8 @@ public class DienThoai extends qt.dto.SanPham implements java.io.Serializable {
 	}
 
 	public DienThoai(String ten, double giaNhap, double giaHienHanh,
-			int baoHanh, boolean xoa, Set<NhaCungCap> dsNhaCungCap,
-			Set<ChiTietDonHang> dsChiTietDonHang,
+			int baoHanh, boolean xoa, String hinhAnh,
+			Set<NhaCungCap> dsNhaCungCap, Set<ChiTietDonHang> dsChiTietDonHang,
 			TinhTrangSanPham tinhTrangSanPham, Set<ChiTietHinhAnh> dsHinhAnh,
 			HangDienThoai hangDienThoai, MultiMedia multiMedia, Camera camera,
 			NhacChuong nhacChuong, KieuDang kieuDang, PhongCach phongCach,
@@ -61,7 +61,7 @@ public class DienThoai extends qt.dto.SanPham implements java.io.Serializable {
 			Set<TinhNangNoiBat> dsTinhNangNoiBat,
 			Set<ChiTietTinKhuyenMaiDienThoai> dsChiTietKhuyenMai,
 			Set<ChiTietPhieuNhapDienThoai> dsChiTietPhieuNhap) {
-		super(ten, giaNhap, giaHienHanh, baoHanh, xoa, dsNhaCungCap,
+		super(ten, giaNhap, giaHienHanh, baoHanh, xoa, hinhAnh, dsNhaCungCap,
 				dsChiTietDonHang, tinhTrangSanPham, dsHinhAnh);
 		this.hangDienThoai = hangDienThoai;
 		this.multiMedia = multiMedia;

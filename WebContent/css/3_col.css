@@ -675,12 +675,28 @@ table tbody tr td a:hover {
 	text-align:center;
 }
 
+.itemName a {
+	color: #0080FF;
+    font-size: 9pt;
+    font-weight: bold;
+    text-decoration: none;
+	text-align:center;
+}
+
 .itemName01 {
     color: #0080FF;
     font-size: 8pt;
     text-decoration: none;
 	text-align:center;
 }
+
+.itemName01 a {
+    color: #0080FF;
+    font-size: 8pt;
+    text-decoration: none;
+	text-align:center;
+}
+
 
 .contentCenter {
     /*border-left: 1px solid #000000;
@@ -690,6 +706,7 @@ table tbody tr td a:hover {
     padding: 2px 4px 5px 2px;
 	clear:both;
 }
+
 .subContent {
 	clear:both;
 }
@@ -746,4 +763,188 @@ a img {
 	width:100%;
 }
 
+.phoneDetail_Image {
+	cursor:pointer;
+	text-align:center;
+	width:100%;
+}
 
+.phoneDetail_Price {
+	color:Red;
+	font-size:15pt;
+	font-weight:bold;
+	text-align:center;
+	margin-top:5px;
+}
+
+.bookProduct {
+	background:url("icon/booksProduct.gif") no-repeat scroll left center #FFFFFF;
+	height:22px;
+	padding-top:5px;
+	text-align:left;
+	padding-left:2px;
+	font-family:Arial,Times New Roman,Tahoma,Verdana;
+	font-size:8pt;
+	font-weight:bold;
+	width:100%;
+}
+
+
+.compareProduct {
+	background:url("icon/compareProduct.gif") no-repeat scroll left center #FFFFFF;
+	cursor:pointer;
+	height:22px;
+	padding-top:5px;
+	text-align:left;
+	padding-left:2px;
+	font-family:Arial,Times New Roman,Tahoma,Verdana;
+	font-size:8pt;
+	font-weight:bold;
+	width:180px;
+}
+
+.supportProduct {
+	background:url("icon/supportProduct.gif") no-repeat scroll left center #FFFFFF;
+	cursor:pointer;
+	height:22px;
+	padding-top:5px;
+	text-align:left;
+	padding-left:2px;
+	font-family:Arial,Times New Roman,Tahoma,Verdana;
+	font-size:8pt;
+	font-weight:bold;
+	width:180px;
+}
+
+.phoneDetail_Seperator  {
+	border-collapse:collapse;
+	border-top:1px solid #DDDDDD;
+	height:2px;
+	margin-bottom:3px;
+	margin-top:5px;
+	width:100%;
+}
+
+/** inner columns for phone details */
+#innerRightColumn {
+    float: right;
+    width: 580x;
+    max-width: 580px;
+    padding-top: 0px;
+    padding-left: 2px;
+    padding-right: 2px;
+    margin-top: 1px;
+    margin-bottom: 2px;
+	margin-left:2px;
+    display: inline;
+	
+/*
+	border-color:#c8c8c8;
+	border-width:1px;
+	border-style:solid;
+*/
+}
+
+#innerLeftColumn {
+    float: left;
+    width: 185px;
+    max-width: 185px;
+    padding-top: 0px;
+    padding-left: 2px;
+    padding-right: 2px;
+    margin-top: 1px;
+    margin-bottom: 2px;
+    display: inline;
+	
+	border-color:#c8c8c8;
+	border-width:1px;
+	border-style:solid;
+}
+
+.block02 {
+	clear:both;
+    background-color:#ffffff;
+    border-color: #2C2C2C #9F9F9F #E5E5E5;
+    border-style: solid;
+    border-width: 1px 1px;
+    border-bottom-color: #000000;
+    border-bottom-width: 2px;
+    text-align: left;
+    margin-bottom: 5px;
+}
+
+.block03 {
+	clear:both;
+    border-color: #c8c8c8;
+    border-style: solid;
+    border-width: 1px;
+    text-align: left;
+    margin-bottom: 5px;
+}
+
+.detailTitle {
+	background:none repeat scroll 0 50% #D1D1D1;
+	/*
+	border-bottom:2px solid #DADADA;
+	border-top:1px solid #B8B8B8;
+	*/
+	color:#000000;
+	font-family:Arial,Times New Roman,Tahoma,Verdana;
+	font-size:9pt;
+	font-weight:bolder;
+	padding-bottom:3px;
+	padding-left:15px;
+	padding-top:3px;
+}
+
+
+.boxTop {
+	background-color:#E4E4E4;
+	width:100%;
+	border-top:1px solid #c8c8c8;
+}
+
+.boxCenter {
+	background-color:#E4E4E4;
+	border-top:1px solid #BBBBBB;
+	margin-top:2px;
+	width:100%;
+}
+
+.boxLeft {
+	color:#000000;
+	float:left;
+	font-family:Arial,Times New Roman,Tahoma,Verdana;
+	font-size:12px;
+	font-weight:bold;
+	padding-left:5px;
+	padding-top:10px;
+	width:150px;
+}
+
+.boxTR {
+	background-color:#F5F5F5;
+	border-bottom:1px solid #E4E4E4;
+}
+
+.boxRight {
+	margin-left:155px;
+}
+
+.cellTitle {
+	background-color:Transparent;
+	border:0 solid #000000;
+	float:left;
+	font-family:Arial,Times New Roman,Tahoma,Verdana;
+	font-size:9pt;
+	padding:3px 0 3px 10px;
+	width:120px;
+}
+.cellContent {
+	background-color:#FFFFFF;
+	font-family:Arial,Times New Roman,Tahoma,Verdana;
+	font-size:9pt;
+	margin-left:130px;
+	padding:3px 0 3px 10px;
+	min-height:15px;
+}

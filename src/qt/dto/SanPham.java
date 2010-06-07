@@ -1,6 +1,6 @@
 package qt.dto;
 
-// Generated May 27, 2010 8:56:45 PM by Hibernate Tools 3.3.0.GA
+// Generated Jun 8, 2010 3:50:20 AM by Hibernate Tools 3.3.0.GA
 
 import java.util.HashSet;
 import java.util.Set;
@@ -17,6 +17,7 @@ public class SanPham implements java.io.Serializable {
 	private double giaHienHanh;
 	private int baoHanh;
 	private boolean xoa;
+	private String hinhAnh;
 	private Set<NhaCungCap> dsNhaCungCap = new HashSet<NhaCungCap>(0);
 	private Set<ChiTietDonHang> dsChiTietDonHang = new HashSet<ChiTietDonHang>(
 			0);
@@ -33,7 +34,7 @@ public class SanPham implements java.io.Serializable {
 	}
 
 	public SanPham(String ten, double giaNhap, double giaHienHanh, int baoHanh,
-			boolean xoa, Set<NhaCungCap> dsNhaCungCap,
+			boolean xoa, String hinhAnh, Set<NhaCungCap> dsNhaCungCap,
 			Set<ChiTietDonHang> dsChiTietDonHang,
 			TinhTrangSanPham tinhTrangSanPham, Set<ChiTietHinhAnh> dsHinhAnh) {
 		this.ten = ten;
@@ -41,6 +42,7 @@ public class SanPham implements java.io.Serializable {
 		this.giaHienHanh = giaHienHanh;
 		this.baoHanh = baoHanh;
 		this.xoa = xoa;
+		this.hinhAnh = hinhAnh;
 		this.dsNhaCungCap = dsNhaCungCap;
 		this.dsChiTietDonHang = dsChiTietDonHang;
 		this.tinhTrangSanPham = tinhTrangSanPham;
@@ -93,6 +95,14 @@ public class SanPham implements java.io.Serializable {
 
 	public void setXoa(boolean xoa) {
 		this.xoa = xoa;
+	}
+
+	public String getHinhAnh() {
+		return this.hinhAnh;
+	}
+
+	public void setHinhAnh(String hinhAnh) {
+		this.hinhAnh = hinhAnh;
 	}
 
 	public Set<NhaCungCap> getDsNhaCungCap() {

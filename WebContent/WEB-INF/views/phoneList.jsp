@@ -69,15 +69,9 @@ pageEncoding="UTF-8" %>
 									<!-- Image and Name -->
 									<div class="itemImageAndName">
 										<div class="itemImage">
-											<c:if test="${fn:length(p.dsHinhAnh) > 0}">
-												<c:forEach var="img" items="${p.dsHinhAnh}" begin="1" end="1" varStatus="loopCount">
-											        <c:if test="${loopCount.index eq 1}">
-											         	<a href="#"><img src="img/dienthoai/<c:out value="${ img.hinhAnh }"/>" width="50px" height="75px"/></a>
-											        </c:if>
-											    </c:forEach>
-											</c:if>
+											<a href="phoneDetails.html?id=<c:out value="${ p.id }"/>" ><img src="img/dienthoai/<c:out value="${p.hinhAnh}"/>" width="50px" height="75px"/></a>
 										</div>
-										<div class="itemName"><c:out value="${p.ten}"/></div>
+										<div class="itemName"><a href="phoneDetails.html?id=<c:out value="${ p.id }"/>"><c:out value="${p.ten}"/></a></div>
 									</div>
 									<!-- Price -->
 									<div class="itemPrice"><fmt:formatNumber value="${p.giaHienHanh}" minFractionDigits="0" maxFractionDigits="0"/> VND</div>

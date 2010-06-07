@@ -25,6 +25,9 @@
 		<property generated="never" lazy="false" name="xoa" type="boolean">
 			<column name="Xoa" />
 		</property>
+		<property generated="never" lazy="false" name="hinhAnh" type="string">
+			<column length="50" name="HinhAnh" />
+		</property>
 
 		<set cascade="all,delete-orphan" fetch="select" lazy="false"
 			name="dsNhaCungCap" sort="unsorted" table="SanPham_NhaCungCap">
@@ -235,7 +238,7 @@
 					<column name="CamUng" />
 				</property>
 				<property generated="never" lazy="false" name="chiTietCamUng"
-					type="boolean">
+					type="string">
 					<column length="200" name="ChiTietCamUng" />
 				</property>
 			</component>
