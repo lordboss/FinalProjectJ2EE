@@ -52,6 +52,9 @@ pageEncoding="UTF-8" %>
 		   <!-- Submit button -->
 		   <center><input type="submit" value="Tìm Kiếm"/></center>
 	       </form>
+	       
+	       <!-- Advanced search -->
+	       <a href="advancedSearch.html">Tìm kiếm nâng cao</a>
 	</div>
 	
 	<!-- Tìm kiếm chuyên sâu -->

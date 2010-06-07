@@ -380,4 +380,17 @@
 		<property name="dienThoaiBUS" ref="dienThoaiBUS"/>
 		<property name="dongSanPhamBUS" ref="dongSanPhamBUS"/>
 	</bean>
+	
+	<bean name="/advancedSearch.html" class="qt.web.AdvancedSearchFormController">
+		<property name="sessionForm" value="true"/>
+		<!-- Command used for binding -->
+		<property name="commandName" value="phoneCriteria"/>
+		<property name="commandClass" value="qt.dto.PhoneCriteria"/>
+		<!-- Form view -->
+		<property name="formView" value="advancedSearch"/>
+		<!-- Display search result on the same form -->
+		<property name="successView" value="advancedSearch"/>
+		
+		<property name="dienThoaiBUS" ref="dienThoaiBUS"/>
+	</bean>
 </beans>

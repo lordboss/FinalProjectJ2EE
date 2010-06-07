@@ -164,6 +164,11 @@ public class DienThoaiDAO {
 			criteria.add(manufacture);
 		}
 
+		if (c.getDesignId() > 0) {
+			Criterion design = Restrictions.eq("kieuDang.id", c.getDesignId());
+			criteria.add(design);
+		}
+		
 		if (c.getStyleId() > 0) {
 			Criterion style = Restrictions.eq("phongCach.id", c.getStyleId());
 			criteria.add(style);
@@ -175,7 +180,7 @@ public class DienThoaiDAO {
 			criteria.add(melody);
 		}
 
-		if (c.getMinCamera() > 0.0 && c.getMaxCamera() > 0.0) {
+		if (c.getMinCamera() >= 0.0 && c.getMaxCamera() >= 0.0) {
 			Criterion minCamera = Restrictions.ge("camera.doPhanGiaiMayAnh", c
 					.getMinCamera());
 			Criterion maxCamera = Restrictions.le("camera.doPhanGiaiMayAnh", c
@@ -260,31 +265,31 @@ public class DienThoaiDAO {
 	 *            Tiêu chí tìm kiếm theo multi-media
 	 */
 	private void processMediaCriteria(Criteria criteria, MediaCriteria c) {
-		if (c.isHasFMRadio()) {
+		if (c.getHasFMRadio()) {
 			criteria.add(Restrictions.eq("multiMedia.FMRadio", true));
 		}
-		if (c.isHasGame()) {
+		if (c.getHasGame()) {
 			criteria.add(Restrictions.isNotNull("multiMedia.troChoi"));
 		}
-		if (c.isHasJavaApps()) {
+		if (c.getHasJavaApps()) {
 			criteria.add(Restrictions.eq("javaApp", true));
 		}
-		if (c.isHasMusicPlayer()) {
+		if (c.getHasMusicPlayer()) {
 			criteria.add(Restrictions.isNotNull("multiMedia.ngheNhac"));
 		}
-		if (c.isHasOfficeApps()) {
+		if (c.getHasOfficeApps()) {
 			criteria.add(Restrictions.eq("office", true));
 		}
-		if (c.isHasTivi()) {
+		if (c.getHasTivi()) {
 			criteria.add(Restrictions.eq("multiMedia.xemTivi", true));
 		}
-		if (c.isHasVideoPlayer()) {
+		if (c.getHasVideoPlayer()) {
 			criteria.add(Restrictions.isNotNull("multiMedia.xemPhim"));
 		}
-		if (c.isHasVideoRecoder()) {
+		if (c.getHasVideoRecorder()) {
 			criteria.add(Restrictions.isNotNull("multiMedia.quayPhim"));
 		}
-		if (c.isHasVoiceRecoder()) {
+		if (c.getHasVoiceRecorder()) {
 			criteria.add(Restrictions.isNotNull("multiMedia.ghiAm"));
 		}
 	}

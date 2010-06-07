@@ -22,8 +22,10 @@ public class PhoneCriteria implements Serializable {
 	private MediaCriteria mediaCriteria = new MediaCriteria();
 	private ConnectivityCriteria connectivityCriteria = new ConnectivityCriteria();
 
+	private int designId = -1;
 	private int styleId = -1;
 	private int melody = -1;
+	private int cameraRange = -1;
 	private double minCamera = -1.0;
 	private double maxCamera = -1.0;
 	private int networkId = -1;
@@ -32,6 +34,28 @@ public class PhoneCriteria implements Serializable {
 	private boolean hasMemoryCard;
 	private int productStatusId = -1;
 
+	private void setMaxMinCameraBaseOnRange() {
+		if (cameraRange == 1) {
+			setMinCamera(0.0);
+			setMaxCamera(0.3);
+		} else if (cameraRange == 2) {
+			setMinCamera(0.3);
+			setMaxCamera(1.0);
+		} else if (cameraRange == 3) {
+			setMinCamera(1.0);
+			setMaxCamera(2.0);
+		} else if (cameraRange == 4) {
+			setMinCamera(2.2);
+			setMaxCamera(3.2);
+		} else if (cameraRange == 5) {
+			setMinCamera(3.2);
+			setMaxCamera(5.0);
+		} else if (cameraRange == 6) {
+			setMinCamera(5.0);
+			setMaxCamera(Double.MAX_VALUE);
+		}
+	}
+	
 	/**
 	 * @param name
 	 *            the name to set
@@ -256,6 +280,36 @@ public class PhoneCriteria implements Serializable {
 	 */
 	public int getProductStatusId() {
 		return productStatusId;
+	}
+
+	/**
+	 * @param designId the designId to set
+	 */
+	public void setDesignId(int designId) {
+		this.designId = designId;
+	}
+
+	/**
+	 * @return the designId
+	 */
+	public int getDesignId() {
+		return designId;
+	}
+
+	/**
+	 * @param cameraRange the cameraRange to set
+	 */
+	public void setCameraRange(int cameraRange) {
+		this.cameraRange = cameraRange;
+		
+		setMaxMinCameraBaseOnRange();
+	}
+
+	/**
+	 * @return the cameraRange
+	 */
+	public int getCameraRange() {
+		return cameraRange;
 	}
 
 }

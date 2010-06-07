@@ -18,8 +18,8 @@ public class MediaCriteria implements Serializable {
 	private boolean hasGame;
 	private boolean hasJavaApps;
 	private boolean hasTivi;
-	private boolean hasVoiceRecoder;
-	private boolean hasVideoRecoder;
+	private boolean hasVoiceRecorder;
+	private boolean hasVideoRecorder;
 	private boolean hasFMRadio;
 
 	/**
@@ -33,7 +33,7 @@ public class MediaCriteria implements Serializable {
 	/**
 	 * @return the hasMusicPlayer
 	 */
-	public boolean isHasMusicPlayer() {
+	public boolean getHasMusicPlayer() {
 		return hasMusicPlayer;
 	}
 
@@ -48,7 +48,7 @@ public class MediaCriteria implements Serializable {
 	/**
 	 * @return the hasVideoPlayer
 	 */
-	public boolean isHasVideoPlayer() {
+	public boolean getHasVideoPlayer() {
 		return hasVideoPlayer;
 	}
 
@@ -63,7 +63,7 @@ public class MediaCriteria implements Serializable {
 	/**
 	 * @return the hasOfficeApps
 	 */
-	public boolean isHasOfficeApps() {
+	public boolean getHasOfficeApps() {
 		return hasOfficeApps;
 	}
 
@@ -78,7 +78,7 @@ public class MediaCriteria implements Serializable {
 	/**
 	 * @return the hasGame
 	 */
-	public boolean isHasGame() {
+	public boolean getHasGame() {
 		return hasGame;
 	}
 
@@ -93,7 +93,7 @@ public class MediaCriteria implements Serializable {
 	/**
 	 * @return the hasJavaApps
 	 */
-	public boolean isHasJavaApps() {
+	public boolean getHasJavaApps() {
 		return hasJavaApps;
 	}
 
@@ -108,38 +108,38 @@ public class MediaCriteria implements Serializable {
 	/**
 	 * @return the hasTivi
 	 */
-	public boolean isHasTivi() {
+	public boolean getHasTivi() {
 		return hasTivi;
 	}
 
 	/**
-	 * @param hasVoiceRecoder
+	 * @param hasVoiceRecorder
 	 *            the hasVoiceRecoder to set
 	 */
-	public void setHasVoiceRecoder(boolean hasVoiceRecoder) {
-		this.hasVoiceRecoder = hasVoiceRecoder;
+	public void setHasVoiceRecorder(boolean hasVoiceRecorder) {
+		this.hasVoiceRecorder = hasVoiceRecorder;
 	}
 
 	/**
 	 * @return the hasVoiceRecoder
 	 */
-	public boolean isHasVoiceRecoder() {
-		return hasVoiceRecoder;
+	public boolean getHasVoiceRecorder() {
+		return hasVoiceRecorder;
 	}
 
 	/**
-	 * @param hasVideoRecoder
+	 * @param hasVideoRecorder
 	 *            the hasVideoRecoder to set
 	 */
-	public void setHasVideoRecoder(boolean hasVideoRecoder) {
-		this.hasVideoRecoder = hasVideoRecoder;
+	public void setHasVideoRecorder(boolean hasVideoRecorder) {
+		this.hasVideoRecorder = hasVideoRecorder;
 	}
 
 	/**
 	 * @return the hasVideoRecoder
 	 */
-	public boolean isHasVideoRecoder() {
-		return hasVideoRecoder;
+	public boolean getHasVideoRecorder() {
+		return hasVideoRecorder;
 	}
 
 	/**
@@ -153,7 +153,7 @@ public class MediaCriteria implements Serializable {
 	/**
 	 * @return the hasFMRadio
 	 */
-	public boolean isHasFMRadio() {
+	public boolean getHasFMRadio() {
 		return hasFMRadio;
 	}
 

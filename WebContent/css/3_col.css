@@ -719,3 +719,31 @@ a img {
 	color:red;
 	text-align:center;
 }
+
+.helpSearch {
+	color:#000000;
+	font-family:Arial,Times New Roman,Tahoma,Verdana;
+	font-size:10pt;
+	font-style:italic;
+	padding:5px;
+	text-align:justify;
+}
+
+.criteriaBox {
+	border-style:solid;
+	border-color:#8b8b8b;
+	border-width:1px;
+}
+
+/* product detail */ 
+.phoneDetail_Name {
+	color:Black;
+	font-size:12px;
+	font-weight:bold;
+	padding-bottom:3px;
+	padding-top:3px;
+	text-align:center;
+	width:100%;
+}
+
+
