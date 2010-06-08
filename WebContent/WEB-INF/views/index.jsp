@@ -59,33 +59,26 @@ pageEncoding="UTF-8" %>
             <%@ include file="/WEB-INF/views/include/header.jsp" %>
             
 			<!-- Menu -->
-            <div id="navigation">
-                <ul>
-                    <li>
-                        <a href="index.jsp">TRANG CHỦ</a>
-                    </li>
-                </ul>
-                <ul>
-                    <li>
-                        <a href="phoneListByBrand.html">ĐIỆN THOẠI</a>
-                    </li>
-                </ul>
-                <ul>
-                    <li>
-                        <a href="accessoryList.html">PHỤ KIỆN</a>
-                    </li>
-                </ul>
-                <ul>
-                    <li>
-                        <a href="#">GÓP Ý</a>
-                    </li>
-                </ul>
-                <ul>
-                    <li>
-                        <a href="#">LIÊN HỆ</a>
-                    </li>
-                </ul>
-            </div> <!-- end menu -->
+			<c:choose>
+				<c:when test="${empty sessionScope.userType}">
+					<%@ include file="/WEB-INF/views/include/defaultMenu.jsp" %>
+				</c:when>
+				<c:when test="${sessionScope.userType eq 'KhachHang'}">
+					<%@ include file="/WEB-INF/views/include/userMenu.jsp" %>
+				</c:when>
+				<c:when test="${sessionScope.userType eq 'NhanVien'}">
+					<%@ include file="/WEB-INF/views/include/employeeMenu.jsp" %>
+				</c:when>
+				<c:when test="${sessionScope.userType eq 'NhanVienQuanLy'}">
+					<%@ include file="/WEB-INF/views/include/managerMenu.jsp" %>
+				</c:when>
+				<c:when test="${sessionScope.userType eq 'NhanVienQuanTri'}">
+					<%@ include file="/WEB-INF/views/include/adminMenu.jsp" %>
+				</c:when>
+				<c:otherwise>
+					<%@ include file="/WEB-INF/views/include/defaultMenu.jsp" %>
+				</c:otherwise>
+			</c:choose>
 			
             <!-- Content -->
             <div id="content-container">

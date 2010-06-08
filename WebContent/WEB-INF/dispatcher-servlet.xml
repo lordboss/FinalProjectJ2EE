@@ -402,4 +402,29 @@
 		<property name="phuKienBUS" ref="phuKienBUS"/>
 	</bean>
 	
+	<bean name="/login.html" class="qt.web.LoginController">
+		<property name="accountBUS" ref="accountBUS"/>
+	</bean>
+	
+	<bean name="/logout.html" class="qt.web.LogoutController"></bean>
+	
+	<bean name="registorValidator" class="qt.bus.validator.RegisterValidator">
+		<property name="accountBUS" ref="accountBUS"/>
+	</bean>
+	
+	<bean name="/register.html" class="qt.web.RegisterFormController">
+		<property name="sessionForm" value="true"/>
+		<!-- Command used for binding -->
+		<property name="commandName" value="khachHang"/>
+		<property name="commandClass" value="qt.dto.KhachHang"/>
+		<!-- Validator -->
+		<property name="validator" ref="registorValidator"/>
+		<!-- Form view -->
+		<property name="formView" value="register"/>
+		<!-- Display search result on the same form -->
+		<property name="successView" value="home.html"/>
+		
+		<!-- Service object -->
+		<property name="khachHangBUS" ref="khachHangBUS"/>
+	</bean>
 </beans>

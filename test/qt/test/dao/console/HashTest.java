@@ -16,7 +16,7 @@ public class HashTest {
 	 * @throws Exception 
 	 */
 	public static void main(String[] args) throws Exception {
-		String pass1 = "123";
+		String pass1 = "user02";
 		String pass2 = "123";
 		
 		HashHelper h = HashHelper.getInstance();

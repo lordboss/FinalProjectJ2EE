@@ -5,6 +5,54 @@ pageEncoding="UTF-8" %>
 
 <!-- Right Column -->
 <div id="rightAside">
+
+	<div class="block">
+	    <div class="blockTitle">Đăng nhập</div>
+	    <form method="post" action="login.html">
+	       	<!-- username  -->
+	       	<div style="padding-left: 10px;">
+	       		<label>Tên đăng nhập:</label>
+	       	</div>
+	    	<input type="text" class="input02" id="username" name="username"/>
+	    	
+	    	<!-- password  -->
+	    	<div style="padding-left: 10px;">
+	    		<label>Mật khẩu:</label>
+	    	</div>
+	    	<input type="password" class="input02" id="password" name="password"/>
+	       
+		   	<!-- Submit button -->
+		   	<center><input type="submit" value="Đăng nhập"/></center>
+		   	
+		   	<c:if test="${! empty sessionScope.isSuccess}">
+		   		<c:if test="${sessionScope.isSuccess eq 'N'}">
+		   			<div class="loginError">Đăng nhập thất bại</div>
+		   		</c:if>
+		   	</c:if>
+		   	
+		   	<!-- Register -->
+	       	<div class="link01">
+	       		<a href="register.html">Đăng kí thành viên</a>
+	       	</div>
+	       	
+	       	<%-- 
+	       		check to see if user has logged in yet
+   				note: login is not part of this application, 
+      		    so user is redirected to the login application
+			--%>
+	       	<c:if test="${! empty sessionScope.userType}">
+	       		<hr/>
+	       		<div style="padding-left: 10px;font-weight: bold;text-align: center;font-family:Arial,Times New Roman,Tahoma,Verdana;color: #b5cb42;">
+	       			<c:out value="${sessionScope.username}" /> đã đăng nhập
+	       		</div>
+	       		<!-- Register -->
+		       	<div class="link01">
+		       		<a href="logout.html">Đăng xuất</a>
+		       	</div>
+	       	</c:if>
+	   	 </form>
+	</div>
+	
 	<div class="block">
 	    <div class="blockTitle">Thông Tin Đặt Hàng</div>
 	    <div class="smallFont">Hướng Dẩn Đặt Hàng</div>
@@ -18,6 +66,7 @@ pageEncoding="UTF-8" %>
 	    	<a href="#">Xác Nhận</a>
 	    </div>
 	</div>
+	
 	<div class="block">
 	    <div class="blockTitle">Điện Thoại &amp; Phụ Kiện</div>
 	    <div>
@@ -44,6 +93,7 @@ pageEncoding="UTF-8" %>
 			</div>
 		</div>            
    	</div>
+   	
     <div class="block">
         <div class="blockTitle">So Sánh Nhận Xét Điện Thoại</div>
         <div class="blockSubTitle">Chọn sản phẩm ĐTDĐ bạn cần để xem: Báo giá, Nhận xét, So sánh</div>

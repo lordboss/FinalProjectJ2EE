@@ -2,6 +2,5 @@
     pageEncoding="UTF-8"%>
 <%@ include file="/WEB-INF/views/include/include.jsp" %>
 
-
 <c:redirect url="/home.html"/>
     

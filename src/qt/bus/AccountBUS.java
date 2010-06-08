@@ -31,6 +31,44 @@ public class AccountBUS {
 	}
 
 	/**
+	 * Thực hiện kiểm tra việc đăng nhập.
+	 * 
+	 * @param username
+	 *            username dùng để đăng nhập.
+	 * @param password
+	 *            password dùng để đăng nhập.
+	 * @return Nếu đăng nhập thành công trả về Account tương ứng. Nếu thất bại
+	 *         trả về null.
+	 * @throws Exception
+	 *             Có thể xảy ra trong quá trình hash password.
+	 */
+	public Account login(String username, String password) throws Exception {
+		return accountDAO.login(username, password);
+	}
+	
+	/**
+	 * Kiểm tra username đã tồn tại hay chưa.
+	 * 
+	 * @param username
+	 *            Username cần kiểm tra.
+	 * @return True: Đã tồn tại. False: Chưa tồn tại.
+	 */
+	public boolean checkUsername(String username) {
+		return accountDAO.checkUsername(username);
+	}
+	
+	/**
+	 * Kiểm tra email đã tồn tại hay chưa.
+	 * 
+	 * @param email
+	 *            email cần kiểm tra.
+	 * @return True: Đã tồn tại. False: Chưa tồn tại.
+	 */
+	public boolean checkEmail(String email) {
+		return accountDAO.checkEmail(email);
+	}
+	
+	/**
 	 * Reset lại mật khẩu cho Account.
 	 * 
 	 * @param a

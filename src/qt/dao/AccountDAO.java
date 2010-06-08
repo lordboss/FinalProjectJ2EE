@@ -38,6 +38,80 @@ public class AccountDAO {
 	}
 
 	/**
+	 * Thực hiện kiểm tra việc đăng nhập.
+	 * 
+	 * @param username
+	 *            username dùng để đăng nhập.
+	 * @param password
+	 *            password dùng để đăng nhập.
+	 * @return Nếu đăng nhập thành công trả về Account tương ứng. Nếu thất bại
+	 *         trả về null.
+	 * @throws Exception
+	 *             Có thể xảy ra trong quá trình hash password.
+	 */
+	public Account login(String username, String password) throws Exception {
+		// validate username
+		if (username == null) {
+			return null;
+		} else if (username.isEmpty()) {
+			return null;
+		}
+
+		// validate password
+		if (password == null) {
+			return null;
+		} else if (password.isEmpty()) {
+			return null;
+		}
+
+		// hash plain password
+		String hashedPassword = HashHelper.getInstance().hash(password);
+
+		return (Account) factory.getCurrentSession().createCriteria(
+				Account.class).add(Restrictions.eq("xoa", false)).add(
+				Restrictions.eq("username", username)).add(
+				Restrictions.eq("pass", hashedPassword)).uniqueResult();
+	}
+
+	/**
+	 * Kiểm tra username đã tồn tại hay chưa.
+	 * 
+	 * @param username
+	 *            Username cần kiểm tra.
+	 * @return True: Đã tồn tại. False: Chưa tồn tại.
+	 */
+	public boolean checkUsername(String username) {
+		if (username == null) {
+			return false;
+		}
+
+		Account a = (Account) factory.getCurrentSession().createCriteria(
+				Account.class).add(Restrictions.eq("username", username))
+				.uniqueResult();
+
+		return a != null;
+	}
+
+	/**
+	 * Kiểm tra email đã tồn tại hay chưa.
+	 * 
+	 * @param email
+	 *            email cần kiểm tra.
+	 * @return True: Đã tồn tại. False: Chưa tồn tại.
+	 */
+	public boolean checkEmail(String email) {
+		if (email == null) {
+			return false;
+		}
+
+		Account a = (Account) factory.getCurrentSession().createCriteria(
+				Account.class).add(Restrictions.eq("email", email))
+				.uniqueResult();
+
+		return a != null;
+	}
+
+	/**
 	 * Reset lại mật khẩu cho Account.
 	 * 
 	 * @param a
