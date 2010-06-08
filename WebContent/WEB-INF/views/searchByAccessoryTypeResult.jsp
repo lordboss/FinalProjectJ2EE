@@ -92,14 +92,10 @@ pageEncoding="UTF-8" %>
 														<div class="itemImageAndName">
 															<!-- Choose one image from list -->
 															<div class="itemImage">
-																<c:forEach var="img" items="${a.dsHinhAnh}" begin="0" end="1" varStatus="loopCount">
-															        <c:if test="${loopCount.index eq 0}">
-															         	<a href="#"><img src="img/phukien/<c:out value="${ img.hinhAnh }"/>" width="50px" height="75px"/></a>
-															        </c:if>
-															    </c:forEach>
+																<a href="accessoryDetails.html?id=<c:out value="${a.id}" />" ><img src="img/phukien/<c:out value="${ a.hinhAnh }"/>" width="50px" height="75px"/></a>
 														    </div>
 														    <!-- Name -->
-															<div class="itemName01"><c:out value="${a.ten}"/></div>
+															<div class="itemName01"><a href="accessoryDetails.html?id=<c:out value="${a.id}" />" ><c:out value="${a.ten}"/></a></div>
 														</div>
 														<!-- Price -->
 														<div class="itemPrice"><fmt:formatNumber value="${a.giaHienHanh}" minFractionDigits="0" maxFractionDigits="0"/> VND</div>

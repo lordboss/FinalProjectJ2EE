@@ -22,10 +22,10 @@
 			<column length="200" name="ChiTiet"/>
 		</property>
 		<property generated="never" lazy="false" name="ngayBatDau" type="timestamp">
-			<column length="200" name="NgayBatDau" not-null="true" />
+			<column name="NgayBatDau" not-null="true" />
 		</property>
-		<property generated="never" lazy="false" name="ngayKetThuc" type="string">
-			<column length="200" name="NgayKetThuc" not-null="true" />
+		<property generated="never" lazy="false" name="ngayKetThuc" type="timestamp">
+			<column name="NgayKetThuc" not-null="true" />
 		</property>
 		<property generated="never" lazy="false" name="hienThi" type="boolean">
 			<column name="HienThi" not-null="true" />

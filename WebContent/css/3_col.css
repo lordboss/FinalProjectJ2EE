@@ -702,7 +702,14 @@ table tbody tr td a:hover {
     /*border-left: 1px solid #000000;
     border-right: 1px solid #000000;*/
     font-family: Arial, Times New Roman, Tahoma, Verdana;
-    font-size: 8.5pt;
+    font-size: 9pt;
+    padding: 2px 4px 5px 2px;
+	clear:both;
+}
+
+.contentCenter01 {
+    font-family: Arial, Times New Roman, Tahoma, Verdana;
+    font-size: 9pt;
     padding: 2px 4px 5px 2px;
 	clear:both;
 }
@@ -827,9 +834,10 @@ a img {
 
 /** inner columns for phone details */
 #innerRightColumn {
-    float: right;
+    float: left;
     width: 580x;
     max-width: 580px;
+	min-width:580px;
     padding-top: 0px;
     padding-left: 2px;
     padding-right: 2px;
@@ -849,6 +857,7 @@ a img {
     float: left;
     width: 185px;
     max-width: 185px;
+	min-width:185px;
     padding-top: 0px;
     padding-left: 2px;
     padding-right: 2px;
@@ -948,3 +957,105 @@ a img {
 	padding:3px 0 3px 10px;
 	min-height:15px;
 }
+
+.na {
+	text-align:center;
+	font-family:Arial,Times New Roman,Tahoma,Verdana;
+	font-size:9pt;
+	color:#4f9f55;
+	font-weight:bold;
+}
+
+.accessoryDetail_Name {
+	color:Black;
+	font-size:12px;
+	font-weight:bold;
+	padding-bottom:3px;
+	padding-top:3px;
+	text-align:center;
+	width:100%;
+}
+
+.accessoryDetail_Image {
+	cursor:pointer;
+	text-align:center;
+	width:100%;
+}
+
+.accessoryDetail_Price {
+	color:Red;
+	font-size:15pt;
+	font-weight:bold;
+	text-align:center;
+	margin-top:5px;
+}
+
+.compatablePhone {
+    float: left;
+    vertical-align: middle;
+    width: 24%;
+	text-align:left;
+	font-family:Arial,Times New Roman,Tahoma,Verdana;
+	font-size:8.5pt;
+	margin-top:3px;
+}
+
+.compatablePhone a  {
+	background:none repeat scroll 0 0 transparent;
+	font-weight:bold;
+	text-decoration:none;
+	
+}
+
+.compatablePhone a:hover  {
+	background:none repeat scroll 0 0 transparent;
+	color:red;
+	font-weight:bold;
+	text-decoration:none;
+}
+
+
+.compatableAccessory {
+    float: left;
+    vertical-align: middle;
+    width: 23%;
+	text-align:left;
+	font-family:Arial,Times New Roman,Tahoma,Verdana;
+	font-size:8.5pt;
+	margin-top:3px;
+	margin-left:8px;
+	border-left:1px  solid #c8c8c8;
+	border-bottom:1px  solid #c8c8c8;
+}
+
+.compatableAccessory a  {
+	background:none repeat scroll 0 0 transparent;
+	font-weight:bold;
+	text-decoration:none;
+}
+
+.compatableAccessory a:hover  {
+	background:none repeat scroll 0 0 transparent;
+	color:red;
+	font-weight:bold;
+	text-decoration:none;
+}
+
+#advancedSearchLink {
+	text-align:center;
+	font-family:Arial,Times New Roman,Tahoma,Verdana;
+	font-size:8.5pt;
+	font-weight:bold;
+	text-transform:uppercase;
+	margin-top:10px;
+	margin-bottom:5px;
+}
+
+#advancedSearchLink a {
+	text-decoration:none;
+}
+
+#advancedSearchLink a:hover {
+	color:red;
+}
+

@@ -397,4 +397,9 @@
 	<bean name="/phoneDetails.html" class="qt.web.PhoneDetailController">
 		<property name="dienThoaiBUS" ref="dienThoaiBUS"/>
 	</bean>
+	
+	<bean name="/accessoryDetails.html" class="qt.web.AccessoryDetailController">
+		<property name="phuKienBUS" ref="phuKienBUS"/>
+	</bean>
+	
 </beans>

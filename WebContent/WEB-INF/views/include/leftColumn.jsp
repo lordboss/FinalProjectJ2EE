@@ -54,7 +54,9 @@ pageEncoding="UTF-8" %>
 	       </form>
 	       
 	       <!-- Advanced search -->
-	       <a href="advancedSearch.html">Tìm kiếm nâng cao</a>
+	       <div id="advancedSearchLink">
+	       		<a href="advancedSearch.html">Tìm kiếm nâng cao</a>
+	       </div>
 	</div>
 	
 	<!-- Tìm kiếm chuyên sâu -->

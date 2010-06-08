@@ -77,7 +77,9 @@ pageEncoding="UTF-8" %>
 				                			<img src="img/dienthoai/<c:out value="${p.hinhAnh}"/>" />
 				                		</div>
 				                		<div class="phoneDetail_Price"><fmt:formatNumber value="${p.giaHienHanh}" minFractionDigits="0" maxFractionDigits="0"/> VND</div>
-				                		
+				                		<c:if test="${p.tinhTrangSanPham.id == 4}" >
+				                			<div class="na">(Đã hết hàng)</div>
+				                		</c:if>
 				                		<hr/>
 				                		
 				                		<div class="bookProduct">Đặt mua hàng</div>
@@ -91,8 +93,20 @@ pageEncoding="UTF-8" %>
 				                		<div class="block03">
 				                			<div class="detailTitle">Thông tin khuyến mãi dành cho <c:out value="${p.ten}"/></div>
 				                			<div class="contentCenter">
-				                				Right<br/>
-				                				Sau khi VnExpress đưa hình ảnh người dân huyện Ngọc Hồi, Kon Tum phải đu dây cáp vượt sông Pôkô, nhiều độc giả đề nghị góp tiền để báo đứng ra xây cầu. Một doanh nhân ở Hà Nội đã ủng hộ 100 triệu đồng. Đáp ứng nhu cầu, VnExpress mở đợt quyên góp từ những tấm lòng thiện nguyện.
+				                				<c:forEach var="ct" items="${p.dsChiTietKhuyenMai}" varStatus="loop">
+				                					<c:set var="t" value="${ct.tinKhuyenMai}"/>
+				                					<div>
+				                						<ul style="font-size: 9pt;">
+				                							<li>Ngày bắt đầu: <c:out value="${t.ngayBatDau.date}" /> / <c:out value="${t.ngayBatDau.month + 1}" /> / <c:out value="${t.ngayBatDau.year + 1990}" /></li>
+				                							<li>Ngày kết thúc: <c:out value="${t.ngayKetThuc.date}" /> / <c:out value="${t.ngayKetThuc.month + 1}" /> / <c:out value="${t.ngayKetThuc.year + 1990}" /></li>
+				                							<li>Nội dung: <c:out value="${t.noiDung}" /></li>
+				                							<li>Mức giảm: <fmt:formatNumber value="${ct.mucGiam}" minFractionDigits="0" maxFractionDigits="0"/> VND </li>
+				                						</ul>
+				                					</div>
+				                					<c:if test="${loop.count < fn:length(a.dsTinGiamGiaPhuKien)}">
+				                						<hr/>
+				                					</c:if>
+				                				</c:forEach>
 				                			</div>
 				                		</div>
 				                		
@@ -100,7 +114,7 @@ pageEncoding="UTF-8" %>
 				                		<div class="block03">
 				                			<div class="detailTitle">Bộ bán hàng chuẩn dành cho <c:out value="${p.ten}"/></div>
 				                			<div class="contentCenter">
-				                				<c:out value="${p.boBanHangChuan}"/>
+				                				<div style="padding-left: 10px;"><c:out value="${p.boBanHangChuan}"/></div>
 				                			</div>
 				                		</div>
 				                		
@@ -108,10 +122,25 @@ pageEncoding="UTF-8" %>
 				                		<div class="block03">
 				                			<div class="detailTitle">Hình ảnh chi tiết</div>
 				                			<div class="contentCenter">
-				                				Right<br/>
-				                				Sau khi VnExpress đưa hình ảnh người dân huyện Ngọc Hồi, Kon Tum phải đu dây cáp vượt sông Pôkô, nhiều độc giả đề nghị góp tiền để báo đứng ra xây cầu. Một doanh nhân ở Hà Nội đã ủng hộ 100 triệu đồng. Đáp ứng nhu cầu, VnExpress mở đợt quyên góp từ những tấm lòng thiện nguyện.
+				                				Không biết làm sao cho đẹp huhu :(
 				                			</div>
 				                		</div>
+				                		
+				                		<!-- Accessory List -->
+				                		<div class="block03">
+				                			<div class="detailTitle">Danh sách phụ kiện có thể dùng được với <c:out value="${p.ten}"/></div>
+				                			<div class="contentCenter">
+				                				<c:if test="${fn:length(p.dsPhuKienTuongThich) > 0}">
+						                			<div class="contentCenter01">
+						                				<c:forEach var="a" items="${p.dsPhuKienTuongThich}">
+						                					<div class="compatableAccessory"><a href="accessoryDetails.html?id=<c:out value="${ a.id }"/>"><c:out value="${a.ten}"/></a></div> 	
+						                				</c:forEach>
+						                				<div style="clear: both"></div>
+						                			</div>
+						                		</c:if>
+				                			</div>
+				                		</div>
+				                		
 				                	</div>
 								</div>
 								<div style="clear:both;"></div>

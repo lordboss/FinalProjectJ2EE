@@ -15,7 +15,7 @@ public class TinGiamGiaPhuKien implements java.io.Serializable {
 	private double mucGiam;
 	private String chiTiet;
 	private Date ngayBatDau;
-	private String ngayKetThuc;
+	private Date ngayKetThuc;
 	private boolean hienThi;
 	private boolean xoa;
 
@@ -23,7 +23,7 @@ public class TinGiamGiaPhuKien implements java.io.Serializable {
 	}
 
 	public TinGiamGiaPhuKien(double mucGiam, Date ngayBatDau,
-			String ngayKetThuc, boolean hienThi, boolean xoa) {
+			Date ngayKetThuc, boolean hienThi, boolean xoa) {
 		this.mucGiam = mucGiam;
 		this.ngayBatDau = ngayBatDau;
 		this.ngayKetThuc = ngayKetThuc;
@@ -32,7 +32,7 @@ public class TinGiamGiaPhuKien implements java.io.Serializable {
 	}
 
 	public TinGiamGiaPhuKien(PhuKien phuKien, double mucGiam, String chiTiet,
-			Date ngayBatDau, String ngayKetThuc, boolean hienThi, boolean xoa) {
+			Date ngayBatDau, Date ngayKetThuc, boolean hienThi, boolean xoa) {
 		this.phuKien = phuKien;
 		this.mucGiam = mucGiam;
 		this.chiTiet = chiTiet;
@@ -82,11 +82,11 @@ public class TinGiamGiaPhuKien implements java.io.Serializable {
 		this.ngayBatDau = ngayBatDau;
 	}
 
-	public String getNgayKetThuc() {
+	public Date getNgayKetThuc() {
 		return this.ngayKetThuc;
 	}
 
-	public void setNgayKetThuc(String ngayKetThuc) {
+	public void setNgayKetThuc(Date ngayKetThuc) {
 		this.ngayKetThuc = ngayKetThuc;
 	}
 
