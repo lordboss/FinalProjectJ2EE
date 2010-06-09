@@ -796,6 +796,15 @@ a img {
 	width:100%;
 }
 
+.bookProduct a {
+	text-decoration:none;
+	color:#479750;
+}
+.bookProduct a:hover {
+	text-decoration:none;
+	color:red;
+}
+
 
 .compareProduct {
 	background:url("icon/compareProduct.gif") no-repeat scroll left center #FFFFFF;
@@ -810,6 +819,16 @@ a img {
 	width:180px;
 }
 
+.compareProduct a {
+	text-decoration:none;
+	color:#479750;
+}
+.compareProduct a:hover {
+	text-decoration:none;
+	color:red;
+}
+
+
 .supportProduct {
 	background:url("icon/supportProduct.gif") no-repeat scroll left center #FFFFFF;
 	cursor:pointer;
@@ -821,6 +840,16 @@ a img {
 	font-size:8pt;
 	font-weight:bold;
 	width:180px;
+}
+
+.supportProduct a {
+	text-decoration:none;
+	color:#479750;
+}
+
+.supportProduct a:hover {
+	text-decoration:none;
+	color:red;
 }
 
 .phoneDetail_Seperator  {
@@ -1096,4 +1125,74 @@ a img {
 	color:red;
 }
 
+/** View Cart */
+.cartItem {
+	clear: both;
+	margin-bottom:5px;
+	border: 1px solid #c8c8c8;
+	height:auto;
+}
+.cartItemImage {
+	width:100%; 
+	padding-top:5px; 
+	height:auto;
+}
+.cartItemPrice {
+	color:Red;
+	font-size:10pt;
+	font-weight:bold;
+	margin-top:5px;
+}
+.cartItemName {
+    color: #0080FF;
+    font-size: 10pt;
+    font-weight: bold;
+    text-decoration: none;
+}
+.cartItemName a {
+    text-decoration: none;
+}
+/** inner columns for cart item */
+#cartItemInnerRightColumn {
+    float: left;
+    width: 610;
+    max-width: 610px;
+	min-width:610px;
+    padding-top: 0px;
+    padding-left: 2px;
+    padding-right: 2px;
+    margin-top: 1px;
+    margin-bottom: 2px;
+	margin-left:5px;
+    display: inline;
+}
 
+#cartItemInnerLeftColumn {
+    float: left;
+    width: 150px;
+    max-width: 150px;
+	min-width:150px;
+    padding-top: 0px;
+    padding-left: 2px;
+    padding-right: 2px;
+    margin-top: 1px;
+    margin-bottom: 2px;
+    display: inline;
+}
+.cartItemInfo {
+	clear:both;
+    border-color: #c8c8c8;
+    border-style: solid;
+    border-width: 1px;
+    text-align: left;
+    margin-top: 10px;
+	margin-bottom: 10px;
+}
+.cartItemInfoContent {
+    font-family: Arial, Times New Roman, Tahoma, Verdana;
+    font-size: 9pt;
+    padding-left:10px;
+	padding-top:5px;
+	padding-bottom:10px;
+	clear:both;
+}

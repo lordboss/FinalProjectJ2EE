@@ -408,10 +408,12 @@
 	
 	<bean name="/logout.html" class="qt.web.LogoutController"></bean>
 	
+	<!-- Validator for register form -->
 	<bean name="registorValidator" class="qt.bus.validator.RegisterValidator">
 		<property name="accountBUS" ref="accountBUS"/>
 	</bean>
 	
+	<!-- Register form -->
 	<bean name="/register.html" class="qt.web.RegisterFormController">
 		<property name="sessionForm" value="true"/>
 		<!-- Command used for binding -->
@@ -427,4 +429,12 @@
 		<!-- Service object -->
 		<property name="khachHangBUS" ref="khachHangBUS"/>
 	</bean>
+	
+	<bean name="/addToCart.html" class="qt.web.user.AddToCartController">
+		<property name="sanPhamBUS" ref="sanPhamBUS"/>
+	</bean>
+	
+	<bean name="/updateCartItem.html" class="qt.web.user.UpdateCartItemController"/>
+	<bean name="/removeFromCart.html" class="qt.web.user.RemoveFromCartController"/>
+	<bean name="/viewCart.html" class="qt.web.user.ViewCartController"/>
 </beans>

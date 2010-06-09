@@ -79,9 +79,9 @@ pageEncoding="UTF-8" %>
 				                		
 				                		<hr/>
 				                		
-				                		<div class="bookProduct">Đặt mua hàng</div>
-				                		<div class="compareProduct">So sánh sản phẩm</div>
-				                		<div class="supportProduct">Hổ trợ khách hàng</div>
+				                		<div class="bookProduct"><a href="addToCart.html?id=<c:out value="${ a.id }"/>">Đặt mua hàng</a></div>
+				                		<div class="compareProduct"><a href="#">So sánh sản phẩm</a></div>
+				                		<div class="supportProduct"><a href="#">Hổ trợ khách hàng</a></div>
 				                	</div>
 		                	
 				                	<!-- Inner Right Column -->
