@@ -11,6 +11,7 @@ public class Account implements java.io.Serializable {
 	private Integer id;
 	private String username;
 	private String pass;
+	private String pass2; // for confirm password in register form  (not persistent in database)
 	private Integer trangThai;
 	private String ho;
 	private String dem;
@@ -114,6 +115,20 @@ public class Account implements java.io.Serializable {
 
 	public void setXoa(boolean xoa) {
 		this.xoa = xoa;
+	}
+
+	/**
+	 * @param pass2 the pass2 to set
+	 */
+	public void setPass2(String pass2) {
+		this.pass2 = pass2;
+	}
+
+	/**
+	 * @return the pass2
+	 */
+	public String getPass2() {
+		return pass2;
 	}
 
 }

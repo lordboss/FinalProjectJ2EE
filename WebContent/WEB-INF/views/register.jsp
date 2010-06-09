@@ -131,13 +131,17 @@ pageEncoding="UTF-8" %>
 									    	</spring:bind>
 									    </tr>
 									    <tr>
-									    	<td align="right" width="20%">Confirm Password:</td>
-									    	<td width="40%">
-									    		<input class="regInput01" type="password" name="password2" /><span class="error">(*)</span>
-									    	</td>
-									    	<td width="40%">
-									    		
-									    	</td>
+									    	<spring:bind path="pass2">
+										    	<td align="right" width="20%">Confirm Password:</td>
+										    	<td width="40%">
+										    		<input class="regInput01" type="password" name="${status.expression}" value="${status.value}" /><span class="error">(*)</span>
+										    	</td>
+										    	<td width="40%">
+										    		<c:if test="${status.error}">
+														<span class="error"><c:out value="${status.errorMessage}"/></span>
+													</c:if>
+										    	</td>
+									    	</spring:bind>
 									    </tr>
 									    <tr>
 									    	<spring:bind path="email">
