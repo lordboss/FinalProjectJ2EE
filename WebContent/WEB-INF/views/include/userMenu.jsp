@@ -24,7 +24,12 @@ pageEncoding="UTF-8" %>
     </ul>
     <ul>
         <li>
-            <a href="#">Giỏ hàng</a>
+            <a href="viewCart.html">Giỏ hàng</a>
+        </li>
+    </ul>
+    <ul>
+        <li>
+            <a href="viewAccount.html">Tài khoản</a>
         </li>
     </ul>
     <ul>

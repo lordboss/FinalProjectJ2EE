@@ -39,5 +39,6 @@
   <mapping resource="qt/dto/TinGiamGiaPhuKien.hbm.xml"/>
   <mapping resource="qt/dto/TinhNangNoiBat.hbm.xml"/>
   <mapping resource="qt/dto/DongSanPham.hbm.xml"/>
+  <mapping resource="qt/dto/CongTy.hbm.xml"/>
  </session-factory>
 </hibernate-configuration>

@@ -27,7 +27,7 @@
 		
 		<property generated="never" lazy="false" length="200" name="chiTiet"
 			type="string">
-			<column name="ChiTiet" not-null="true" />
+			<column name="ChiTiet"/>
 		</property>
 		<property generated="never" lazy="false" name="mucGiam" type="double">
 			<column name="MucGiam" not-null="true" />

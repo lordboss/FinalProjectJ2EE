@@ -53,6 +53,7 @@ public class LoginController implements Controller {
 
 				String userType = a.getClass().getSimpleName();
 
+				session.setAttribute("accountId", a.getId());
 				session.setAttribute("userType", userType);
 				session.setAttribute("username", username);
 				session.setAttribute("isSuccess", "Y");

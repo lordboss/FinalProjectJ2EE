@@ -437,4 +437,55 @@
 	<bean name="/updateCartItem.html" class="qt.web.user.UpdateCartItemController"/>
 	<bean name="/removeFromCart.html" class="qt.web.user.RemoveFromCartController"/>
 	<bean name="/viewCart.html" class="qt.web.user.ViewCartController"/>
+	<bean name="/viewAccount.html" class="qt.web.user.AccountController">
+		<property name="khachHangBUS" ref="khachHangBUS"/>
+	</bean>
+	
+	<!-- Validator for update account form -->
+	<bean name="updateAccountValidator" class="qt.bus.validator.UpdateAccountValidator">
+		<property name="khachHangBUS" ref="khachHangBUS"/>
+	</bean>
+	
+	<!-- update account form -->
+	<bean name="/updateAccount.html" class="qt.web.user.UpdateAccountFormController">
+		<property name="sessionForm" value="true"/>
+		<!-- Command used for binding -->
+		<property name="commandName" value="khachHang"/>
+		<property name="commandClass" value="qt.dto.KhachHang"/>
+		<!-- Validator -->
+		<property name="validator" ref="updateAccountValidator"/>
+		<!-- Form view -->
+		<property name="formView" value="user/updateAccount"/>
+		<!-- Display search result on the same form -->
+		<property name="successView" value="user/updateAccount"/>
+		<!-- 
+		<property name="successView" value="viewAccount.html"/>
+		-->
+		
+		<!-- Service object -->
+		<property name="khachHangBUS" ref="khachHangBUS"/>
+	</bean>
+	
+	<!-- Validator for update account form -->
+	<bean name="changeUserPasswordValidator" class="qt.bus.validator.ChangeUserPasswordValidator">
+		<property name="khachHangBUS" ref="khachHangBUS"/>
+	</bean>
+	
+	<!-- change user password form -->
+	<bean name="/changeUserPassword.html" class="qt.web.user.ChangePasswordFormController">
+		<property name="sessionForm" value="true"/>
+		<!-- Command used for binding -->
+		<property name="commandName" value="khachHang"/>
+		<property name="commandClass" value="qt.dto.KhachHang"/>
+		<!-- Validator -->
+		<property name="validator" ref="changeUserPasswordValidator"/>
+		<!-- Form view -->
+		<property name="formView" value="user/changePassword"/>
+		<!-- Display search result on the same form -->
+		<property name="successView" value="user/changePassword"/>
+		
+		<!-- Service object -->
+		<property name="khachHangBUS" ref="khachHangBUS"/>
+		<property name="accountBUS" ref="accountBUS"/>
+	</bean>
 </beans>

@@ -40,6 +40,7 @@ public class RegisterValidator implements Validator {
 			logger.info("Validate with " + k.getClass().getName());
 
 			// check for required fields
+			/*
 			if (k.getHo() == null || k.getHo().isEmpty()) {
 				errors.rejectValue("ho", "error.lastname-required",
 						new Object[] { k.getPass() },
@@ -49,6 +50,12 @@ public class RegisterValidator implements Validator {
 				errors.rejectValue("ten", "error.firstname-required",
 						new Object[] { k.getPass() },
 						"Chưa nhập tên");
+			}
+			*/
+			if (k.getGioiTinh() == 0) {
+				errors.rejectValue("gioiTinh", "error.sex-required",
+						new Object[] { k.getGioiTinh() },
+						"Chưa chọn giới tính");
 			}
 			if (k.getUsername() == null || k.getUsername().isEmpty()) {
 				errors.rejectValue("username", "error.username-required",

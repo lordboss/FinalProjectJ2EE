@@ -21,9 +21,6 @@ pageEncoding="UTF-8" %>
 				$("div#regTitle").click(function(){
 					$("div#regContainer").toggle("fast");
 				});
-				$("select#dd option:eq(0)").attr('selected', 'selected');
-				$("select#mm option:eq(0)").attr('selected', 'selected');
-				$("select#yyyy option:eq(0)").attr('selected', 'selected');
 			});
         </script>
     </head>
@@ -67,11 +64,16 @@ pageEncoding="UTF-8" %>
                 	
                 	<!-- Register Form -->
 					<div class="block01">
-						<div class="blockTitle" id="regTitle">Đăng kí thành viên</div>
+						<div class="blockTitle" id="regTitle">Cập nhật thông tin tài khoản</div>
 						<div class="contentCenter" id="regContainer">
-							<div>Xin vui lòng cung cấp đủ thông tin</div>
+							<c:if test="${not empty model.status}">
+								<div class="successInfo">
+									<span class="successInfoText"><c:out value="${model.status}"/>   </span>
+									<a href="viewAccount.html">Xem tài khoản</a>
+								</div>
+							</c:if>
 							<spring:nestedPath path="khachHang">
-								<form action="register.html" method="post" onsubmit="return checkForm();">
+								<form action="updateAccount.html" method="post" onsubmit="return checkForm();">
 									<table width="100%" bgcolor="f8f8ff" border="0" cellspacing="0" cellpadding="3">
 										<tr>
 									    	<spring:bind path="ho">
@@ -155,6 +157,7 @@ pageEncoding="UTF-8" %>
 													<span class="error" id="dateRequired"></span>
 										    	</td>
 									    	</spring:nestedPath>
+									    	
 									    </tr>
 									    <tr>
 									    	<spring:bind path="gioiTinh">
@@ -191,7 +194,7 @@ pageEncoding="UTF-8" %>
 									    	<spring:bind path="username">
 										    	<td align="right" width="20%">Username:</td>
 										    	<td width="40%">
-										    		<input class="regInput01" type="text" name="${status.expression}" value="${status.value}" /><span class="error"> *</span>
+										    		<input class="readOnlyTextbox" readonly="readonly" type="text" name="${status.expression}" value="${status.value}" />
 										    	</td>
 										    	<td width="40%">
 										    		<c:if test="${status.error}">
@@ -200,6 +203,7 @@ pageEncoding="UTF-8" %>
 										    	</td>
 									    	</spring:bind>
 									    </tr>
+									    <%-- 
 									    <tr>
 									    	<spring:bind path="pass">
 										    	<td align="right" width="20%">Password:</td>
@@ -226,11 +230,12 @@ pageEncoding="UTF-8" %>
 										    	</td>
 									    	</spring:bind>
 									    </tr>
+									    --%>
 									    <tr>
 									    	<spring:bind path="email">
 										    	<td align="right" width="20%">Email:</td>
 										    	<td width="40%">
-										    		<input class="regInput01" type="text" name="${status.expression}" value="${status.value}" /><span class="error"> *</span>
+										    		<input class="readOnlyTextbox" readonly="readonly" type="text" name="${status.expression}" value="${status.value}" />
 										    	</td>
 										    	<td width="40%">
 										    		<c:if test="${status.error}">
@@ -240,9 +245,12 @@ pageEncoding="UTF-8" %>
 									    	</spring:bind>
 									    </tr>
 									    <tr>
-									    	<td colspan="3">
-									    		<center><input type="submit" value="Đồng ý"></center>
+									    	<td align="right" width="20%"></td>
+									    	<td width="40%" align="right" style="padding-right: 30px;">
+									    		<a href="viewAccount.html"><input type="button" value="Trở lại"></a>
+									    		<input type="submit" value="Đồng ý">
 									    	</td>
+									    	<td width="40%"></td>
 									    </tr>
 									</table>
 								</form>

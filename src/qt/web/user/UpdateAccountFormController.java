@@ -1,32 +1,30 @@
 /**
  * 
  */
-package qt.web;
+package qt.web.user;
 
 import java.util.Date;
+import java.util.HashMap;
+import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.springframework.validation.BindException;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.SimpleFormController;
-import org.springframework.web.servlet.view.RedirectView;
 
 import qt.bus.KhachHangBUS;
 import qt.dto.KhachHang;
-import qt.util.HashHelper;
 
 /**
  * @author tqthe
  * 
  */
 @SuppressWarnings("deprecation")
-public class RegisterFormController extends SimpleFormController {
-
+public class UpdateAccountFormController extends SimpleFormController {
 	protected final Log logger = LogFactory.getLog(getClass());
 	private KhachHangBUS khachHangBUS;
 
@@ -35,35 +33,39 @@ public class RegisterFormController extends SimpleFormController {
 			HttpServletResponse response, Object command, BindException errors)
 			throws Exception {
 
-		// get the command
-		KhachHang a = (KhachHang) command;
-		if (a == null) {
-			logger.error("Can not get command object!");
-		}
-		logger.info("Handle user's register at " + new Date());
+		logger.info("Handle update account request at " + new Date());
 
-		if (a != null) {
-			a.setTrangThai(1); // assume account active right now ;)
-			a.setXoa(false);
+		// get form object
+		KhachHang k = (KhachHang) command;
 
-			// hash password
-			a.setPass(HashHelper.getInstance().hash(a.getPass()));
-
-			// add new
-			khachHangBUS.makePersistent(a);
-
-			// login also ;)
-			HttpSession session = request.getSession(true);
-			String userType = a.getClass().getSimpleName();
-
-			session.setAttribute("userType", userType);
-			session.setAttribute("username", a.getUsername());
-			session.setAttribute("accountId", a.getId());
+		if (k == null) {
+			logger.error("Can not get KhachHang command object!");
+			return new ModelAndView("user/accountError", "message",
+					"Lỗi trong quá trình cập nhật tài khoản!");
 		}
 
-		return new ModelAndView(new RedirectView(getSuccessView()));
+		// update change
+		khachHangBUS.makePersistent(k);
+
+		Map<String, Object> model = new HashMap<String, Object>();
+		model.put("status", "Cập nhật thành công");
+
+		ModelAndView mv = new ModelAndView(getSuccessView(), "model", model);
+		mv.addAllObjects(errors.getModel());
+		
+		return mv;
+		//return new ModelAndView(new RedirectView(getSuccessView()));
 	}
 
+	@Override
+	protected Object formBackingObject(HttpServletRequest request)
+			throws Exception {
+		int accountId = (Integer) request.getSession()
+				.getAttribute("accountId");
+		KhachHang k = khachHangBUS.findById(accountId);
+
+		return k;
+	}
 
 	/**
 	 * @param khachHangBUS

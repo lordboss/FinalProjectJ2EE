@@ -1196,3 +1196,57 @@ a img {
 	padding-bottom:10px;
 	clear:both;
 }
+
+/* user info */
+.userInfoImage {
+	padding:10px 10px 10px 10px;
+	float:left;
+	width:auto;
+}
+.userInfoTitle {
+	font-family: Arial, Times New Roman, Tahoma, Verdana;
+    font-size: 9pt;
+	font-weight:bold;
+	color:red;
+	width:30%;
+}
+.userInfoContent {
+	width:70%;
+}
+.userInfoRow {
+	background-color:#e8f2fe;
+}
+.userInfoContainer {
+	padding:10px 10px 10px 10px;
+}
+.userTask {
+	clear:both;
+	border: 1px solid #f0f0f0;
+	margin-top:10px;
+}
+.userInfoSeparator {
+	clear:both;
+	border: 1px solid #dc6c15;
+}
+.readOnlyTextbox {
+	width:90%;
+	background-color:#e8f2fe;
+}
+.successInfo {
+	background-color:#ddffcc;
+	padding:10px 10px 10px 10px;
+}
+.failedInfo {
+	background-color:#b31545;
+	padding:10px 10px 10px 10px;
+}
+.successInfoText {
+	font-family: Arial, Times New Roman, Tahoma, Verdana;
+    font-size: 10pt;
+	font-weight:bold;
+}
+.successInfo a {
+	font-family: Arial, Times New Roman, Tahoma, Verdana;
+    font-size: 10pt;
+	text-decoration:none;
+}

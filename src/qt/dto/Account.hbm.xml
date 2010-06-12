@@ -17,6 +17,7 @@
 			type="string">
 			<column name="Pass" not-null="true" />
 		</property>
+		
 		<property generated="never" lazy="false" name="trangThai"
 			type="integer">
 			<column name="TrangThai" not-null="true" />
@@ -37,6 +38,9 @@
 			type="string">
 			<column name="Email" not-null="true" />
 		</property>
+		<property generated="never" lazy="false" name="gioiTinh" type="integer">
+			<column name="GioiTinh" not-null="true" />
+		</property>
 		<property generated="never" lazy="false" name="xoa" type="boolean">
 			<column name="Xoa" not-null="true" />
 		</property>
@@ -46,6 +50,18 @@
 		<joined-subclass name="KhachHang" table="KhachHang">
 			<key column="ID_Account" />
 
+			<property generated="never" lazy="false" name="ngaySinh" type="timestamp">
+				<column name="NgaySinh" />
+			</property>
+			<property generated="never" lazy="false" length="150" name="diaChi"
+				type="string">
+				<column name="DiaChi" />
+			</property>
+			<property generated="never" lazy="false" length="20" name="soDienThoai"
+				type="string">
+				<column name="SoDienThoai" />
+			</property>
+		
 			<!-- Một khách hàng có nhiều góp ý -->
 			<set cascade="all,delete-orphan" fetch="select" inverse="true"
 				lazy="false" name="dsGopY" sort="unsorted">
@@ -75,6 +91,9 @@
 			<property generated="never" lazy="false" length="15" name="cmnd"
 				type="string">
 				<column name="CMND" not-null="true" />
+			</property>
+			<property generated="never" lazy="false" name="ngaySinh" type="timestamp">
+				<column name="NgaySinh" not-null="true"/>
 			</property>
 			<property generated="never" lazy="false" length="150" name="diaChi"
 				type="string">
@@ -108,6 +127,9 @@
 				type="string">
 				<column name="CMND" not-null="true" />
 			</property>
+			<property generated="never" lazy="false" name="ngaySinh" type="timestamp">
+				<column name="NgaySinh" not-null="true"/>
+			</property>
 			<property generated="never" lazy="false" length="150" name="diaChi"
 				type="string">
 				<column name="DiaChi" not-null="true" />
@@ -125,6 +147,9 @@
 			<property generated="never" lazy="false" length="15" name="cmnd"
 				type="string">
 				<column name="CMND" not-null="true" />
+			</property>
+			<property generated="never" lazy="false" name="ngaySinh" type="timestamp">
+				<column name="NgaySinh" not-null="true"/>
 			</property>
 			<property generated="never" lazy="false" length="150" name="diaChi"
 				type="string">

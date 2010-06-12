@@ -1,0 +1,35 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated Jun 10, 2010 11:26:37 PM by Hibernate Tools 3.3.0.GA -->
+<hibernate-mapping>
+    <class name="qt.dto.CongTy" table="CongTy">
+        <id name="id" type="integer">
+            <column name="Id" />
+            <generator class="identity" />
+        </id>
+        <property generated="never" lazy="false" length="150" name="ten"
+			type="string">
+			<column name="Ten" not-null="true" />
+		</property>
+		<property generated="never" lazy="false" length="150" name="diaChi"
+			type="string">
+			<column name="DiaChi" not-null="true" />
+		</property>
+		<property generated="never" lazy="false" length="30" name="dienThoai"
+			type="string">
+			<column name="DienThoai" not-null="true" />
+		</property>
+		<property generated="never" lazy="false" length="35" name="email"
+			type="string">
+			<column name="Email" not-null="true" />
+		</property>
+		<property generated="never" lazy="false" name="ngayThanhLap" type="timestamp">
+			<column name="NgayThanhLap" not-null="true" />
+		</property>
+		<property generated="never" lazy="false" length="2000" name="thongTinChung"
+			type="string">
+			<column name="ThongTinChung" not-null="true" />
+		</property>
+    </class>
+</hibernate-mapping>
