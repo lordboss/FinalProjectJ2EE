@@ -86,7 +86,16 @@ pageEncoding="UTF-8" %>
 						                		<div class="cartItemInfo">
 						                			<div class="detailTitle">Thông tin sản phẩm</div>
 						                			<div class="cartItemInfoContent">
-						                				<div class="cartItemName"><a href="phoneDetails.html?id=<c:out value="${ item.key }"/>"><c:out value="${item.value.product.ten}"/></a></div>
+						                				<div class="cartItemName">
+						                					<c:choose>
+							                					<c:when test="${item.value.product.class.simpleName == 'DienThoai'}">
+							                						<a href="phoneDetails.html?id=<c:out value="${ item.key }"/>"><c:out value="${item.value.product.ten}"/></a>
+							                					</c:when>
+							                					<c:otherwise>
+							                						<a href="accessoryDetails.html?id=<c:out value="${ item.key }"/>"><c:out value="${item.value.product.ten}"/></a>
+							                					</c:otherwise>
+						                					</c:choose>
+						                				</div>
 						                				<div class="cartItemPrice"><fmt:formatNumber value="${item.value.product.giaHienHanh}" minFractionDigits="0" maxFractionDigits="0"/> VND</div>
 						                				<table>
 															<tbody>
