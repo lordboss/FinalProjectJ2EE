@@ -108,7 +108,7 @@ pageEncoding="UTF-8" %>
 									</c:forEach>
 								</c:when>
 								<c:otherwise>
-									<div class="notFound">Giỏ hàng hiện tại chưa có sản phẩm nào.</div>
+									<div class="notFound">Giỏ hàng hiện tại chưa có sản phẩm nào. Xem danh sách <a style="text-decoration: none;" href="phoneListByBrand.html">điện thoại</a> và <a style="text-decoration: none;" href="accessoryList.html">phụ kiện</a> để thêm sản phẩm vào giỏ hàng</div>
 								</c:otherwise>
 							</c:choose>
 						</div>

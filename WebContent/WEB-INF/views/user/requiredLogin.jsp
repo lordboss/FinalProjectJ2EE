@@ -4,9 +4,9 @@ pageEncoding="UTF-8" %>
 
 <%-- Required login to view this page --%>
 <c:if test="${empty sessionScope.userType }">
-	<c:redirect url="home.html"/>
+	<c:redirect url="requiredLogin.html"/>
 </c:if>
 
 <c:if test="${not sessionScope.userType eq 'KhachHang'}">
-	<c:redirect url="home.html"/>
+	<c:redirect url="requiredLogin.html"/>
 </c:if>

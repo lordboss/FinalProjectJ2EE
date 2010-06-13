@@ -505,4 +505,7 @@
 	<bean name="/viewSuggestionList.html" class="qt.web.user.ViewSuggestionListController">
 		<property name="gopYBUS" ref="gopYBUS"/>
 	</bean>
+	
+	<bean name="/requiredLogin.html" class="qt.web.RequiredLoginController"/>
+	
 </beans>
