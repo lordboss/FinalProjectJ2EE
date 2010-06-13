@@ -4,6 +4,8 @@
 package qt.web;
 
 import java.util.Date;
+import java.util.Enumeration;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
@@ -53,6 +55,12 @@ public class LoginController implements Controller {
 
 				String userType = a.getClass().getSimpleName();
 
+				// reset all session variables
+				Enumeration<String> e = session.getAttributeNames();
+				while (e.hasMoreElements()) {
+					session.removeAttribute((String) e.nextElement());
+				}
+				
 				session.setAttribute("accountId", a.getId());
 				session.setAttribute("userType", userType);
 				session.setAttribute("username", username);

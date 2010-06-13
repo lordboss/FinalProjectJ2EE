@@ -30,6 +30,14 @@ pageEncoding="UTF-8" %>
     <ul>
         <li>
             <a href="viewAccount.html">Tài khoản</a>
+            <ul style="width: 200px;">
+		        <li>
+		            <a href="updateAccount.html">CẬP NHẬT THÔNG TIN</a>
+		        </li>
+		        <li>
+		            <a href="changeUserPassword.html">THAY ĐỔI MẬT KHẨU</a>
+		        </li>
+		    </ul>
         </li>
     </ul>
     <ul>

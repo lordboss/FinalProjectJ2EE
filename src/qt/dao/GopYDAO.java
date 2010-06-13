@@ -61,6 +61,20 @@ public class GopYDAO {
 	}
 
 	/**
+	 * Tìm danh sách GopY của một KhachHang.
+	 * 
+	 * @param accountId
+	 *            id của KhachHang.
+	 * @return Danh sách GopY tìm được.
+	 */
+	@SuppressWarnings("unchecked")
+	public List<GopY> findByAccountId(int accountId) {
+		return factory.getCurrentSession().createQuery(
+				"from GopY g where g.khachHang.id = :id and g.xoa = false")
+				.setInteger("id", accountId).list();
+	}
+
+	/**
 	 * Tìm một GopY theo Id
 	 * 
 	 * @param id

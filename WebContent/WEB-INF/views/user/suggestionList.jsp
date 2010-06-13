@@ -9,8 +9,6 @@ pageEncoding="UTF-8" %>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 
-<%@page import="java.util.Date"%>
-
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -46,12 +44,46 @@ pageEncoding="UTF-8" %>
                 	
                 	<!-- Suggestion List -->
 					<div class="block01">
-						<div class="blockTitle" id="regTitle">Góp ý cho công ty</div>
+						<div class="blockTitle" id="regTitle">Danh sách các góp ý của bạn</div>
 						<div class="contentCenter" id="regContainer">
-							<div class="guideInfo">Xin quý khách vui lòng đóng góp các ý kiến chân thành để công ty chúng tôi nâng cao hơn nữa chất lượng dịch vụ</div>
-							<div style="padding: 10px 10px 10px 10px;">
-								
-							</div>
+							<c:choose>
+								<c:when test="${fn:length(model) > 0}">
+									<c:forEach var="g" items="${model}" varStatus="loop">
+										<div class="suggestionBox">
+											<table>
+												<tbody>
+													<tr><td colspan="2" style="font-weight: bold"><c:out value="${loop.count}"/></td></tr>
+													<tr class="suggestionInfoRow">
+														<td>Ngày tạo:</td>
+														<td>
+															<c:out value="${g.ngayTao.date}"/> / <c:out value="${g.ngayTao.month + 1}"/> / <c:out value="${g.ngayTao.year + 1900}"/> <c:out value="${g.ngayTao.hours}"/>:<c:out value="${g.ngayTao.minutes}"/>
+														</td>
+													</tr>
+													<tr class="suggestionInfoRow">
+														<td>Tiêu đề:</td>
+														<td><c:out value="${g.tieuDe}"/></td>
+													</tr>
+													<tr class="suggestionInfoRow">
+														<td>Nội dung:</td>
+														<td>
+															<textarea class="boxInput" rows="5" cols="90" style="width: 95%" readonly="readonly"><c:out value="${g.noiDung}"/></textarea>
+														</td>
+													</tr>
+													<tr class="suggestionInfoRow">
+														<td>Trạng thái:</td>
+														<td>
+															<c:out value="${g.trangThaiGopY.trangThai}"/>
+														</td>
+													</tr>
+												</tbody>
+											</table>
+										</div>
+									</c:forEach>
+								</c:when>
+								<c:otherwise>
+									
+								</c:otherwise>
+							</c:choose>
 						</div>
 						<div style="clear:both;"></div>
 					</div>

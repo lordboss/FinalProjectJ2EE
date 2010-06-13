@@ -52,6 +52,17 @@ public class GopYBUS {
 	}
 
 	/**
+	 * Tìm danh sách GopY của một KhachHang.
+	 * 
+	 * @param accountId
+	 *            id của KhachHang.
+	 * @return Danh sách GopY tìm được.
+	 */
+	public List<GopY> findByAccountId(int accountId) {
+		return gopYDAO.findByAccountId(accountId);
+	}
+	
+	/**
 	 * Tìm một GopY theo Id
 	 * 
 	 * @param id

@@ -4,6 +4,7 @@
 package qt.web;
 
 import java.util.Date;
+import java.util.Enumeration;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -30,7 +31,18 @@ public class LogoutController implements Controller {
 		logger.info("Handle logout request at " + new Date());
 		
 		HttpSession session = request.getSession(true);
-		session.setAttribute("userType", null);
+
+		/*
+		session.removeAttribute("userType");
+		session.removeAttribute("accountId");
+		session.removeAttribute("username");
+		session.removeAttribute("isSuccess");
+		session.removeAttribute("cart");
+		*/
+		Enumeration<String> e = session.getAttributeNames();
+		while (e.hasMoreElements()) {
+			session.removeAttribute((String) e.nextElement());
+		}
 		
 		return new ModelAndView(new RedirectView("home.html"));
 	}

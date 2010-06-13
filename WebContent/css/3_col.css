@@ -1266,3 +1266,13 @@ a img {
     font-size: 9pt;
 }
 
+/** Suggestion List */ 
+.suggestionBox {
+	padding: 10px 10px 10px 10px;
+	margin-top:2px;
+	margin-bottom:2px;
+	border:1px solid #b3b3b3;
+}
+.suggestionInfoRow {
+	background-color:#e8f2fe;
+}

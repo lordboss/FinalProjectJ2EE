@@ -28,6 +28,10 @@ public class PrintDsGopY {
 		GopYDAO gDao = (GopYDAO) context.getBean("gopYDAO");
 		List<GopY> ds = gDao.findAll();
 		printDsGopY(ds);
+		
+		System.out.println("==============================");
+		ds = gDao.findByAccountId(18);
+		printDsGopY(ds);
 	}
 
 	private static void printDsGopY(List<GopY> ds) {

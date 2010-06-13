@@ -501,4 +501,8 @@
 		<property name="trangThaiGopYBUS" ref="trangThaiGopYBUS"/>
 		<property name="khachHangBUS" ref="khachHangBUS"/>
 	</bean>
+	
+	<bean name="/viewSuggestionList.html" class="qt.web.user.ViewSuggestionListController">
+		<property name="gopYBUS" ref="gopYBUS"/>
+	</bean>
 </beans>
