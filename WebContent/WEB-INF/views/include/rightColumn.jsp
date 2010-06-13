@@ -107,7 +107,7 @@ pageEncoding="UTF-8" %>
     </div>
     <div class="block">
     	<div class="blockTitle">Góp Ý - Liên Hệ</div>
-        <div class="lineSuggestion"><a href="#">Góp Ý</a></div>
+        <div class="lineSuggestion"><a href="addSuggestion.html">Góp Ý</a></div>
         <div class="lineContact"><a href="#">Liên Hệ</a></div>
     </div>
 </div> <!-- end right column -->

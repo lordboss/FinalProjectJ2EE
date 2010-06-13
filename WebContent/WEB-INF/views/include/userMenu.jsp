@@ -35,6 +35,14 @@ pageEncoding="UTF-8" %>
     <ul>
         <li>
             <a href="addSuggestion.html">GÓP Ý</a>
+            <ul style="width: 200px;">
+		        <li>
+		            <a href="addSuggestion.html">THÊM GÓP Ý</a>
+		        </li>
+		        <li>
+		            <a href="viewSuggestionList.html">XEM DANH SÁCH GÓP Ý</a>
+		        </li>
+		    </ul>
         </li>
     </ul>
     <ul>

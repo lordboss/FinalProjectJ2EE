@@ -8,6 +8,9 @@ pageEncoding="UTF-8" %>
 <%@ include file="/WEB-INF/views/user/requiredLogin.jsp" %>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+
+<%@page import="java.util.Date"%>
+
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -16,8 +19,8 @@ pageEncoding="UTF-8" %>
         <script type="text/javascript" src="js/jquery-1.4.2.js"></script>
         <script type="text/javascript">
         	$(document).ready(function() {
-				$("div#cartTitle").click(function(){
-					$("div#cartContainer").toggle("fast");
+				$("div#regTitle").click(function(){
+					$("div#regContainer").toggle("fast");
 				});
 			});
         </script>
@@ -41,11 +44,14 @@ pageEncoding="UTF-8" %>
                 <!-- Middle Column -->
                 <div id="content">
                 	
-                	<!-- List of phones -->
+                	<!-- Suggestion List -->
 					<div class="block01">
-						<div class="blockTitle" id="cartTitle">Thông tin giỏ hàng</div>
-						<div class="contentCenter" id="cartContainer">
-							<div class="error"><c:out value="${message}" /></div>
+						<div class="blockTitle" id="regTitle">Góp ý cho công ty</div>
+						<div class="contentCenter" id="regContainer">
+							<div class="guideInfo">Xin quý khách vui lòng đóng góp các ý kiến chân thành để công ty chúng tôi nâng cao hơn nữa chất lượng dịch vụ</div>
+							<div style="padding: 10px 10px 10px 10px;">
+								
+							</div>
 						</div>
 						<div style="clear:both;"></div>
 					</div>
