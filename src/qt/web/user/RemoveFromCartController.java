@@ -22,7 +22,7 @@ import org.springframework.web.servlet.view.RedirectView;
  */
 public class RemoveFromCartController implements Controller {
 
-protected final Log logger = LogFactory.getLog(getClass());
+	protected final Log logger = LogFactory.getLog(getClass());
 	
 	@SuppressWarnings("unchecked")
 	@Override

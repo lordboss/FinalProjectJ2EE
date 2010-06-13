@@ -34,7 +34,7 @@ pageEncoding="UTF-8" %>
     </ul>
     <ul>
         <li>
-            <a href="#">GÓP Ý</a>
+            <a href="addSuggestion.html">GÓP Ý</a>
         </li>
     </ul>
     <ul>

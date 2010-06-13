@@ -8,6 +8,10 @@
 			<column name="ID" />
 			<generator class="identity" />
 		</id>
+		<property generated="never" lazy="false" length="150" name="tieuDe"
+			type="string">
+			<column name="TieuDe" not-null="true" />
+		</property>
 		<property generated="never" lazy="false" length="2000" name="noiDung"
 			type="string">
 			<column name="NoiDung" not-null="true" />
@@ -23,14 +27,14 @@
 		</property>
 
 		<!-- Một trạng thái góp ý có nhiều góp ý -->
-		<many-to-one cascade="all" class="TrangThaiGopY" fetch="select"
+		<many-to-one class="TrangThaiGopY" fetch="select"
 			lazy="false" name="trangThaiGopY">
 			<column name="ID_TrangThai" />
 		</many-to-one>
 
 		<!-- Một khách hàng có nhiều góp ý -->
 		<!-- Một góp ý thuộc về duy nhất một khách hàng -->
-		<many-to-one cascade="all" class="KhachHang" fetch="select"
+		<many-to-one class="KhachHang" fetch="select"
 			lazy="false" name="khachHang">
 			<column name="ID_KhachHang" />
 		</many-to-one>

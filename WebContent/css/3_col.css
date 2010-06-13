@@ -1250,3 +1250,19 @@ a img {
     font-size: 10pt;
 	text-decoration:none;
 }
+.guideInfo {
+	font-family: Arial, Times New Roman, Tahoma, Verdana;
+    font-size: 10pt;
+	font-style:italic;
+	padding:10px 10px 10px 10px;
+}
+
+.regInput02 {
+	width:100%;
+}
+.boxInput {
+	width:100%;
+	font-family: Arial, Times New Roman, Tahoma, Verdana;
+    font-size: 9pt;
+}
+

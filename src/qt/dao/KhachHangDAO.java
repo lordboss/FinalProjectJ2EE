@@ -43,9 +43,16 @@ public class KhachHangDAO {
 	 * @return KhachHang tìm được. Nếu không tìm thấy trả về null.
 	 */
 	public KhachHang findById(int id) {
+
 		KhachHang k = (KhachHang) factory.getCurrentSession().get(
 				KhachHang.class, id);
 		return k.isXoa() ? null : k;
+
+		/*
+		 * return (KhachHang) factory.getCurrentSession().createCriteria(
+		 * KhachHang.class).add(Restrictions.eq("xoa", false)).add(
+		 * Restrictions.eq("id", id)).uniqueResult();
+		 */
 	}
 
 	/**
@@ -106,6 +113,7 @@ public class KhachHangDAO {
 	public KhachHang makePersistent(KhachHang k) {
 		factory.getCurrentSession().saveOrUpdate(k);
 		factory.getCurrentSession().flush();
+
 		return k;
 	}
 }

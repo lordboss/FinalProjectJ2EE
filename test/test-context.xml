@@ -35,7 +35,8 @@
 		<property name="properties">
 			<props>
 				<prop key="hibernate.dialect">org.hibernate.dialect.MySQLDialect</prop>
-				<prop key="hibernate.show_sql">false</prop>
+				<!-- For debug purpose only -->
+				<prop key="hibernate.show_sql">false</prop> 
 				<prop key="hibernate.c3p0.minPoolSize">5</prop>
 				<prop key="hibernate.c3p0.maxPoolSize">20</prop>
 				<prop key="hibernate.c3p0.timeout">600</prop>
@@ -112,148 +113,118 @@
 		</property> </bean>
 	-->
 
+	<!-- =================================================================== -->
 	<!-- Vùng DAO Kiếm :) -->
+	<!-- =================================================================== -->
 	<bean id="dienThoaiDAO" class="qt.dao.DienThoaiDAO">
 		<property name="factory" ref="mySessionFactory" />
 	</bean>
-
 	<bean id="gopYDAO" class="qt.dao.GopYDAO">
 		<property name="factory" ref="mySessionFactory" />
 	</bean>
-
 	<bean id="trangThaiGopYDAO" class="qt.dao.TrangThaiGopYDAO">
 		<property name="factory" ref="mySessionFactory" />
 	</bean>
-
 	<bean id="khachHangDAO" class="qt.dao.KhachHangDAO">
 		<property name="factory" ref="mySessionFactory" />
 	</bean>
-
 	<bean id="tinTucDAO" class="qt.dao.TinTucDAO">
 		<property name="factory" ref="mySessionFactory" />
 	</bean>
-
 	<bean id="loaiTinTucDAO" class="qt.dao.LoaiTinTucDAO">
 		<property name="factory" ref="mySessionFactory" />
 	</bean>
-
 	<bean id="hangDienThoaiDAO" class="qt.dao.HangDienThoaiDAO">
 		<property name="factory" ref="mySessionFactory" />
 	</bean>
-
 	<bean id="kieuDangDAO" class="qt.dao.KieuDangDAO">
 		<property name="factory" ref="mySessionFactory" />
 	</bean>
-
 	<bean id="heDieuHanhDAO" class="qt.dao.HeDieuHanhDAO">
 		<property name="factory" ref="mySessionFactory" />
 	</bean>
-
 	<bean id="phongCachDAO" class="qt.dao.PhongCachDAO">
 		<property name="factory" ref="mySessionFactory" />
 	</bean>
-
 	<bean id="loaiMangDAO" class="qt.dao.LoaiMangDAO">
 		<property name="factory" ref="mySessionFactory" />
 	</bean>
-
 	<bean id="tinhTrangSanPhamDAO" class="qt.dao.TinhTrangSanPhamDAO">
 		<property name="factory" ref="mySessionFactory" />
 	</bean>
-
 	<bean id="trangThaiDonHangDAO" class="qt.dao.TrangThaiDonHangDAO">
 		<property name="factory" ref="mySessionFactory" />
 	</bean>
-
 	<bean id="hinhThucThanhToanDAO" class="qt.dao.HinhThucThanhToanDAO">
 		<property name="factory" ref="mySessionFactory" />
 	</bean>
-
 	<bean id="loaiPhuKienDAO" class="qt.dao.LoaiPhuKienDAO">
 		<property name="factory" ref="mySessionFactory" />
 	</bean>
-
 	<bean id="nhaCungCapDAO" class="qt.dao.NhaCungCapDAO">
 		<property name="factory" ref="mySessionFactory" />
 	</bean>
-
 	<bean id="nhanXetDienThoaiDAO" class="qt.dao.NhanXetDienThoaiDAO">
 		<property name="factory" ref="mySessionFactory" />
 	</bean>
-
 	<bean id="tinGiamGiaPhuKienDAO" class="qt.dao.TinGiamGiaPhuKienDAO">
 		<property name="factory" ref="mySessionFactory" />
 	</bean>
-
 	<bean id="chiTietHinhAnhDAO" class="qt.dao.ChiTietHinhAnhDAO">
 		<property name="factory" ref="mySessionFactory" />
 	</bean>
-
 	<bean id="phieuNhapDienThoaiDAO" class="qt.dao.PhieuNhapDienThoaiDAO">
 		<property name="factory" ref="mySessionFactory" />
 	</bean>
-
 	<bean id="chiTietPhieuNhapDienThoaiDAO" class="qt.dao.ChiTietPhieuNhapDienThoaiDAO">
 		<property name="factory" ref="mySessionFactory" />
 	</bean>
-
 	<bean id="phieuNhapPhuKienDAO" class="qt.dao.PhieuNhapPhuKienDAO">
 		<property name="factory" ref="mySessionFactory" />
 	</bean>
-
 	<bean id="chiTietPhieuNhapPhuKienDAO" class="qt.dao.ChiTietPhieuNhapPhuKienDAO">
 		<property name="factory" ref="mySessionFactory" />
 	</bean>
-
 	<bean id="chiTietTinKhuyenMaiDienThoaiDAO" class="qt.dao.ChiTietTinKhuyenMaiDienThoaiDAO">
 		<property name="factory" ref="mySessionFactory" />
 	</bean>
-
 	<bean id="donHangDAO" class="qt.dao.DonHangDAO">
 		<property name="factory" ref="mySessionFactory" />
 	</bean>
-
 	<bean id="chiTietDonHangDAO" class="qt.dao.ChiTietDonHangDAO">
 		<property name="factory" ref="mySessionFactory" />
 	</bean>
-
 	<bean id="phuKienDAO" class="qt.dao.PhuKienDAO">
 		<property name="factory" ref="mySessionFactory" />
 	</bean>
-
 	<bean id="accountDAO" class="qt.dao.AccountDAO">
 		<property name="factory" ref="mySessionFactory" />
 	</bean>
-
 	<bean id="nhanVienDAO" class="qt.dao.NhanVienDAO">
 		<property name="factory" ref="mySessionFactory" />
 	</bean>
-
 	<bean id="nhanVienQuanLyDAO" class="qt.dao.NhanVienQuanLyDAO">
 		<property name="factory" ref="mySessionFactory" />
 	</bean>
-
 	<bean id="nhanVienQuanTriDAO" class="qt.dao.NhanVienQuanTriDAO">
 		<property name="factory" ref="mySessionFactory" />
 	</bean>
-
 	<bean id="sanPhamDAO" class="qt.dao.SanPhamDAO">
 		<property name="factory" ref="mySessionFactory" />
 	</bean>
-
 	<bean id="tinKhuyenMaiDienThoaiDAO" class="qt.dao.TinKhuyenMaiDienThoaiDAO">
 		<property name="factory" ref="mySessionFactory" />
 	</bean>
-
 	<bean id="tinhNangNoiBatDAO" class="qt.dao.TinhNangNoiBatDAO">
 		<property name="factory" ref="mySessionFactory" />
 	</bean>
-	
 	<bean id="dongSanPhamDAO" class="qt.dao.DongSanPhamDAO">
 		<property name="factory" ref="mySessionFactory" />
 	</bean>
 
+	<!-- =================================================================== -->
 	<!-- BUS bean -->
+	<!-- =================================================================== -->
 	<bean id="accountBUS" class="qt.bus.AccountBUS">
 		<property name="accountDAO" ref="accountDAO" />
 	</bean>
@@ -358,5 +329,176 @@
 	</bean>
 	<bean id="dongSanPhamBUS" class="qt.bus.DongSanPhamBUS">
 		<property name="dongSanPhamDAO" ref="dongSanPhamDAO"/>
+	</bean>
+	
+	<!-- =================================================================== -->
+	<!-- Handler Mapping -->
+	<!-- =================================================================== -->
+	<bean name="/phoneList.html" class="qt.web.PhoneListController">
+		<property name="dienThoaiBUS" ref="dienThoaiBUS"/>
+	</bean>
+
+	<bean name="/home.html" class="qt.web.ProductListController">
+		<property name="dienThoaiBUS" ref="dienThoaiBUS"/>
+		<property name="phuKienBUS" ref="phuKienBUS"/>
+		<property name="loaiPhuKienBUS" ref="loaiPhuKienBUS"/>
+	</bean>
+	
+	<bean name="/phoneListByBrand.html" class="qt.web.PhoneListByBrandController">
+		<property name="dongSanPhamBUS" ref="dongSanPhamBUS"/>
+	</bean>
+	
+	<bean name="/accessoryList.html" class="qt.web.AccessoryListController">
+		<property name="loaiPhuKienBUS" ref="loaiPhuKienBUS"/>
+	</bean>
+	
+	<bean name="/quickSearch.html" class="qt.web.QuickSearchController">
+        <property name="dienThoaiBUS" ref="dienThoaiBUS"/>
+        <property name="hangDienThoaiBUS" ref="hangDienThoaiBUS"/>
+	</bean>
+	
+	<bean name="/searchByStyle.html" class="qt.web.SearchByStyleController">
+		<property name="dienThoaiBUS" ref="dienThoaiBUS"/>
+		<property name="phongCachBUS" ref="phongCachBUS"/>
+	</bean>
+	
+	<bean name="/searchByDesign.html" class="qt.web.SearchByDesignController">
+		<property name="dienThoaiBUS" ref="dienThoaiBUS"/>
+		<property name="kieuDangBUS" ref="kieuDangBUS"/>
+	</bean>
+	
+	<bean name="/searchByFunctionality.html" class="qt.web.SearchByFunctionalityController">
+		<property name="dienThoaiBUS" ref="dienThoaiBUS"/>
+	</bean>
+	
+	<bean name="/searchByAccessoryType.html" class="qt.web.SearchByAccessoryTypeController">
+		<property name="loaiPhuKienBUS" ref="loaiPhuKienBUS"/>
+		<property name="phuKienBUS" ref="phuKienBUS"/>
+	</bean>
+	
+	<bean name="/searchByPhoneBrand.html" class="qt.web.SearchByPhoneBrandController">
+		<property name="dienThoaiBUS" ref="dienThoaiBUS"/>
+		<property name="dongSanPhamBUS" ref="dongSanPhamBUS"/>
+	</bean>
+	
+	<bean name="/advancedSearch.html" class="qt.web.AdvancedSearchFormController">
+		<property name="sessionForm" value="true"/>
+		<!-- Command used for binding -->
+		<property name="commandName" value="phoneCriteria"/>
+		<property name="commandClass" value="qt.dto.PhoneCriteria"/>
+		<!-- Form view -->
+		<property name="formView" value="advancedSearch"/>
+		<!-- Display search result on the same form -->
+		<property name="successView" value="advancedSearch"/>
+		
+		<property name="dienThoaiBUS" ref="dienThoaiBUS"/>
+	</bean>
+	
+	<bean name="/phoneDetails.html" class="qt.web.PhoneDetailController">
+		<property name="dienThoaiBUS" ref="dienThoaiBUS"/>
+	</bean>
+	
+	<bean name="/accessoryDetails.html" class="qt.web.AccessoryDetailController">
+		<property name="phuKienBUS" ref="phuKienBUS"/>
+	</bean>
+	
+	<bean name="/login.html" class="qt.web.LoginController">
+		<property name="accountBUS" ref="accountBUS"/>
+	</bean>
+	
+	<bean name="/logout.html" class="qt.web.LogoutController"></bean>
+	
+	<!-- Validator for register form -->
+	<bean name="registorValidator" class="qt.bus.validator.RegisterValidator">
+		<property name="accountBUS" ref="accountBUS"/>
+	</bean>
+	
+	<!-- Register form -->
+	<bean name="/register.html" class="qt.web.RegisterFormController">
+		<property name="sessionForm" value="true"/>
+		<!-- Command used for binding -->
+		<property name="commandName" value="khachHang"/>
+		<property name="commandClass" value="qt.dto.KhachHang"/>
+		<!-- Validator -->
+		<property name="validator" ref="registorValidator"/>
+		<!-- Form view -->
+		<property name="formView" value="register"/>
+		<property name="successView" value="home.html"/>
+		
+		<!-- Service object -->
+		<property name="khachHangBUS" ref="khachHangBUS"/>
+	</bean>
+	
+	<bean name="/addToCart.html" class="qt.web.user.AddToCartController">
+		<property name="sanPhamBUS" ref="sanPhamBUS"/>
+	</bean>
+	
+	<bean name="/updateCartItem.html" class="qt.web.user.UpdateCartItemController"/>
+	<bean name="/removeFromCart.html" class="qt.web.user.RemoveFromCartController"/>
+	<bean name="/viewCart.html" class="qt.web.user.ViewCartController"/>
+	<bean name="/viewAccount.html" class="qt.web.user.AccountController">
+		<property name="khachHangBUS" ref="khachHangBUS"/>
+	</bean>
+	
+	<!-- Validator for update account form -->
+	<bean name="updateAccountValidator" class="qt.bus.validator.UpdateAccountValidator">
+		<property name="khachHangBUS" ref="khachHangBUS"/>
+	</bean>
+	
+	<!-- update account form -->
+	<bean name="/updateAccount.html" class="qt.web.user.UpdateAccountFormController">
+		<property name="sessionForm" value="true"/>
+		<!-- Command used for binding -->
+		<property name="commandName" value="khachHang"/>
+		<property name="commandClass" value="qt.dto.KhachHang"/>
+		<!-- Validator -->
+		<property name="validator" ref="updateAccountValidator"/>
+		<!-- Form view -->
+		<property name="formView" value="user/updateAccount"/>
+		<property name="successView" value="user/updateAccount"/>
+		<!-- Service object -->
+		<property name="khachHangBUS" ref="khachHangBUS"/>
+	</bean>
+	
+	<!-- Validator for update account form -->
+	<bean name="changeUserPasswordValidator" class="qt.bus.validator.ChangeUserPasswordValidator">
+		<property name="khachHangBUS" ref="khachHangBUS"/>
+	</bean>
+	
+	<!-- change user password form -->
+	<bean name="/changeUserPassword.html" class="qt.web.user.ChangePasswordFormController">
+		<property name="sessionForm" value="true"/>
+		<!-- Command used for binding -->
+		<property name="commandName" value="khachHang"/>
+		<property name="commandClass" value="qt.dto.KhachHang"/>
+		<!-- Validator -->
+		<property name="validator" ref="changeUserPasswordValidator"/>
+		<!-- Form view -->
+		<property name="formView" value="user/changePassword"/>
+		<property name="successView" value="user/changePassword"/>
+		
+		<!-- Service object -->
+		<property name="khachHangBUS" ref="khachHangBUS"/>
+		<property name="accountBUS" ref="accountBUS"/>
+	</bean>
+	
+	<!-- Validator for suggestion form -->
+	<bean name="suggestionValidator" class="qt.bus.validator.SuggestionValidator"/>
+	
+	<!-- add new user's suggestion form -->
+	<bean name="/addSuggestion.html" class="qt.web.user.SuggestionFormController">
+		<property name="sessionForm" value="true"/>
+		<!-- Command used for binding -->
+		<property name="commandName" value="gopY"/>
+		<property name="commandClass" value="qt.dto.GopY"/>
+		<!-- Validator -->
+		<property name="validator" ref="suggestionValidator"/>
+		<!-- Form view -->
+		<property name="formView" value="user/suggestion"/>
+		<property name="successView" value="user/suggestion"/>
+		
+		<property name="gopYBUS" ref="gopYBUS"/>
+		<property name="trangThaiGopYBUS" ref="trangThaiGopYBUS"/>
+		<property name="khachHangBUS" ref="khachHangBUS"/>
 	</bean>
 </beans>

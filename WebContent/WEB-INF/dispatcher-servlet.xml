@@ -423,7 +423,6 @@
 		<property name="validator" ref="registorValidator"/>
 		<!-- Form view -->
 		<property name="formView" value="register"/>
-		<!-- Display search result on the same form -->
 		<property name="successView" value="home.html"/>
 		
 		<!-- Service object -->
@@ -456,12 +455,7 @@
 		<property name="validator" ref="updateAccountValidator"/>
 		<!-- Form view -->
 		<property name="formView" value="user/updateAccount"/>
-		<!-- Display search result on the same form -->
 		<property name="successView" value="user/updateAccount"/>
-		<!-- 
-		<property name="successView" value="viewAccount.html"/>
-		-->
-		
 		<!-- Service object -->
 		<property name="khachHangBUS" ref="khachHangBUS"/>
 	</bean>
@@ -481,11 +475,30 @@
 		<property name="validator" ref="changeUserPasswordValidator"/>
 		<!-- Form view -->
 		<property name="formView" value="user/changePassword"/>
-		<!-- Display search result on the same form -->
 		<property name="successView" value="user/changePassword"/>
 		
 		<!-- Service object -->
 		<property name="khachHangBUS" ref="khachHangBUS"/>
 		<property name="accountBUS" ref="accountBUS"/>
+	</bean>
+	
+	<!-- Validator for suggestion form -->
+	<bean name="suggestionValidator" class="qt.bus.validator.SuggestionValidator"/>
+	
+	<!-- add new user's suggestion form -->
+	<bean name="/addSuggestion.html" class="qt.web.user.SuggestionFormController">
+		<property name="sessionForm" value="true"/>
+		<!-- Command used for binding -->
+		<property name="commandName" value="gopY"/>
+		<property name="commandClass" value="qt.dto.GopY"/>
+		<!-- Validator -->
+		<property name="validator" ref="suggestionValidator"/>
+		<!-- Form view -->
+		<property name="formView" value="user/addSuggestion"/>
+		<property name="successView" value="user/addSuggestion"/>
+		
+		<property name="gopYBUS" ref="gopYBUS"/>
+		<property name="trangThaiGopYBUS" ref="trangThaiGopYBUS"/>
+		<property name="khachHangBUS" ref="khachHangBUS"/>
 	</bean>
 </beans>

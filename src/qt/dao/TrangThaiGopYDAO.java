@@ -54,8 +54,15 @@ public class TrangThaiGopYDAO {
 	 * @return Một đối tượng TrangThaiTimKiem. Nếu không tìm thấy trả về null
 	 */
 	public TrangThaiGopY findById(int id) {
+		
 		return (TrangThaiGopY) factory.getCurrentSession().get(
 				TrangThaiGopY.class, id);
+		
+		/*
+		return (TrangThaiGopY) factory.getCurrentSession().createCriteria(
+				TrangThaiGopY.class).add(Restrictions.eq("id", id))
+				.uniqueResult();
+		*/
 	}
 
 	/**
@@ -72,6 +79,7 @@ public class TrangThaiGopYDAO {
 	public TrangThaiGopY makePersistent(TrangThaiGopY t) {
 		factory.getCurrentSession().saveOrUpdate(t);
 		factory.getCurrentSession().flush();
+		
 		return t;
 	}
 

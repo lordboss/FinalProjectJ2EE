@@ -14,8 +14,6 @@ pageEncoding="UTF-8" %>
         <title>Phone Store</title>
         <link href="css/3_col.css" media="all" rel="stylesheet" />
         <script type="text/javascript" src="js/jquery-1.4.2.js"></script>
-        <script type="text/javascript" src="js/changeUserPasswordValidator.js"></script>
-        
         <script type="text/javascript">
         	$(document).ready(function() {
 				$("div#regTitle").click(function(){
@@ -64,66 +62,60 @@ pageEncoding="UTF-8" %>
                 	
                 	<!-- Register Form -->
 					<div class="block01">
-						<div class="blockTitle" id="regTitle">Cập nhật thông tin tài khoản</div>
+						<div class="blockTitle" id="regTitle">Góp ý cho công ty</div>
 						<div class="contentCenter" id="regContainer">
-							<c:if test="${not empty model.status}">
-								<div class="<c:choose><c:when test="${model.success eq '1'}"><c:out value="successInfo"/></c:when><c:otherwise><c:out value="failedInfo"/></c:otherwise></c:choose>">
-									<span class="successInfoText"><c:out value="${model.status}"/>   </span>
-									<c:if test="${model.success eq '1'}">
-										<a href="viewAccount.html">Xem tài khoản</a>
+							<c:if test="${not empty model.isSuccess}">
+								<div class="<c:choose><c:when test="${model.isSuccess eq 'yes'}"><c:out value="successInfo"/></c:when><c:otherwise><c:out value="failedInfo"/></c:otherwise></c:choose>">
+									<c:if test="${model.isSuccess eq 'yes'}">
+										<span class="successInfoText">Cảm ơn bạn đã đóng góp ý kiến cho công ty chúng tôi! </span>
+										<a href="viewSuggestionList.html?aid=xyz">Xem danh sách góp ý của bạn</a>
 									</c:if>
 								</div>
 							</c:if>
-							<spring:nestedPath path="khachHang">
-								<form action="changeUserPassword.html" method="post" onsubmit="return checkForm();" >
-									<table width="100%" bgcolor="f8f8ff" border="0" cellspacing="0" cellpadding="3">
-										<tr>
-											<td align="right" width="20%">Mật khẩu cũ:</td>
-									    	<td width="40%">
-									    		<input class="regInput01" type="password" name="oldPassword" id="oldPassword" /><span class="error"> *</span>
-									    	</td>
-									    	<td width="40%">
-												<span class="error" id="oldPasswordError"></span>
-									    	</td>
-										</tr>
-									    <tr>
-									    	<spring:bind path="pass">
-										    	<td align="right" width="20%">Mật khẩu mới:</td>
-										    	<td width="40%">
-										    		<input class="regInput01" type="password" id="password" name="${status.expression}" /><span class="error"> *</span>
+							<div class="guideInfo">Xin quý khách vui lòng đóng góp các ý kiến chân thành để công ty chúng tôi nâng cao hơn nữa chất lượng dịch vụ</div>
+							<div style="padding: 10px 10px 10px 10px;">
+								<spring:nestedPath path="gopY">
+									<form action="addSuggestion.html" method="post">
+										<table width="100%" bgcolor="f8f8ff" border="0" cellspacing="0" cellpadding="3">
+											<tr>
+												<td colspan="2" align="left" width="20%">Tiêu đề góp ý: <span class="error"> *</span></td>
+											</tr>
+											<tr>
+												<spring:bind path="tieuDe">
+											    	<td width="70%">
+											    		<input class="regInput02" type="text" name="${status.expression}" id="suggestionTitle" value="${status.value}" />
+											    	</td>
+											    	<td width="30%">
+														<span class="error" id="titleError"><c:out value="${status.errorMessage}"/></span>
+											    	</td>
+										    	</spring:bind>
+											</tr>
+											<tr>
+												<td colspan="2" align="left" width="20%">Nội dung góp ý: <span class="error"> *</span></td>
+											</tr>
+										    <tr>
+										    	<spring:bind path="noiDung">
+											    	<td width="70%">
+											    		<textarea class="boxInput" rows="10" cols="100" id="suggestionContent" name="${status.expression}" >${status.value}</textarea>
+											    	</td>
+											    	<td width="30%">
+											    		<c:if test="${status.error}">
+															<span class="error" id="passwordError"><c:out value="${status.errorMessage}"/></span>
+														</c:if>
+											    	</td>
+										    	</spring:bind>
+										    </tr>
+										    <tr>
+										    	<td width="70%" align="right" style="padding-right: 2px;">
+										    		<input type="submit" value="Đồng ý">
 										    	</td>
-										    	<td width="40%">
-										    		<c:if test="${status.error}">
-														<span class="error" id="passwordError"><c:out value="${status.errorMessage}"/></span>
-													</c:if>
-										    	</td>
-									    	</spring:bind>
-									    </tr>
-									    <tr>
-									    	<spring:bind path="pass2">
-										    	<td align="right" width="20%">Xác nhận mật khẩu mới:</td>
-										    	<td width="40%">
-										    		<input class="regInput01" type="password" id="password2" name="${status.expression}" /><span class="error"> *</span>
-										    	</td>
-										    	<td width="40%">
-										    		<c:if test="${status.error}">
-														<span class="error" id="password2Error"><c:out value="${status.errorMessage}"/></span>
-													</c:if>
-										    	</td>
-									    	</spring:bind>
-									    </tr>
-									    <tr>
-									    	<td align="right" width="20%"></td>
-									    	<td width="40%" align="right" style="padding-right: 30px;">
-									    		<a href="viewAccount.html"><input type="button" value="Trở lại"></a>
-									    		<input type="submit" value="Đồng ý" onclick="buoi()">
-									    	</td>
-									    	<td width="40%"></td>
-									    </tr>
-									</table>
-								</form>
-							</spring:nestedPath>
-							<div><span class="error">( * )</span>: Các trường bắt buộc nhập liệu</div>
+										    	<td width="30%"></td>
+										    </tr>
+										</table>
+									</form>
+								</spring:nestedPath>
+							</div>
+							<div style="padding-left: 10px;"><span class="error">( * )</span>: Các trường bắt buộc nhập liệu</div>
 						</div>
 						<div style="clear:both;"></div>
 					</div>
