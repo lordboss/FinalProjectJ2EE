@@ -37,7 +37,7 @@ public class UpdateCartItemController implements Controller {
 		HttpSession session = request.getSession(false);
 
 		if (session == null) {
-			return new ModelAndView(new RedirectView("home.html"));
+			return new ModelAndView(new RedirectView("requiredLogin.html"));
 		}
 
 		int productId = -1;
@@ -48,14 +48,14 @@ public class UpdateCartItemController implements Controller {
 			
 			if (newQuanity <= 0) {
 				logger.error("Invalid item quantity!");
-				return new ModelAndView("user/viewCart");
+				return new ModelAndView(new RedirectView("viewCart.html"));
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
 			logger.error("Can not parse id or quantity parameter! Invalid format!");
 			
 			// im lặng là vàng
-			return new ModelAndView("user/viewCart");
+			return new ModelAndView(new RedirectView("viewCart.html"));
 			//return new ModelAndView("user/cartError", "message", "Số lượng cập nhật không hợp lệ");
 		}
 

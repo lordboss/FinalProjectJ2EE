@@ -11,7 +11,7 @@
 		
 		<!-- Mỗi tin khuyến mãi có nhiều chi tiết tin -->
 		<!-- Mỗi chi tiết tin thuộc về một tin khuyến mãi duy nhất -->
-		<many-to-one cascade="all" class="TinKhuyenMaiDienThoai"
+		<many-to-one class="TinKhuyenMaiDienThoai"
 			fetch="select" lazy="false" name="tinKhuyenMai">
 			<column name="ID_TinKhuyenMaiDienThoai" />
 		</many-to-one>
@@ -20,7 +20,7 @@
 			Mỗi điện thoại có nhiều chi tiết khuyến mãi Mỗi chi tiết khuyến mãi
 			tưng ứng với một điện thoại duy nhất
 		-->
-		<many-to-one cascade="all" class="DienThoai" fetch="select"
+		<many-to-one  class="DienThoai" fetch="select"
 			lazy="false" name="dienThoai">
 			<column name="ID_DienThoai" />
 		</many-to-one>

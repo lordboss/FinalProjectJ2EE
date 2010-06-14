@@ -20,7 +20,7 @@
   <property generated="never" lazy="false" name="xoa" type="boolean">
    <column name="Xoa" not-null="true"/>
   </property>
-  <many-to-one cascade="all" class="LoaiTinTuc" fetch="select"
+  <many-to-one  class="LoaiTinTuc" fetch="select"
    lazy="false" name="loaiTinTuc">
    <column name="ID_LoaiTinTuc"/>
   </many-to-one>

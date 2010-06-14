@@ -1196,6 +1196,21 @@ a img {
 	padding-bottom:10px;
 	clear:both;
 }
+.cartTotal {
+	background-color:#e8f2fe;
+	padding-right:10px;
+	padding-top:5px;
+	padding-bottom:5px;
+	text-align:right;
+	border: 1px solid #b3b3b3;
+	margin-bottom:5px;
+}
+.cartTotalValue {
+	color:Red;
+	font-size:12pt;
+	font-weight:bold;
+	margin-top:5px;
+}
 
 /* user info */
 .userInfoImage {
@@ -1275,4 +1290,27 @@ a img {
 }
 .suggestionInfoRow {
 	background-color:#e8f2fe;
+}
+
+/** 
+ * Bill detail 
+ * 
+ */
+.billDetailPrice {
+    color:#FF0000;
+	font-family:Arial,Times New Roman,Tahoma,Verdana;
+	font-size:8pt;
+	font-weight:bold;
+}
+.billDetailTotalPrice {
+    color:#FF0000;
+	font-family:Arial,Times New Roman,Tahoma,Verdana;
+	font-size:9pt;
+	font-weight:bold;
+}
+.billDetailItemName {
+    color: #0080FF;
+    font-size: 8pt;
+    font-weight: bold;
+    text-decoration: none;
 }

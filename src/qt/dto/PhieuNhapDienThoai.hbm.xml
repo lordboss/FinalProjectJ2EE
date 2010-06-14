@@ -14,13 +14,13 @@
 		</property>
 
 		<!-- Một nhân viên có nhiều phiếu nhập -->
-		<many-to-one cascade="all" class="NhanVien" fetch="select"
+		<many-to-one  class="NhanVien" fetch="select"
 			lazy="false" name="nhanVien">
 			<column name="ID_NhanVien" />
 		</many-to-one>
 
 		<!-- Một nhà cung cấp có nhiều phiếu nhập -->
-		<many-to-one cascade="all" class="NhaCungCap" fetch="select"
+		<many-to-one  class="NhaCungCap" fetch="select"
 			lazy="false" name="nhaCungCap">
 			<column name="ID_NhaCungCap" />
 		</many-to-one>

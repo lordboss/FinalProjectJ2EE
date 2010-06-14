@@ -35,7 +35,7 @@ public class RemoveFromCartController implements Controller {
 		HttpSession session = request.getSession(false);
 
 		if (session == null) {
-			return new ModelAndView(new RedirectView("home.html"));
+			return new ModelAndView(new RedirectView("requiredLogin.html"));
 		}
 
 		int productId = -1;

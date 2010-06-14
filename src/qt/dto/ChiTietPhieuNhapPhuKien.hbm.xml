@@ -11,7 +11,7 @@
 
 		<!-- Một phiếu nhập phụ kiện có nhiều chi tiết nhập -->
 		<!-- Một chi tiết nhập thuộc về một phiếu nhập phụ kiện duy nhất -->
-		<many-to-one cascade="all" class="PhieuNhapPhuKien" fetch="select"
+		<many-to-one  class="PhieuNhapPhuKien" fetch="select"
 			lazy="false" name="phieuNhapPhuKien">
 			<column name="ID_PhieuNhapPhuKien" />
 		</many-to-one>
@@ -20,7 +20,7 @@
 			Một phụ kiện có nhiều chi tiết nhập Mỗi chi tiết nhập ứng với một phụ
 			kiện duy nhất
 		-->
-		<many-to-one cascade="all" class="PhuKien" name="phuKien">
+		<many-to-one  class="PhuKien" name="phuKien">
 			<column name="ID_PhuKien" />
 		</many-to-one>
 		

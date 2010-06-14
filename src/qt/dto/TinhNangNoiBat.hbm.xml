@@ -10,7 +10,7 @@
 		</id>
 		<!-- Một điện thoại có nhiều tính năng nổi bật -->
 		<!-- Một tính năng nỗi bật thuộc về duy nhất một loại điện thoại -->
-		<many-to-one cascade="all" class="DienThoai" fetch="select"
+		<many-to-one class="DienThoai" fetch="select"
 			lazy="false" name="dienThoai">
 			<column name="ID_DienThoai" />
 		</many-to-one>

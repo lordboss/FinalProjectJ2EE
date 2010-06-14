@@ -48,7 +48,7 @@ pageEncoding="UTF-8" %>
                 	
                 	<!-- Register Form -->
 					<div class="block01">
-						<div class="blockTitle" id="regTitle">Cập nhật thông tin tài khoản</div>
+						<div class="blockTitle" id="regTitle">Cập nhật thông tin cá nhân</div>
 						<div class="contentCenter" id="regContainer">
 							<c:if test="${not empty model.status}">
 								<div class="successInfo">

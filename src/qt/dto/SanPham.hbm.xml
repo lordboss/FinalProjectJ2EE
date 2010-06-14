@@ -42,7 +42,7 @@
 			<one-to-many class="ChiTietDonHang" />
 		</set>
 
-		<many-to-one cascade="all" class="TinhTrangSanPham" fetch="select"
+		<many-to-one  class="TinhTrangSanPham" fetch="select"
 			lazy="false" name="tinhTrangSanPham">
 			<column name="ID_TinhTrang" />
 		</many-to-one>
@@ -56,7 +56,7 @@
 		<!-- Inheritance mapping for class DienThoai -->
 		<joined-subclass name="DienThoai" table="DienThoai">
 			<key column="ID_SanPham" not-null="true" />
-			<many-to-one cascade="all" class="HangDienThoai" fetch="select"
+			<many-to-one  class="HangDienThoai" fetch="select"
 				lazy="false" name="hangDienThoai">
 				<column name="ID_HangDienThoai" />
 			</many-to-one>
@@ -132,11 +132,11 @@
 					<column name="BaoRung" />
 				</property>
 			</component>
-			<many-to-one cascade="all" class="KieuDang" fetch="select"
+			<many-to-one  class="KieuDang" fetch="select"
 				lazy="false" name="kieuDang">
 				<column name="ID_KieuDang" />
 			</many-to-one>
-			<many-to-one cascade="all" class="PhongCach" fetch="select"
+			<many-to-one  class="PhongCach" fetch="select"
 				lazy="false" name="phongCach">
 				<column name="ID_PhongCach" />
 			</many-to-one>
@@ -159,7 +159,7 @@
 					<column length="150" name="TheNho" />
 				</property>
 			</component>
-			<many-to-one cascade="all" class="LoaiMang" fetch="select"
+			<many-to-one  class="LoaiMang" fetch="select"
 				lazy="false" name="loaiMang">
 				<column name="ID_LoaiMang" />
 			</many-to-one>
@@ -280,11 +280,11 @@
 					<column name="TrongLuong" />
 				</property>
 			</component>
-			<many-to-one cascade="all" class="HeDieuHanh" fetch="select"
+			<many-to-one  class="HeDieuHanh" fetch="select"
 				lazy="false" name="heDieuHanh">
 				<column name="ID_HeDieuHanh" />
 			</many-to-one>
-			<many-to-one cascade="all" class="DongSanPham" fetch="select"
+			<many-to-one  class="DongSanPham" fetch="select"
 				lazy="false" name="dongSanPham">
 				<column name="ID_DongSanPham" />
 			</many-to-one>
@@ -333,7 +333,7 @@
 		<!-- Inheritance mapping for class PhuKien -->
 		<joined-subclass name="PhuKien" table="PhuKien">
 			<key column="ID_SanPham" not-null="true" />
-			<many-to-one cascade="all" class="LoaiPhuKien" fetch="select"
+			<many-to-one  class="LoaiPhuKien" fetch="select"
 				lazy="false" name="loaiPhuKien">
 				<column name="ID_LoaiPhuKien" />
 			</many-to-one>

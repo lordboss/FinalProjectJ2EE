@@ -86,3 +86,31 @@ function validate(d,m,y) {
     }
     return d > 0 && d <= a[m];
 }
+
+//check for add new bill form
+function checkBillForm() {
+	var d = document.getElementById("dd").value;
+	var m = parseInt(document.getElementById("mm").value) + 1; 	
+	var y = parseInt(document.getElementById("yyyy").value) + 1900;
+	var hour = parseInt(document.getElementById("hour").value);
+	var minute = parseInt(document.getElementById("minute").value);
+	
+	var dateErrorField = document.getElementById("dateRequired");
+	if (!validate(d, m, y)) {
+		dateErrorField.innerText = "Chưa chọn ngày giao hàng";
+		return false;
+	}
+	else {
+    	dateErrorField.innerText = "";
+	}
+
+	var timeErrorField = document.getElementById("timeRequired");
+	if (hour < 0 || minute < 0) {
+		timeErrorField.innerText = "Chưa chọn thời gian";
+		return false;
+	} else {
+		timeErrorField.innerText = "";
+	}
+	
+	return true;
+}

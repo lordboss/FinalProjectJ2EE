@@ -55,7 +55,7 @@ public class LoginController implements Controller {
 
 				String userType = a.getClass().getSimpleName();
 
-				// reset all session variables
+				// remove all session variables
 				Enumeration<String> e = session.getAttributeNames();
 				while (e.hasMoreElements()) {
 					session.removeAttribute((String) e.nextElement());

@@ -106,11 +106,25 @@ pageEncoding="UTF-8" %>
 						                	<div style="clear: both;"></div>
 										</div>
 									</c:forEach>
+									
+									<!-- Total cart's value -->
+									<div class="cartTotal">Tổng cộng: <div class="cartTotalValue"><fmt:formatNumber value="${model.total}" minFractionDigits="0" maxFractionDigits="0"/> VND</div></div>
+									
 								</c:when>
 								<c:otherwise>
-									<div class="notFound">Giỏ hàng hiện tại chưa có sản phẩm nào. Xem danh sách <a style="text-decoration: none;" href="phoneListByBrand.html">điện thoại</a> và <a style="text-decoration: none;" href="accessoryList.html">phụ kiện</a> để thêm sản phẩm vào giỏ hàng</div>
+									<div style="margin-bottom: 10px; text-align: left; padding-left: 5px;font-size: 9pt;">Giỏ hàng hiện tại chưa có sản phẩm nào. Xem danh sách <a style="text-decoration: none;" href="phoneListByBrand.html">điện thoại</a> và <a style="text-decoration: none;" href="accessoryList.html">phụ kiện</a> để thêm sản phẩm vào giỏ hàng</div>
 								</c:otherwise>
 							</c:choose>
+							
+							<!-- Some menu -->
+							<div>
+								<a href="phoneListByBrand.html"><input type="button" value="Thêm điện thoại"></a> 
+								<a href="accessoryList.html"><input type="button" value="Thêm phụ kiện"></a>
+								<c:if test="${! empty sessionScope.cart}">
+									<a href="removeAllCartItems.html"><input type="button" value="Xóa tất cả"></a>
+									<a href="addBill.html"><input type="button" value="Đặt mua"></a>
+								</c:if>
+							</div>
 						</div>
 					</div>
                 </div> <!-- end midlle column -->

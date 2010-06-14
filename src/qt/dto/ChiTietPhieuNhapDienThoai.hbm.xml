@@ -14,14 +14,14 @@
 			duy nhất.
 		-->
 		<!-- Một phiếu nhập điện thoại có nhiều chi tiết nhập điện thoại -->
-		<many-to-one cascade="all" class="PhieuNhapDienThoai"
+		<many-to-one  class="PhieuNhapDienThoai"
 			fetch="select" lazy="false" name="phieuNhapDienThoai">
 			<column name="ID_PhieuNhapDienThoai" />
 		</many-to-one>
 		
 		<!-- Một điện thoại có nhiều chi tiết nhập-->
 		<!--  Một chi tiết nhập ứng với một loại điện thoại -->
-		<many-to-one cascade="all" class="DienThoai" fetch="select"
+		<many-to-one  class="DienThoai" fetch="select"
 			lazy="false" name="dienThoai">
 			<column name="ID_DienThoai" />
 		</many-to-one>

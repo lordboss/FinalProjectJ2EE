@@ -16,14 +16,14 @@
 		</property>
 		
 		<!-- Một sản phẩm có thể có mặt trong nhiều chi tiết đơn hàng -->
-		<many-to-one cascade="all" class="SanPham" fetch="select"
+		<many-to-one class="SanPham" fetch="select"
 			lazy="false" name="sanPham">
 			<column name="ID_SanPham" />
 		</many-to-one>
 		
 		<!-- Một đơn hàng có nhiều chi tiết đơn hàng -->
 		<!-- Một chi tiết đơn hàng thuộc về một đơn hàng duy nhất -->
-		<many-to-one cascade="all" class="DonHang" fetch="select"
+		<many-to-one class="DonHang" fetch="select"
 			lazy="false" name="donHang">
 			<column name="ID_DonHang" />
 		</many-to-one>

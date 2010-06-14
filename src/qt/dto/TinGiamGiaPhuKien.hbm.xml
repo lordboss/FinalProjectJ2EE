@@ -10,7 +10,7 @@
 		</id>
 		
 		<!-- Một phụ kiện có nhiều tin giảm giá -->
-		<many-to-one cascade="all" class="PhuKien" fetch="select"
+		<many-to-one  class="PhuKien" fetch="select"
 			lazy="false" name="phuKien">
 			<column name="ID_PhuKien" />
 		</many-to-one>

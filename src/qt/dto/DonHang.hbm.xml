@@ -34,13 +34,13 @@
 		</property>
 
 		<!-- Một đơn hàng có một loại hình thức thanh toán -->
-		<many-to-one cascade="all" class="HinhThucThanhToan"
+		<many-to-one class="HinhThucThanhToan"
 			fetch="select" lazy="false" name="hinhThucThanhToan">
 			<column name="ID_HinhThucThanhToan" />
 		</many-to-one>
 
 		<!-- Một đơn hàng tại một thời điểm có một trạng thái nhất định -->
-		<many-to-one cascade="all" class="TrangThaiDonHang" fetch="select"
+		<many-to-one class="TrangThaiDonHang" fetch="select"
 			lazy="false" name="trangThai">
 			<column name="ID_TrangThai" />
 		</many-to-one>
@@ -56,7 +56,7 @@
 			Một khách hàng có nhiều đơn hàng. Một đơn hàng thuộc về một khách
 			hàng duy nhất
 		-->
-		<many-to-one cascade="all" class="KhachHang" fetch="select"
+		<many-to-one class="KhachHang" fetch="select"
 			lazy="false" name="khachHang">
 			<column name="ID_KhachHang" />
 		</many-to-one>

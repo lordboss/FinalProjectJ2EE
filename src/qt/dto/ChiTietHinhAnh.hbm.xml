@@ -11,7 +11,7 @@
 		<!--
 			Một hình ảnh thuộc về một loại SanPham Một SanPham có nhiều hình ảnh
 		-->
-		<many-to-one cascade="all" class="SanPham" fetch="select"
+		<many-to-one  class="SanPham" fetch="select"
 			lazy="false" name="sanPham">
 			<column name="ID_SanPham" />
 		</many-to-one>

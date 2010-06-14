@@ -10,13 +10,13 @@
 		</id>
 
 		<!-- Một điện thoại có nhiều nhận xét -->
-		<many-to-one cascade="all" class="DienThoai" fetch="select"
+		<many-to-one  class="DienThoai" fetch="select"
 			lazy="false" name="dienThoai">
 			<column name="ID_DienThoai" />
 		</many-to-one>
 
 		<!-- Một khách hàng có nhiều nhận xét -->
-		<many-to-one cascade="all" class="KhachHang" fetch="select"
+		<many-to-one  class="KhachHang" fetch="select"
 			lazy="false" name="khachHang">
 			<column name="ID_KhachHang" />
 		</many-to-one>

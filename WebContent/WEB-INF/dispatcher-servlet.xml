@@ -507,5 +507,24 @@
 	</bean>
 	
 	<bean name="/requiredLogin.html" class="qt.web.RequiredLoginController"/>
+	<bean name="/removeAllCartItems.html" class="qt.web.user.RemoveAllCartItemsController"/>
 	
+	<bean name="addBillValidator" class="qt.bus.validator.AddBillValidator"/>
+	
+	<!-- add new bill form -->
+	<bean name="/addBill.html" class="qt.web.user.AddBillFormController">
+		<property name="sessionForm" value="true"/>
+		<!-- Command used for binding -->
+		<property name="commandName" value="donHang"/>
+		<property name="commandClass" value="qt.dto.DonHang"/>
+		<!-- Validator -->
+		<property name="validator" ref="addBillValidator"/>
+		<!-- Form view -->
+		<property name="formView" value="user/addBill"/>
+		<property name="successView" value="user/addBill"/>
+		
+		<property name="trangThaiDonHangBUS" ref="trangThaiDonHangBUS"/>
+		<property name="donHangBUS" ref="donHangBUS"/>
+		<property name="khachHangBUS" ref="khachHangBUS"/>
+	</bean>
 </beans>
