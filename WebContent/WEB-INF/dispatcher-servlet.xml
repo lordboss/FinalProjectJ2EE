@@ -527,4 +527,8 @@
 		<property name="donHangBUS" ref="donHangBUS"/>
 		<property name="khachHangBUS" ref="khachHangBUS"/>
 	</bean>
+	
+	<bean name="/viewBill.html" class="qt.web.user.ViewBillController">
+		<property name="donHangBUS" ref="donHangBUS"/>
+	</bean>
 </beans>

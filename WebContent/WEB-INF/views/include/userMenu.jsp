@@ -19,7 +19,7 @@ pageEncoding="UTF-8" %>
     </ul>
     <ul>
         <li>
-            <a href="#">Đơn đặt hàng</a>
+            <a href="viewBill.html">Đơn đặt hàng</a>
         </li>
     </ul>
     <ul>
