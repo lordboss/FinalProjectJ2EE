@@ -182,7 +182,7 @@ pageEncoding="UTF-8" %>
 														    	<td align="right"></td>
 														    	<td width="40%" align="right" style="padding-right: 30px;">
 														    		<c:if test="${(bill.trangThai.id eq 3) or (bill.trangThai.id eq 5)}">
-														    			<a href="deleteBill.html"><input type="button" value="Xóa đơn hàng này"></a>
+														    			<a href="deleteBill.html?id=<c:out value="${bill.id}"/>"><input type="button" value="Xóa đơn hàng này"></a>
 														    		</c:if>
 														    	</td>
 														    </tr>

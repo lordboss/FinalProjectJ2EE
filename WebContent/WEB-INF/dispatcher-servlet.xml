@@ -531,4 +531,8 @@
 	<bean name="/viewBill.html" class="qt.web.user.ViewBillController">
 		<property name="donHangBUS" ref="donHangBUS"/>
 	</bean>
+	
+	<bean name="/deleteBill.html" class="qt.web.user.DeleteBillController">
+		<property name="donHangBUS" ref="donHangBUS"/>
+	</bean>
 </beans>

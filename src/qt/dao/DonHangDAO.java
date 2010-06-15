@@ -179,6 +179,7 @@ public class DonHangDAO {
 	 *            DonHang sẽ bị đánh dấu xóa.
 	 */
 	public void markAsDeleted(DonHang d) {
+		d.setXoa(true);
 		Set<ChiTietDonHang> dsChiTiet = d.getDsChiTietDonHang();
 		for (ChiTietDonHang ct : dsChiTiet) {
 			ct.setXoa(true);
