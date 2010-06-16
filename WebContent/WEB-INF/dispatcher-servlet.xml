@@ -546,4 +546,32 @@
 		<property name="trangThaiDonHangBUS" ref="trangThaiDonHangBUS"/>
 	</bean>
 	<bean name="/updateOneBill.html" class="qt.web.employee.UpdateOneBillController"/>
+	
+	<!-- ============================================================================= -->
+	<!-- Employee -->
+	<!-- ============================================================================= -->
+	<bean name="/viewEmployeeAccount.html" class="qt.web.employee.AccountController">
+		<property name="nhanVienBUS" ref="nhanVienBUS"/>
+	</bean>
+	
+	<bean name="changeEmployeePasswordValidator" class="qt.bus.validator.ChangeEmployeePasswordValidator">
+		<property name="nhanVienBUS" ref="nhanVienBUS"/>
+	</bean>
+	
+	<!-- change employee password form -->
+	<bean name="/changeEmployeePassword.html" class="qt.web.employee.ChangeEmployeePasswordFormController">
+		<property name="sessionForm" value="true"/>
+		<!-- Command used for binding -->
+		<property name="commandName" value="nhanVien"/>
+		<property name="commandClass" value="qt.dto.NhanVien"/>
+		<!-- Validator -->
+		<property name="validator" ref="changeEmployeePasswordValidator"/>
+		<!-- Form view -->
+		<property name="formView" value="employee/changePassword"/>
+		<property name="successView" value="employee/changePassword"/>
+		
+		<!-- Service object -->
+		<property name="nhanVienBUS" ref="nhanVienBUS"/>
+		<property name="accountBUS" ref="accountBUS"/>
+	</bean>
 </beans>

@@ -3,8 +3,8 @@
  */
 package qt.test.dto;
 
-import qt.dto.Account;
 import junit.framework.TestCase;
+import qt.dto.Account;
 
 /**
  * @author tqthe

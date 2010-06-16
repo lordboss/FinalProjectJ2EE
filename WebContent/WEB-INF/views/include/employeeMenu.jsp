@@ -20,7 +20,20 @@ pageEncoding="UTF-8" %>
     </ul>
     <ul>
         <li>
-            <a href="manageBill.html">QUẢN LÝ HÓA ĐƠN</a>
+            <a href="manageBill.html">QUẢN LÝ ĐƠN HÀNG</a>
+        </li>
+    </ul>
+    <ul>
+        <li>
+            <a href="viewEmployeeAccount.html">Tài khoản</a>
+            <ul style="width: 200px;">
+		        <li>
+		            <a href="viewEmployeeAccount.html">XEM TÀI KHOẢN</a>
+		        </li>
+		        <li>
+		            <a href="changeEmployeePassword.html">THAY ĐỔI MẬT KHẨU</a>
+		        </li>
+		    </ul>
         </li>
     </ul>
     <ul>

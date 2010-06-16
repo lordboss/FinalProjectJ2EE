@@ -1,7 +1,7 @@
 /**
  * 
  */
-package qt.web.user;
+package qt.web.employee;
 
 import java.util.Date;
 
@@ -14,8 +14,8 @@ import org.apache.commons.logging.LogFactory;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.Controller;
 
-import qt.bus.KhachHangBUS;
-import qt.dto.KhachHang;
+import qt.bus.NhanVienBUS;
+import qt.dto.NhanVien;
 
 /**
  * @author tqthe
@@ -24,7 +24,7 @@ import qt.dto.KhachHang;
 public class AccountController implements Controller {
 
 	protected final Log logger = LogFactory.getLog(getClass());
-	private KhachHangBUS khachHangBUS; 
+	private NhanVienBUS nhanVienBUS; 
 	
 	@Override
 	public ModelAndView handleRequest(HttpServletRequest request,
@@ -36,7 +36,7 @@ public class AccountController implements Controller {
 		HttpSession session = request.getSession(false);
 
 		if (session == null) {
-			return new ModelAndView("user/accountError", "message", "Lỗi phiên làm việc!");
+			return new ModelAndView("employee/accountError", "message", "Lỗi phiên làm việc!");
 		}
 		
 		int id = -1; 
@@ -48,27 +48,28 @@ public class AccountController implements Controller {
 			logger.error("Can not parse account id! Invalid format!");
 		}
 		
-		// find an Account with given id 
-		KhachHang k = khachHangBUS.findById(id);
+		// find an account with given id 
+		NhanVien e = nhanVienBUS.findById(id); 
 		
-		if (k == null) {
+		if (e == null) {
 			logger.error("Can not find Account with id = " + id);
 		}
 		
-		return new ModelAndView("user/viewAccount", "k", k);
+		return new ModelAndView("employee/viewAccount", "e", e);
 	}
 
 	/**
-	 * @param khachHangBUS the khachHangBUS to set
+	 * @param nhanVienBUS the nhanVienBUS to set
 	 */
-	public void setKhachHangBUS(KhachHangBUS khachHangBUS) {
-		this.khachHangBUS = khachHangBUS;
+	public void setNhanVienBUS(NhanVienBUS nhanVienBUS) {
+		this.nhanVienBUS = nhanVienBUS;
 	}
 
 	/**
-	 * @return the khachHangBUS
+	 * @return the nhanVienBUS
 	 */
-	public KhachHangBUS getKhachHangBUS() {
-		return khachHangBUS;
+	public NhanVienBUS getNhanVienBUS() {
+		return nhanVienBUS;
 	}
+
 }

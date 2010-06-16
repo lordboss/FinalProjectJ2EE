@@ -6,9 +6,9 @@ package qt.test.dto;
 import java.util.HashSet;
 import java.util.Set;
 
+import junit.framework.TestCase;
 import qt.dto.GopY;
 import qt.dto.TrangThaiGopY;
-import junit.framework.TestCase;
 
 /**
  * @author tqthe
