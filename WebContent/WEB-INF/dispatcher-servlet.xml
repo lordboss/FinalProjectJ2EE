@@ -507,6 +507,7 @@
 	</bean>
 	
 	<bean name="/requiredLogin.html" class="qt.web.RequiredLoginController"/>
+	<bean name="/employee/requiredLogin.html" class="qt.web.RequiredLoginController"/>
 	<bean name="/removeAllCartItems.html" class="qt.web.user.RemoveAllCartItemsController"/>
 	
 	<bean name="addBillValidator" class="qt.bus.validator.AddBillValidator"/>
@@ -535,4 +536,14 @@
 	<bean name="/deleteBill.html" class="qt.web.user.DeleteBillController">
 		<property name="donHangBUS" ref="donHangBUS"/>
 	</bean>
+	
+	<bean name="/manageBill.html" class="qt.web.employee.ViewBillController">
+		<property name="donHangBUS" ref="donHangBUS"/>
+	</bean>
+	
+	<bean name="/updateBillStatus.html" class="qt.web.employee.UpdateBillStatusController">
+		<property name="donHangBUS" ref="donHangBUS"/>
+		<property name="trangThaiDonHangBUS" ref="trangThaiDonHangBUS"/>
+	</bean>
+	<bean name="/updateOneBill.html" class="qt.web.employee.UpdateOneBillController"/>
 </beans>

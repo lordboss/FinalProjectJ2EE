@@ -66,6 +66,10 @@ public class LoginController implements Controller {
 				session.setAttribute("username", username);
 				session.setAttribute("isSuccess", "Y");
 				
+				logger.info(session.getAttribute("accountId"));
+				logger.info(session.getAttribute("userType"));
+				logger.info(session.getAttribute("username"));
+				
 				view = "home.html";
 			} else {
 				// failed

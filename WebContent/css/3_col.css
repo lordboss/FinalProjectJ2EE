@@ -1396,3 +1396,28 @@ a img {
 	display:none;
 	margin-bottom:10px;
 }
+.billEditStatus {
+	text-align:center;	
+}
+.billEditForm {
+	padding:3px 3px 3px 3px;
+	font-family: Arial, Times New Roman, Tahoma, Verdana;
+    font-size: 9pt;
+	border: 1px solid #c8c8c8;
+	background-color:#ffffe1;
+}
+.billUpdateSuccess {
+	background-color:#ddffcc;
+	padding:3px 3px 3px 3px;
+	text-align:center;
+}
+.billUpdateSuccess a {
+	text-decoration:none;
+	color:red;
+}
+.billUpdateFail {
+	background-color:#dc6c15;
+	padding:3px 3px 3px 3px;
+	text-align:center;
+	color:white;
+}
