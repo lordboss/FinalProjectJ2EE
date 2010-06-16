@@ -103,6 +103,10 @@
 				name="soDienThoai" type="string">
 				<column name="DienThoai" not-null="true" />
 			</property>
+			<property generated="never" lazy="false"
+				name="luong" type="double">
+				<column name="Luong" not-null="true" />
+			</property>
 
 			<!-- Một nhân viên có nhiều phiếu nhập điện thoại -->
 			<set cascade="all" inverse="true" fetch="select" lazy="false"
@@ -138,6 +142,10 @@
 				name="soDienThoai" type="string">
 				<column name="DienThoai" not-null="true" />
 			</property>
+			<property generated="never" lazy="false" 
+				name="luong" type="double">
+				<column name="Luong" not-null="true" />
+			</property>
 		</joined-subclass>
 
 
@@ -158,6 +166,10 @@
 			<property generated="never" lazy="false" length="20"
 				name="soDienThoai" type="string">
 				<column name="DienThoai" not-null="true" />
+			</property>
+			<property generated="never" lazy="false"
+				name="luong" type="double">
+				<column name="Luong" not-null="true" />
 			</property>
 		</joined-subclass>
 	</class>

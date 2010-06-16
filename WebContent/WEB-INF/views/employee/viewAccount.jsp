@@ -64,6 +64,10 @@ pageEncoding="UTF-8" %>
 														<td><c:out value="${e.ho}"/> <c:out value="${e.dem}"/> <c:out value="${e.ten}"/></td>
 													</tr>
 													<tr  class="userInfoRow">
+														<td>CMND:</td>
+														<td><c:out value="${e.cmnd}"/></td>
+													</tr>
+													<tr  class="userInfoRow">
 														<td>Ngày sinh:</td>
 														<td>
 															<c:choose>
@@ -97,6 +101,14 @@ pageEncoding="UTF-8" %>
 													<tr  class="userInfoRow">
 														<td>Email:</td>
 														<td><c:out value="${e.email}"/></td>
+													</tr>
+													<tr  class="userInfoRow">
+														<td>Điện thoại:</td>
+														<td><c:out value="${e.soDienThoai}"/></td>
+													</tr>
+													<tr  class="userInfoRow">
+														<td>Lương:</td>
+														<td><fmt:formatNumber value="${e.luong}" minFractionDigits="0" maxFractionDigits="0"/> USD</td>
 													</tr>
 												</tbody>
 											</table>

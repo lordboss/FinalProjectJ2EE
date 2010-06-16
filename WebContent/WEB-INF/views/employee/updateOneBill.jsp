@@ -101,7 +101,12 @@ pageEncoding="UTF-8" %>
 												</div>
 												<c:if test="${model.isSuccess eq '1'}">
 													<div class="billUpdateSuccess">
-														Cập nhật thành công <br/><a href="manageBill.html">Xem danh sách đơn hàng</a>
+														Cập nhật thành công 
+														<br/>
+														<%-- 
+														<a href="manageBill.html">Xem danh sách đơn hàng</a>
+														--%>
+														<a href="manageBillPaging.html">Xem danh sách đơn hàng</a>
 													</div>
 												</c:if>
 												<c:if test="${model.isSuccess eq '0'}">

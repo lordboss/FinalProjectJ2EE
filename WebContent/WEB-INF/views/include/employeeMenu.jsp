@@ -20,7 +20,7 @@ pageEncoding="UTF-8" %>
     </ul>
     <ul>
         <li>
-            <a href="manageBill.html">QUẢN LÝ ĐƠN HÀNG</a>
+            <a href="manageBillPaging.html">QUẢN LÝ ĐƠN HÀNG</a>
         </li>
     </ul>
     <ul>

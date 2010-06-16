@@ -537,7 +537,14 @@
 		<property name="donHangBUS" ref="donHangBUS"/>
 	</bean>
 	
+	<!-- ============================================================================= -->
+	<!-- Employee -->
+	<!-- ============================================================================= -->
 	<bean name="/manageBill.html" class="qt.web.employee.ViewBillController">
+		<property name="donHangBUS" ref="donHangBUS"/>
+	</bean>
+	
+	<bean name="/manageBillPaging.html" class="qt.web.employee.ViewBillWithPagingController">
 		<property name="donHangBUS" ref="donHangBUS"/>
 	</bean>
 	
@@ -547,9 +554,7 @@
 	</bean>
 	<bean name="/updateOneBill.html" class="qt.web.employee.UpdateOneBillController"/>
 	
-	<!-- ============================================================================= -->
-	<!-- Employee -->
-	<!-- ============================================================================= -->
+	
 	<bean name="/viewEmployeeAccount.html" class="qt.web.employee.AccountController">
 		<property name="nhanVienBUS" ref="nhanVienBUS"/>
 	</bean>
