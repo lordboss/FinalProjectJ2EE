@@ -24,6 +24,15 @@ pageEncoding="UTF-8" %>
         </li>
     </ul>
     <ul>
+    	<li>
+    		<a>QUẢN LÝ</a>
+	    	<ul style="width: 200px;">
+	    		<li><a href="manageNews.html">QUẢN LÝ TIN TỨC</a></li>
+	    		<li><a href="manageSuggestion.html">QUẢN LÝ GÓP Ý</a></li>
+	    	</ul>
+    	</li>
+    </ul>
+    <ul>
         <li>
             <a href="viewEmployeeAccount.html">Tài khoản</a>
             <ul style="width: 200px;">

@@ -584,4 +584,14 @@
 	<bean name="/setVisibility.html" class="qt.web.employee.ajax.SetVisibilityProductController">
 		<property name="sanPhamBUS" ref="sanPhamBUS"/>
 	</bean>
+	
+	<bean name="/manageSuggestion.html" class="qt.web.employee.ViewSugesstionController">
+		<property name="gopYBUS" ref="gopYBUS"/>
+	</bean>
+	
+	<!-- Ajax -->
+	<bean name="/setSuggestionStatus.html" class="qt.web.employee.ajax.SetSuggestionStatusController">
+		<property name="gopYBUS" ref="gopYBUS"/>
+		<property name="trangThaiGopYBUS" ref="trangThaiGopYBUS"/>
+	</bean>
 </beans>

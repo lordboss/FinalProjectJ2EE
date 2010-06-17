@@ -5,7 +5,7 @@ pageEncoding="UTF-8" %>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 
 <%-- Required login to view this page --%>
-<%@ include file="/WEB-INF/views/user/requiredLogin.jsp" %>
+<%@ include file="/WEB-INF/views/employee/requiredLogin.jsp" %>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 
@@ -15,12 +15,18 @@ pageEncoding="UTF-8" %>
         <title>Phone Store</title>
         <link href="css/3_col.css" media="all" rel="stylesheet" />
         <script type="text/javascript" src="js/jquery-1.4.2.js"></script>
+        <script type="text/javascript" src="js/suggestionStatus.js"></script>
         <script type="text/javascript">
         	$(document).ready(function() {
 				$("div#regTitle").click(function(){
 					$("div#regContainer").toggle("fast");
 				});
 			});
+
+			function toggleEditForm(id) {
+				var s1 = "div#edit" + id;
+				$(s1).toggle("fast");
+			}
         </script>
     </head>
     <body>
@@ -44,15 +50,21 @@ pageEncoding="UTF-8" %>
                 	
                 	<!-- Suggestion List -->
 					<div class="block01">
-						<div class="blockTitle" id="regTitle">Danh sách các góp ý của bạn</div>
+						<div class="blockTitle" id="regTitle">Danh sách các góp ý</div>
 						<div class="contentCenter" id="regContainer">
 							<c:choose>
-								<c:when test="${fn:length(model) > 0}">
-									<c:forEach var="g" items="${model}" varStatus="loop">
+								<c:when test="${not empty model}">
+									<c:forEach var="g" items="${model.pageList}" varStatus="loop">
 										<div class="suggestionBox">
 											<table>
 												<tbody>
 													<tr><td colspan="2" style="font-weight: bold"><c:out value="${loop.count}"/></td></tr>
+													<tr class="suggestionInfoRow">
+														<td>Người gởi:</td>
+														<td>
+															<c:out value="${g.khachHang.username}"/>
+														</td>
+													</tr>
 													<tr class="suggestionInfoRow">
 														<td>Ngày tạo:</td>
 														<td>
@@ -72,14 +84,58 @@ pageEncoding="UTF-8" %>
 													<tr class="suggestionInfoRow">
 														<td>Trạng thái:</td>
 														<td>
-															<c:out value="${g.trangThaiGopY.trangThai}"/>
+															<span id="v<c:out value="${g.id}"/>"><b><c:out value="${g.trangThaiGopY.trangThai}"/></b></span>
+															<img src="img/icon/edit.png" width="24" height="24" align="middle" onclick="toggleEditForm(<c:out value="${g.id}"/>)" onmouseover="this.style.cursor='pointer'" title="Cập nhật trạng thái góp ý"></img>
 														</td>
 													</tr>
 												</tbody>
 											</table>
+											<!-- Edit suggestion status -->
+											<div id="edit<c:out value="${g.id}"/>" class="suggestionStatusEdit" style="display: none;">
+												<div style="font-weight: bold;color: green">Cập nhật trạng thái góp ý</div>
+												<div>
+													<table>
+														<tr>
+															<td>
+																<select id="newStatus<c:out value="${g.id}"/>" name="newStatus<c:out value="${g.id}"/>">
+																	<option value="1" <c:if test="${g.trangThaiGopY.id eq 1}">selected</c:if>>Chưa đọc</option>
+																	<option value="2" <c:if test="${g.trangThaiGopY.id eq 2}">selected</c:if>>Đã đọc</option>
+																	<option value="3" <c:if test="${g.trangThaiGopY.id eq 3}">selected</c:if>>Đã giải quyết</option>
+																</select>
+															</td>
+															<td>
+																<input type="submit" value="Cập nhật" onclick="setStatus('setSuggestionStatus.html?id=<c:out value="${g.id}"/>', <c:out value="${g.id}"/>)">
+															</td>
+														</tr>
+													</table>
+												</div>
+											</div>
 										</div>
 									</c:forEach>
+									
+									<!-- Paging content -->
+									<div class="paging">
+										<a href="?page=first"><b>First</b></a>
+										<c:if test="${!model.firstPage}">
+											<a href="?page=prev">&lt;&lt; Prev</a>
+										</c:if> 
+										<c:forEach var="currentPage" begin="${model.firstLinkedPage}" end="${model.lastLinkedPage}">
+											<c:choose>
+												<c:when test="${currentPage == model.page}">
+													<b><c:out value="${currentPage + 1}"/></b>
+												</c:when>
+												<c:otherwise>
+													<a href="?page=<c:url value="${currentPage}"></c:url>"><c:out value="${currentPage+1}"/></a>
+												</c:otherwise>
+											</c:choose>
+										</c:forEach>
+										<c:if test="${!model.lastPage}">
+											<a href="?page=next">Next &gt;&gt;</a>
+										</c:if>
+										<a href="?page=last">Last</a>
+									</div>
 								</c:when>
+								
 								<c:otherwise>
 									<div class="notFound">Danh sách góp ý còn trống</div>
 								</c:otherwise>

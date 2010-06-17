@@ -1429,4 +1429,14 @@ a img {
  */
 .employeeTaskBox {
 	margin-top:3px;
+	margin-bottom: 3px;
+}
+
+.suggestionStatusEdit {
+	width:190px;
+	padding:3px 3px 3px 3px;
+	font-family: Arial, Times New Roman, Tahoma, Verdana;
+    font-size: 9pt;
+	border: 1px solid #c8c8c8;
+	background-color:#ffffe1;
 }
