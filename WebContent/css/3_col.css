@@ -618,7 +618,8 @@ table tbody tr td a:hover {
     width: 24%;
     border-bottom: 1px solid #DDDDDD;
 	border-left:1px solid #DDDDDD;
-    height: 150px;
+    /*height: 150px;*/
+	height: auto;
 	text-align:center;
 }
 .itemImageAndName {
@@ -638,7 +639,8 @@ table tbody tr td a:hover {
     width: 24%;
     border-bottom: 1px solid #DDDDDD;
     border-left: 1px solid #DDDDDD;
-    height: 150px;
+    /*height: 150px;*/
+	height: auto;
 	text-align:center;
 }
 
@@ -1420,4 +1422,11 @@ a img {
 	padding:3px 3px 3px 3px;
 	text-align:center;
 	color:white;
+}
+
+/** Employee menu 
+ * 
+ */
+.employeeTaskBox {
+	margin-top:3px;
 }

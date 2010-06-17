@@ -22,6 +22,9 @@
 		<property generated="never" lazy="false" name="baoHanh" type="int">
 			<column name="BaoHanh" />
 		</property>
+		<property generated="never" lazy="false" name="hienThi" type="boolean">
+			<column name="HienThi" />
+		</property>
 		<property generated="never" lazy="false" name="xoa" type="boolean">
 			<column name="Xoa" />
 		</property>

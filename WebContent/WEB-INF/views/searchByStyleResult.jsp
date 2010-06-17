@@ -11,6 +11,7 @@ pageEncoding="UTF-8" %>
         <title>Phone Store</title>
         <link href="css/3_col.css" media="all" rel="stylesheet" />
         <script type="text/javascript" src="js/jquery-1.4.2.js"></script>
+        <script type="text/javascript" src="js/productVisibility.js"></script>
         <script type="text/javascript">
         	$(document).ready(function() {
 				$("div#listTitle").click(function(){
@@ -45,26 +46,46 @@ pageEncoding="UTF-8" %>
 							<c:choose>
 								<c:when test="${fn:length(model.result) > 0}">
 									<c:forEach var="p" items="${model.result}" varStatus="loop">
-										<div class="<c:choose><c:when test="${ loop.index eq 0 }"><c:out value="itemLeft"/></c:when><c:otherwise><c:out value="itemCenter"/></c:otherwise></c:choose>">
-											<!-- New model or not -->
-											<c:choose>
-												<c:when test="${p.tinhTrangSanPham.id eq 3}">
-													<div class="isNewModel"></div>
-												</c:when>
-												<c:otherwise>
-													<div class="isNotNewModel"></div>
-												</c:otherwise>
-											</c:choose>
-											<!-- Image and Name -->
-											<div class="itemImageAndName">
-												<div class="itemImage">
-													<a href="phoneDetails.html?id=<c:out value="${ p.id }"/>" ><img src="img/dienthoai/<c:out value="${p.hinhAnh}"/>" width="50px" height="75px"/></a>
+										<c:set var="v" value="${true}"/>
+										<c:if test="${(p.hienThi eq false) and ((empty sessionScope.userType) or (sessionScope.userType eq 'KhachHang'))}">
+											<c:set var="v" value="${false}"/>
+										</c:if>
+										<c:if test="${v eq true}">
+											<div class="<c:choose><c:when test="${ loop.index eq 0 }"><c:out value="itemLeft"/></c:when><c:otherwise><c:out value="itemCenter"/></c:otherwise></c:choose>">
+												<!-- New model or not -->
+												<c:choose>
+													<c:when test="${p.tinhTrangSanPham.id eq 3}">
+														<div class="isNewModel"></div>
+													</c:when>
+													<c:otherwise>
+														<div class="isNotNewModel"></div>
+													</c:otherwise>
+												</c:choose>
+												<!-- Image and Name -->
+												<div class="itemImageAndName">
+													<div class="itemImage">
+														<a href="phoneDetails.html?id=<c:out value="${ p.id }"/>" ><img src="img/dienthoai/<c:out value="${p.hinhAnh}"/>" width="50px" height="75px"/></a>
+													</div>
+													<div class="itemName"><a href="phoneDetails.html?id=<c:out value="${ p.id }"/>"><c:out value="${p.ten}"/></a></div>
 												</div>
-												<div class="itemName"><a href="phoneDetails.html?id=<c:out value="${ p.id }"/>"><c:out value="${p.ten}"/></a></div>
+												<!-- Price -->
+												<div class="itemPrice"><fmt:formatNumber value="${p.giaHienHanh}" minFractionDigits="0" maxFractionDigits="0"/> VND</div>
+												
+												<!-- Function for employees -->
+												<c:if test="${(sessionScope.userType eq 'NhanVien') or (sessionScope.userType eq 'NhanVienQuanLy')}">
+													<div class="employeeTaskBox">
+													
+														<input type="button" value="Cập nhật"/>
+														 
+														<c:set var="v" value="Hiển thị"/>
+														<c:if test="${p.hienThi eq true}">
+															<c:set var="v" value="Ẩn"/>
+														</c:if>
+														<input id="<c:out value="v${p.id}"/>" type="button" value="${v}" onclick="setVisibility('setVisibility.html?pid=${p.id}', ${p.id})"/>
+													</div>
+												</c:if>
 											</div>
-											<!-- Price -->
-											<div class="itemPrice"><fmt:formatNumber value="${p.giaHienHanh}" minFractionDigits="0" maxFractionDigits="0"/> VND</div>
-										</div>
+										</c:if>
 									</c:forEach>
 								</c:when>
 								<c:otherwise>

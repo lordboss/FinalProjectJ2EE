@@ -1,6 +1,6 @@
 package qt.dto;
 
-// Generated Jun 17, 2010 12:35:19 AM by Hibernate Tools 3.3.0.GA
+// Generated Jun 17, 2010 10:03:17 PM by Hibernate Tools 3.3.0.GA
 
 import java.util.Date;
 

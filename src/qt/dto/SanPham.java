@@ -1,6 +1,6 @@
 package qt.dto;
 
-// Generated Jun 17, 2010 12:35:19 AM by Hibernate Tools 3.3.0.GA
+// Generated Jun 17, 2010 10:03:17 PM by Hibernate Tools 3.3.0.GA
 
 import java.util.HashSet;
 import java.util.Set;
@@ -15,6 +15,7 @@ public class SanPham implements java.io.Serializable {
 	private double giaNhap;
 	private double giaHienHanh;
 	private int baoHanh;
+	private boolean hienThi;
 	private boolean xoa;
 	private String hinhAnh;
 	private Set<NhaCungCap> dsNhaCungCap = new HashSet<NhaCungCap>(0);
@@ -33,13 +34,14 @@ public class SanPham implements java.io.Serializable {
 	}
 
 	public SanPham(String ten, double giaNhap, double giaHienHanh, int baoHanh,
-			boolean xoa, String hinhAnh, Set<NhaCungCap> dsNhaCungCap,
-			Set<ChiTietDonHang> dsChiTietDonHang,
+			boolean hienThi, boolean xoa, String hinhAnh,
+			Set<NhaCungCap> dsNhaCungCap, Set<ChiTietDonHang> dsChiTietDonHang,
 			TinhTrangSanPham tinhTrangSanPham, Set<ChiTietHinhAnh> dsHinhAnh) {
 		this.ten = ten;
 		this.giaNhap = giaNhap;
 		this.giaHienHanh = giaHienHanh;
 		this.baoHanh = baoHanh;
+		this.hienThi = hienThi;
 		this.xoa = xoa;
 		this.hinhAnh = hinhAnh;
 		this.dsNhaCungCap = dsNhaCungCap;
@@ -86,6 +88,14 @@ public class SanPham implements java.io.Serializable {
 
 	public void setBaoHanh(int baoHanh) {
 		this.baoHanh = baoHanh;
+	}
+
+	public boolean isHienThi() {
+		return this.hienThi;
+	}
+
+	public void setHienThi(boolean hienThi) {
+		this.hienThi = hienThi;
 	}
 
 	public boolean isXoa() {

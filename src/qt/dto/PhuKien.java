@@ -1,6 +1,6 @@
 package qt.dto;
 
-// Generated Jun 17, 2010 12:35:19 AM by Hibernate Tools 3.3.0.GA
+// Generated Jun 17, 2010 10:03:17 PM by Hibernate Tools 3.3.0.GA
 
 import java.util.HashSet;
 import java.util.Set;
@@ -30,15 +30,15 @@ public class PhuKien extends qt.dto.SanPham implements java.io.Serializable {
 	}
 
 	public PhuKien(String ten, double giaNhap, double giaHienHanh, int baoHanh,
-			boolean xoa, String hinhAnh, Set<NhaCungCap> dsNhaCungCap,
-			Set<ChiTietDonHang> dsChiTietDonHang,
+			boolean hienThi, boolean xoa, String hinhAnh,
+			Set<NhaCungCap> dsNhaCungCap, Set<ChiTietDonHang> dsChiTietDonHang,
 			TinhTrangSanPham tinhTrangSanPham, Set<ChiTietHinhAnh> dsHinhAnh,
 			LoaiPhuKien loaiPhuKien, String mauSac, String tinhNang,
 			String huongDanSuDung, Set<DienThoai> dsDienThoaiTuongThich,
 			Set<ChiTietPhieuNhapPhuKien> dsChiTietNhapPhuKien,
 			Set<TinGiamGiaPhuKien> dsTinGiamGiaPhuKien) {
-		super(ten, giaNhap, giaHienHanh, baoHanh, xoa, hinhAnh, dsNhaCungCap,
-				dsChiTietDonHang, tinhTrangSanPham, dsHinhAnh);
+		super(ten, giaNhap, giaHienHanh, baoHanh, hienThi, xoa, hinhAnh,
+				dsNhaCungCap, dsChiTietDonHang, tinhTrangSanPham, dsHinhAnh);
 		this.loaiPhuKien = loaiPhuKien;
 		this.mauSac = mauSac;
 		this.tinhNang = tinhNang;
