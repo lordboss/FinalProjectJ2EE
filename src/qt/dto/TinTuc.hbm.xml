@@ -11,6 +11,9 @@
   <property generated="never" lazy="false" name="ngayDang" type="timestamp">
    <column name="NgayDang" not-null="true"/>
   </property>
+  <property generated="never" lazy="false" length="250" name="tieuDe" type="string">
+   <column name="TieuDe" not-null="true"/>
+  </property>
   <property generated="never" lazy="false" length="2000" name="noiDung" type="string">
    <column name="NoiDung" not-null="true"/>
   </property>

@@ -580,7 +580,7 @@
 		<property name="accountBUS" ref="accountBUS"/>
 	</bean>
 	
-	<!-- Ajax -->
+	<!-- Ajax: set product visibility -->
 	<bean name="/setVisibility.html" class="qt.web.employee.ajax.SetVisibilityProductController">
 		<property name="sanPhamBUS" ref="sanPhamBUS"/>
 	</bean>
@@ -589,9 +589,62 @@
 		<property name="gopYBUS" ref="gopYBUS"/>
 	</bean>
 	
-	<!-- Ajax -->
+	<!-- Ajax: set suggestion status -->
 	<bean name="/setSuggestionStatus.html" class="qt.web.employee.ajax.SetSuggestionStatusController">
 		<property name="gopYBUS" ref="gopYBUS"/>
 		<property name="trangThaiGopYBUS" ref="trangThaiGopYBUS"/>
 	</bean>
+	
+	<bean name="/manageNews.html" class="qt.web.employee.ViewNewsController">
+		<property name="tinTucBUS" ref="tinTucBUS"/>
+	</bean>
+	
+	<!-- Ajax: set news type -->
+	<bean name="/setNewsType.html" class="qt.web.employee.ajax.SetNewsTypeController">
+		<property name="loaiTinTucBUS" ref="loaiTinTucBUS"/>
+		<property name="tinTucBUS" ref="tinTucBUS"/>
+	</bean>
+	
+	<!-- Ajax: set news visibility -->
+	<bean name="/setNewsVisibility.html" class="qt.web.employee.ajax.SetVisibilityNewsController">
+		<property name="tinTucBUS" ref="tinTucBUS"/>
+	</bean>
+	
+	<bean name="/deleteNews.html" class="qt.web.employee.DeleteNewsController">
+		<property name="tinTucBUS" ref="tinTucBUS"/>
+	</bean>
+	
+	<!-- Update news validator -->
+	<bean name="/updateNewsValidator" class="qt.bus.validator.UpdateNewsValidator"/>
+	
+	<!-- update news form -->
+	<bean name="/updateNews.html" class="qt.web.employee.UpdateNewsFormController">
+		<property name="sessionForm" value="true"/>
+		<!-- Command used for binding -->
+		<property name="commandName" value="tinTuc"/>
+		<property name="commandClass" value="qt.dto.TinTuc"/>
+		<!-- Validator -->
+		<property name="validator" ref="/updateNewsValidator"/>
+		<!-- Form view -->
+		<property name="formView" value="employee/updateNews"/>
+		<property name="successView" value="employee/updateNews"/>
+		<!-- Service object -->
+		<property name="tinTucBUS" ref="tinTucBUS"/>
+		<property name="loaiTinTucBUS" ref="loaiTinTucBUS"/>
+	</bean>	
+	
+	<!-- update news form -->
+	<bean name="/addNews.html" class="qt.web.employee.AddNewsFormController">
+		<property name="sessionForm" value="true"/>
+		<!-- Command used for binding -->
+		<property name="commandName" value="tinTuc"/>
+		<property name="commandClass" value="qt.dto.TinTuc"/>
+		<!-- Validator -->
+		<property name="validator" ref="/updateNewsValidator"/>
+		<!-- Form view -->
+		<property name="formView" value="employee/addNews"/>
+		<property name="successView" value="employee/addNews"/>
+		<!-- Service object -->
+		<property name="tinTucBUS" ref="tinTucBUS"/>
+	</bean>	
 </beans>

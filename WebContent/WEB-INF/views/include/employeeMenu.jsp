@@ -27,7 +27,13 @@ pageEncoding="UTF-8" %>
     	<li>
     		<a>QUẢN LÝ</a>
 	    	<ul style="width: 200px;">
-	    		<li><a href="manageNews.html">QUẢN LÝ TIN TỨC</a></li>
+	    		<li>
+	    			<a href="manageNews.html">QUẢN LÝ TIN TỨC</a>
+	    			<ul style="width: 200px;">
+	    				<li><a href="addNews.html">THÊM TIN TỨC</a></li>
+	    				<li><a href="manageNews.html">DANH SÁCH TIN TỨC</a></li>
+	    			</ul>
+	    		</li>
 	    		<li><a href="manageSuggestion.html">QUẢN LÝ GÓP Ý</a></li>
 	    	</ul>
     	</li>

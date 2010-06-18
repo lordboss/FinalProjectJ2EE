@@ -36,7 +36,7 @@ public class PrintDsTinTuc {
 	}
 
 	private static void printTinTuc(TinTuc t) {
-		System.out.println("+ Id: " + t.getId() + "; Nôi dung: "
+		System.out.println("+ Id: " + t.getId() + "; Ngày đăng: " + t.getNgayDang() + "; Nôi dung: "
 				+ t.getNoiDung() + "; Loại tin: "
 				+ t.getLoaiTinTuc().getLoaiTin());
 	}

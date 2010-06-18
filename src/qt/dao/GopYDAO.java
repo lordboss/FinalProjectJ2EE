@@ -6,6 +6,7 @@ package qt.dao;
 import java.util.List;
 
 import org.hibernate.SessionFactory;
+import org.hibernate.criterion.Order;
 import org.hibernate.criterion.Restrictions;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -42,8 +43,9 @@ public class GopYDAO {
 	 */
 	@SuppressWarnings("unchecked")
 	public List<GopY> findAll() {
-		return factory.getCurrentSession().createCriteria(GopY.class).add(
-				Restrictions.eq("xoa", false)).list();
+		return factory.getCurrentSession().createCriteria(GopY.class).addOrder(
+				Order.desc("ngayTao")).add(Restrictions.eq("xoa", false))
+				.list();
 	}
 
 	/**

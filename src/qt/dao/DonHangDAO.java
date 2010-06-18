@@ -9,6 +9,7 @@ import java.util.Set;
 
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
+import org.hibernate.criterion.Order;
 import org.hibernate.criterion.Restrictions;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -294,7 +295,7 @@ public class DonHangDAO {
 	@SuppressWarnings("unchecked")
 	public List<DonHang> findAll() {
 		return factory.getCurrentSession().createCriteria(DonHang.class).add(
-				Restrictions.eq("xoa", false)).list();
+				Restrictions.eq("xoa", false)).addOrder(Order.desc("ngayTao")).list();
 	}
 
 }

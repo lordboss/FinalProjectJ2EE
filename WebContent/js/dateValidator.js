@@ -78,6 +78,21 @@ function checkForm() {
 	return true;
 }
 
+//check for input date
+function checkForm02() {
+	var d = document.getElementById("dd").value;
+	var m = parseInt(document.getElementById("mm").value) + 1; 	
+	var y = parseInt(document.getElementById("yyyy").value) + 1900;
+	
+	var errorField = document.getElementById("dateRequired");
+	if (!validate(d, m, y)) {
+		errorField.innerText = "Chưa chọn ngày đăng tin";
+		return false;
+	}
+	errorField.innerText = "";
+	return true;
+}
+
 function validate(d,m,y) {
 	if (y <= 0 || m < 0) return false;
 	

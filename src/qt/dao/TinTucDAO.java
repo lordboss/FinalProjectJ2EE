@@ -7,6 +7,8 @@ import java.util.Date;
 import java.util.List;
 
 import org.hibernate.SessionFactory;
+import org.hibernate.criterion.Order;
+import org.hibernate.criterion.Restrictions;
 import org.springframework.transaction.annotation.Transactional;
 
 import qt.dto.TinTuc;
@@ -43,7 +45,8 @@ public class TinTucDAO {
 	 */
 	@SuppressWarnings("unchecked")
 	public List<TinTuc> findAll() {
-		return factory.getCurrentSession().createCriteria(TinTuc.class).list();
+		return factory.getCurrentSession().createCriteria(TinTuc.class).add(
+				Restrictions.eq("xoa", false)).addOrder(Order.desc("ngayDang")).list();
 	}
 
 	/**
@@ -54,7 +57,8 @@ public class TinTucDAO {
 	 * @return Một TinTuc hoặc null nếu không tìm thấy
 	 */
 	public TinTuc findById(int id) {
-		return (TinTuc) factory.getCurrentSession().get(TinTuc.class, id);
+		TinTuc t =  (TinTuc) factory.getCurrentSession().get(TinTuc.class, id);
+		return t.isXoa() == false ? t : null;
 	}
 
 	/**
@@ -66,9 +70,11 @@ public class TinTucDAO {
 	 */
 	@SuppressWarnings("unchecked")
 	public List<TinTuc> findByLoaiTinTuc(int idLoaiTinTuc) {
-		return factory.getCurrentSession().createQuery(
-				"from TinTuc t where t.loaiGopY.id = :id").setInteger("id",
-				idLoaiTinTuc).list();
+		return factory
+				.getCurrentSession()
+				.createQuery(
+						"from TinTuc t where t.loaiGopY.id = :id and t.xoa = false")
+				.setInteger("id", idLoaiTinTuc).list();
 	}
 
 	public List<TinTuc> findByNgayDang(Date dFrom, Date dTo) {
@@ -112,8 +118,10 @@ public class TinTucDAO {
 	 *            TinTuc bị đánh dấu xóa
 	 */
 	public void markAsDeleted(TinTuc t) {
-		t.setXoa(true);
-		makePersistent(t);
+		if (t != null) {
+			t.setXoa(true);
+			makePersistent(t);
+		}
 	}
 
 }

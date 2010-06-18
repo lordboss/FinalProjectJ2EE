@@ -1,6 +1,6 @@
 package qt.dto;
 
-// Generated Jun 17, 2010 10:03:17 PM by Hibernate Tools 3.3.0.GA
+// Generated Jun 18, 2010 3:27:17 PM by Hibernate Tools 3.3.0.GA
 
 import java.util.Date;
 
@@ -11,6 +11,7 @@ public class TinTuc implements java.io.Serializable {
 
 	private Integer id;
 	private Date ngayDang;
+	private String tieuDe;
 	private String noiDung;
 	private boolean hienThi;
 	private boolean xoa;
@@ -19,16 +20,19 @@ public class TinTuc implements java.io.Serializable {
 	public TinTuc() {
 	}
 
-	public TinTuc(Date ngayDang, String noiDung, boolean hienThi, boolean xoa) {
+	public TinTuc(Date ngayDang, String tieuDe, String noiDung,
+			boolean hienThi, boolean xoa) {
 		this.ngayDang = ngayDang;
+		this.tieuDe = tieuDe;
 		this.noiDung = noiDung;
 		this.hienThi = hienThi;
 		this.xoa = xoa;
 	}
 
-	public TinTuc(Date ngayDang, String noiDung, boolean hienThi, boolean xoa,
-			LoaiTinTuc loaiTinTuc) {
+	public TinTuc(Date ngayDang, String tieuDe, String noiDung,
+			boolean hienThi, boolean xoa, LoaiTinTuc loaiTinTuc) {
 		this.ngayDang = ngayDang;
+		this.tieuDe = tieuDe;
 		this.noiDung = noiDung;
 		this.hienThi = hienThi;
 		this.xoa = xoa;
@@ -49,6 +53,14 @@ public class TinTuc implements java.io.Serializable {
 
 	public void setNgayDang(Date ngayDang) {
 		this.ngayDang = ngayDang;
+	}
+
+	public String getTieuDe() {
+		return this.tieuDe;
+	}
+
+	public void setTieuDe(String tieuDe) {
+		this.tieuDe = tieuDe;
 	}
 
 	public String getNoiDung() {
