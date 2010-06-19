@@ -96,6 +96,7 @@
 				<value>qt/dto/TinGiamGiaPhuKien.hbm.xml</value>
 				<value>qt/dto/TinhNangNoiBat.hbm.xml</value>
 				<value>qt/dto/DongSanPham.hbm.xml</value>
+				<value>qt/dto/CongTy.hbm.xml</value>
 			</list>
 		</property>
 	</bean>
@@ -116,6 +117,9 @@
 	<!-- =================================================================== -->
 	<!-- Vùng DAO Kiếm :) -->
 	<!-- =================================================================== -->
+	<bean id="congTyDAO" class="qt.dao.CongTyDAO">
+		<property name="factory" ref="mySessionFactory" />
+	</bean>
 	<bean id="dienThoaiDAO" class="qt.dao.DienThoaiDAO">
 		<property name="factory" ref="mySessionFactory" />
 	</bean>
@@ -225,6 +229,9 @@
 	<!-- =================================================================== -->
 	<!-- BUS bean -->
 	<!-- =================================================================== -->
+	<bean id="congTyBUS" class="qt.bus.CongTyBUS">
+		<property name="congTyDAO" ref="congTyDAO"/>
+	</bean>
 	<bean id="accountBUS" class="qt.bus.AccountBUS">
 		<property name="accountDAO" ref="accountDAO" />
 	</bean>
@@ -675,5 +682,10 @@
 	
 	<bean name="/viewCommentByUser.html" class="qt.web.employee.ViewCommentByUserController">
 		<property name="nhanXetDienThoaiBUS" ref="nhanXetDienThoaiBUS"/>
+	</bean>
+	
+	<bean name="/viewCompanyInfo.html" class="qt.web.admin.ViewCompanyInfoController">
+		<property name="accountBUS" ref="accountBUS"/>
+		<property name="congTyBUS" ref="congTyBUS"/>
 	</bean>
 </beans>
