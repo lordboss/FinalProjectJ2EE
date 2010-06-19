@@ -688,4 +688,23 @@
 		<property name="accountBUS" ref="accountBUS"/>
 		<property name="congTyBUS" ref="congTyBUS"/>
 	</bean>
+	
+	<!-- Update company info validator -->
+	<bean name="updateCompanyInfoValidator" class="qt.bus.validator.EditCompanyInfoValidator"/>
+	
+	<!-- update news form -->
+	<bean name="/updateCompanyInfo.html" class="qt.web.admin.UpdateCompanyInfoFormController">
+		<property name="sessionForm" value="true"/>
+		<!-- Command used for binding -->
+		<property name="commandName" value="congTy"/>
+		<property name="commandClass" value="qt.dto.CongTy"/>
+		<!-- Validator -->
+		<property name="validator" ref="updateCompanyInfoValidator"/>
+		<!-- Form view -->
+		<property name="formView" value="admin/editCompanyInfo"/>
+		<property name="successView" value="admin/editCompanyInfo"/>
+		<!-- Service object -->
+		<property name="congTyBUS" ref="congTyBUS"/>
+		<property name="accountBUS" ref="accountBUS"/>
+	</bean>	
 </beans>

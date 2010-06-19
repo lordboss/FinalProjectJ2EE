@@ -101,7 +101,7 @@ pageEncoding="UTF-8" %>
 											    <tr>
 										    		<td align="right">Ngày thành lập:</td>
 										    		<td>
-										    			<c:out value="${model.ngayThanhLap}"></c:out>
+										    			<fmt:formatDate value="${model.ngayThanhLap}" pattern="dd/MM/yyyy"/>
 										    		</td>
 											    </tr>
 											    <tr>
@@ -112,7 +112,7 @@ pageEncoding="UTF-8" %>
 											    </tr>
 											    <tr>
 											    	<td colspan="3" align="right">
-											    		<input type="button" value="Cập nhật" />
+											    		<a href="updateCompanyInfo.html"><input type="button" value="Cập nhật" /></a>
 											    	</td>
 											    </tr>
 											</table>

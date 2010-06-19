@@ -86,7 +86,7 @@ function checkForm02() {
 	
 	var errorField = document.getElementById("dateRequired");
 	if (!validate(d, m, y)) {
-		errorField.innerText = "Chưa chọn ngày đăng tin";
+		errorField.innerText = "Chưa chọn ngày tháng";
 		return false;
 	}
 	errorField.innerText = "";
