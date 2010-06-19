@@ -74,9 +74,21 @@ public class NhanXetDienThoaiBUS {
 	 * @return Danh sách NhanXetDienThoai của một KhachHang.
 	 */
 	public List<NhanXetDienThoai> findByKhachHang(int idKhachHang) {
+		if (idKhachHang < 0) {
+			return nhanXetDienThoaiDAO.findByAnonymous();
+		}
 		return nhanXetDienThoaiDAO.findByKhachHang(idKhachHang);
 	}
 
+	/**
+	 * Tìm các NhanXetDienThoai của Anonymous
+	 * 
+	 * @return Danh sách NhanXetDienThoai của Anonymous
+	 */
+	public List<NhanXetDienThoai> findByAnonymous() {
+		return nhanXetDienThoaiDAO.findByAnonymous();
+	}
+	
 	/**
 	 * Tìm tất cả NhanXetDienThoai của một loại DienThoai.
 	 * 

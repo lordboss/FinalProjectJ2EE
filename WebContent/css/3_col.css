@@ -1431,7 +1431,11 @@ a img {
 	margin-top:3px;
 	margin-bottom: 3px;
 }
-
+.employeeTaskBox01 {
+	float:right;
+	margin-top:3px;
+	margin-bottom: 1px;
+}
 .suggestionStatusEdit {
 	width:190px;
 	padding:3px 3px 3px 3px;
@@ -1527,4 +1531,20 @@ a img {
     font-family: Arial, Times New Roman, Tahoma, Verdana;
     font-size: 9pt;
 	clear:both;
+}
+
+.contentCenterScroll {
+	min-height:60px;
+	max-height:400px; 
+	overflow:auto;
+    font-family: Arial, Times New Roman, Tahoma, Verdana;
+    font-size: 9pt;
+    padding: 2px 4px 5px 2px;
+	clear:both;
+}
+
+.taskBox01 {
+	border-top:1px solid #c8c8c8; 
+	text-align:right;
+	padding-right:15px; 	
 }

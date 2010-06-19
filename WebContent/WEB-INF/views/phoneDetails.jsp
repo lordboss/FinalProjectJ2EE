@@ -11,6 +11,10 @@ pageEncoding="UTF-8" %>
         <title>Phone Store</title>
         <link href="css/3_col.css" media="all" rel="stylesheet" />
         <script type="text/javascript" src="js/jquery-1.4.2.js"></script>
+        
+        <!-- Raw Ajax to set comment visibility -->
+        <script type="text/javascript" src="js/phoneCommentVisibility.js"></script>
+        
         <script type="text/javascript">
         	$(document).ready(function() {
 				
@@ -603,6 +607,90 @@ pageEncoding="UTF-8" %>
 								</div>
 								
 								<div style="clear:both;"></div>
+							</div>
+							
+							<div class="block02">
+								<div class="blockTitle">CÁC NHẬN XÉT VỀ <c:out value="${p.ten}"/></div>
+								<div>
+									<div class="contentCenterScroll">
+										<c:choose>
+											<c:when test="${fn:length(p.dsNhanXet) > 0}">
+												<c:forEach var="c" items="${p.dsNhanXet}">
+													<c:set var="v" value="${true}"/>
+													<c:if test="${(c.hienThi eq false) and ((empty sessionScope.userType) or (sessionScope.userType eq 'KhachHang'))}">
+														<c:set var="v" value="${false}"/>
+													</c:if>
+													<c:if test="${v eq true}">
+														<div class="block03">
+								                			<div class="detailTitle">
+								                				<table width="100%">
+								                					<tbody>
+								                						<tr>
+								                							<td width="40%">User:
+								                								<c:choose> 
+								                									<c:when test="${not empty c.khachHang.username}">
+								                										<a href="viewCommentByUser.html?uid=<c:out value="${c.khachHang.id}"/>&uname=<c:out value="${c.khachHang.username}"/>" style="text-decoration: none;"><c:out value="${c.khachHang.username}"/></a>
+								                									</c:when>
+								                									<c:otherwise>
+								                										<a href="viewCommentByUser.html?uid=-1&uname=Anonymous" style="text-decoration: none;">Anonymous</a>
+								                									</c:otherwise>
+								                								</c:choose>
+								                							</td>
+								                							<td width="60%" align="right"> <fmt:formatDate value="${c.thoiGian}" pattern="dd-MM-yyyy hh:mm"/></td>
+								                						</tr>
+								                					</tbody>
+								                				</table>
+								                			</div>
+								                			<div class="contentCenter">
+								                				<ul style="font-size: 9pt;">
+									                				<li><b>Ưu điểm</b>: <c:out value="${c.uuDiem}"/> </li>
+									                				<li><b>Nhược điểm</b>: <c:out value="${c.nhuocDiem}"/> </li>
+									                				<li><b>Tổng quan</b>: <c:out value="${c.tongQuan}"/></li>
+									                				<li><b>Đánh giá</b>: <fmt:formatNumber value="${c.danhGia}" minIntegerDigits="2"/> / 10</li>
+									                				<c:if test="${(sessionScope.userType eq 'NhanVien') or (sessionScope.userType eq 'NhanVienQuanLy')}">
+									                					<li>
+									                						<b><i>Hiển thị với khách hàng</i></b>: 
+									                						<span id="span${c.id}">
+									                							<c:choose><c:when test="${c.hienThi eq true}">Hiển thị</c:when><c:otherwise>Không hiển thị</c:otherwise></c:choose>
+									                						</span>
+									                					</li>
+									                				</c:if>
+								                				</ul>
+								                			</div>
+								                			
+								                			<!-- Function for employees -->
+															<c:if test="${(sessionScope.userType eq 'NhanVien') or (sessionScope.userType eq 'NhanVienQuanLy')}">
+																<div class="employeeTaskBox01">
+																	<c:set var="v" value="Hiển thị"/>
+																	<c:if test="${c.hienThi eq true}">
+																		<c:set var="v" value="Không hiển thị"/>
+																	</c:if>
+																	<table align="right">
+																		<tbody>
+																			<tr>
+																				<td align="right">
+																					<input id="<c:out value="button${c.id}"/>" type="button" value="${v}" onclick="setCommentVisibility('setCommentVisibility.html?cid=${c.id}', ${c.id})"/>
+																				</td>
+																			</tr>
+																		</tbody>
+																	</table>
+																</div>
+															</c:if>
+															<div style="clear: both;"></div>
+								                		</div>
+							                		</c:if>
+						                		</c:forEach>
+				                			</c:when>
+				                			<c:otherwise>
+				                				<div class="notFound">Hiện chưa có nhận xét nào cho <c:out value="${p.ten}"/></div>
+				                			</c:otherwise>
+				                		</c:choose>
+									</div>
+									<!-- Add new comment -->
+									<div class="taskBox01">
+										<a href="addComment.html?pid=${p.id}&name=${p.ten}"><input type="button" value="Thêm góp ý"></a> 
+									</div>
+								</div>
 							</div>
 						</c:when>
 						<c:otherwise>

@@ -615,7 +615,7 @@
 	</bean>
 	
 	<!-- Update news validator -->
-	<bean name="/updateNewsValidator" class="qt.bus.validator.UpdateNewsValidator"/>
+	<bean name="updateNewsValidator" class="qt.bus.validator.UpdateNewsValidator"/>
 	
 	<!-- update news form -->
 	<bean name="/updateNews.html" class="qt.web.employee.UpdateNewsFormController">
@@ -624,7 +624,7 @@
 		<property name="commandName" value="tinTuc"/>
 		<property name="commandClass" value="qt.dto.TinTuc"/>
 		<!-- Validator -->
-		<property name="validator" ref="/updateNewsValidator"/>
+		<property name="validator" ref="updateNewsValidator"/>
 		<!-- Form view -->
 		<property name="formView" value="employee/updateNews"/>
 		<property name="successView" value="employee/updateNews"/>
@@ -640,11 +640,40 @@
 		<property name="commandName" value="tinTuc"/>
 		<property name="commandClass" value="qt.dto.TinTuc"/>
 		<!-- Validator -->
-		<property name="validator" ref="/updateNewsValidator"/>
+		<property name="validator" ref="updateNewsValidator"/>
 		<!-- Form view -->
 		<property name="formView" value="employee/addNews"/>
 		<property name="successView" value="employee/addNews"/>
 		<!-- Service object -->
 		<property name="tinTucBUS" ref="tinTucBUS"/>
 	</bean>	
+	
+	<!-- Ajax: set comment visibility -->
+	<bean name="/setCommentVisibility.html" class="qt.web.employee.ajax.SetCommentVisibilityController">
+		<property name="nhanXetDienThoaiBUS" ref="nhanXetDienThoaiBUS"/>
+	</bean>
+	
+	<!-- Add comment validator -->
+	<bean name="addCommentValidator" class="qt.bus.validator.AddCommentValidator"/>
+	
+	<!-- update news form -->
+	<bean name="/addComment.html" class="qt.web.AddCommentFormController">
+		<property name="sessionForm" value="true"/>
+		<!-- Command used for binding -->
+		<property name="commandName" value="nhanXetDienThoai"/>
+		<property name="commandClass" value="qt.dto.NhanXetDienThoai"/>
+		<!-- Validator -->
+		<property name="validator" ref="addCommentValidator"/>
+		<!-- Form view -->
+		<property name="formView" value="addComment"/>
+		<property name="successView" value="addComment"/>
+		<!-- Service object -->
+		<property name="nhanXetDienThoaiBUS" ref="nhanXetDienThoaiBUS"/>
+		<property name="dienThoaiBUS" ref="dienThoaiBUS"/>
+		<property name="khachHangBUS" ref="khachHangBUS"/>
+	</bean>	
+	
+	<bean name="/viewCommentByUser.html" class="qt.web.employee.ViewCommentByUserController">
+		<property name="nhanXetDienThoaiBUS" ref="nhanXetDienThoaiBUS"/>
+	</bean>
 </beans>

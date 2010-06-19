@@ -7,6 +7,7 @@ import java.util.List;
 
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
+import org.hibernate.criterion.Order;
 import org.hibernate.criterion.Restrictions;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -93,11 +94,28 @@ public class NhanXetDienThoaiDAO {
 	 */
 	@SuppressWarnings("unchecked")
 	public List<NhanXetDienThoai> findByKhachHang(int idKhachHang) {
+		if (idKhachHang < 0) {
+			return findByAnonymous();
+		}
 		return factory
 				.getCurrentSession()
 				.createQuery(
 						"from NhanXetDienThoai c where c.khachHang.id = :id and c.xoa = false")
 				.setInteger("id", idKhachHang).list();
+	}
+
+	/**
+	 * Tìm các NhanXetDienThoai của Anonymous
+	 * 
+	 * @return Danh sách NhanXetDienThoai của Anonymous
+	 */
+	@SuppressWarnings("unchecked")
+	public List<NhanXetDienThoai> findByAnonymous() {
+		return factory
+				.getCurrentSession()
+				.createQuery(
+						"from NhanXetDienThoai c where c.khachHang is null and c.xoa = false")
+				.list();
 	}
 
 	/**
@@ -138,6 +156,6 @@ public class NhanXetDienThoaiDAO {
 	public List<NhanXetDienThoai> findAll() {
 		return factory.getCurrentSession().createCriteria(
 				NhanXetDienThoai.class).add(Restrictions.eq("xoa", false))
-				.list();
+				.addOrder(Order.desc("thoiGian")).list();
 	}
 }
