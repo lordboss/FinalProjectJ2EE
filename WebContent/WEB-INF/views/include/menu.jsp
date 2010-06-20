@@ -10,7 +10,7 @@ pageEncoding="UTF-8" %>
 	<c:when test="${sessionScope.userType eq 'KhachHang'}">
 		<%@ include file="/WEB-INF/views/include/userMenu.jsp" %>
 	</c:when>
-	<c:when test="${sessionScope.userType eq 'NhanVien'}">
+	<c:when test="${sessionScope.userType eq 'NhanVienBanHang'}">
 		<%@ include file="/WEB-INF/views/include/employeeMenu.jsp" %>
 	</c:when>
 	<c:when test="${sessionScope.userType eq 'NhanVienQuanLy'}">

@@ -1548,3 +1548,7 @@ a img {
 	text-align:right;
 	padding-right:15px; 	
 }
+
+.fullTextbox {
+	width:100%;
+}

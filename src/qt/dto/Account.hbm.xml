@@ -86,8 +86,9 @@
 
 
 		<!-- Inheritance Mapping for class NhanVien -->
-		<joined-subclass name="NhanVien" table="NhanVien">
+		<joined-subclass name="NhanVien" table="NhanVien" abstract="true">
 			<key column="ID_Account" />
+
 			<property generated="never" lazy="false" length="15" name="cmnd"
 				type="string">
 				<column name="CMND" not-null="true" />
@@ -100,7 +101,7 @@
 				<column name="DiaChi" not-null="true" />
 			</property>
 			<property generated="never" lazy="false" length="20"
-				name="soDienThoai" type="string">
+				name="dienThoai" type="string">
 				<column name="DienThoai" not-null="true" />
 			</property>
 			<property generated="never" lazy="false"
@@ -121,32 +122,22 @@
 				<key column="ID_NhanVien" />
 				<one-to-many class="PhieuNhapPhuKien" />
 			</set>
+			
+			<!-- SubClass: NhanVienQuanLy -->
+			<!-- Inheritance Mapping for class NhanVienQuanLy -->
+			<joined-subclass name="NhanVienQuanLy" table="NhanVienQuanLy">
+				<key column="ID_Account" />
+			</joined-subclass>
+			
+			<!-- SubClass: NhanVienBanHang -->
+			<!-- Inheritance Mapping for class NhanVienQuanLy -->
+			<joined-subclass name="NhanVienBanHang" table="NhanVienBanHang">
+				<key column="ID_Account" />
+			</joined-subclass>
 		</joined-subclass>
 
 
-		<!-- Inheritance Mapping for class NhanVienQuanLy -->
-		<joined-subclass name="NhanVienQuanLy" table="NhanVienQuanLy">
-			<key column="ID_Account" />
-			<property generated="never" lazy="false" length="15" name="cmnd"
-				type="string">
-				<column name="CMND" not-null="true" />
-			</property>
-			<property generated="never" lazy="false" name="ngaySinh" type="timestamp">
-				<column name="NgaySinh" not-null="true"/>
-			</property>
-			<property generated="never" lazy="false" length="150" name="diaChi"
-				type="string">
-				<column name="DiaChi" not-null="true" />
-			</property>
-			<property generated="never" lazy="false" length="20"
-				name="soDienThoai" type="string">
-				<column name="DienThoai" not-null="true" />
-			</property>
-			<property generated="never" lazy="false" 
-				name="luong" type="double">
-				<column name="Luong" not-null="true" />
-			</property>
-		</joined-subclass>
+		
 
 
 		<!-- Inheritance Mapping for class NhanVienQuanTri -->

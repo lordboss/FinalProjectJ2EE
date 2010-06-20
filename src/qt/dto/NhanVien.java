@@ -1,6 +1,6 @@
 package qt.dto;
 
-// Generated Jun 18, 2010 3:27:17 PM by Hibernate Tools 3.3.0.GA
+// Generated Jun 20, 2010 4:44:09 PM by Hibernate Tools 3.3.0.GA
 
 import java.util.Date;
 import java.util.HashSet;
@@ -14,7 +14,7 @@ public class NhanVien extends qt.dto.Account implements java.io.Serializable {
 	private String cmnd;
 	private Date ngaySinh;
 	private String diaChi;
-	private String soDienThoai;
+	private String dienThoai;
 	private double luong;
 	private Set<PhieuNhapDienThoai> dsPhieuNhapDienThoai = new HashSet<PhieuNhapDienThoai>(
 			0);
@@ -26,27 +26,27 @@ public class NhanVien extends qt.dto.Account implements java.io.Serializable {
 
 	public NhanVien(String username, String pass, Integer trangThai, String ho,
 			String ten, String email, Integer gioiTinh, boolean xoa,
-			String cmnd, Date ngaySinh, String diaChi, String soDienThoai,
+			String cmnd, Date ngaySinh, String diaChi, String dienThoai,
 			double luong) {
 		super(username, pass, trangThai, ho, ten, email, gioiTinh, xoa);
 		this.cmnd = cmnd;
 		this.ngaySinh = ngaySinh;
 		this.diaChi = diaChi;
-		this.soDienThoai = soDienThoai;
+		this.dienThoai = dienThoai;
 		this.luong = luong;
 	}
 
 	public NhanVien(String username, String pass, Integer trangThai, String ho,
 			String dem, String ten, String email, Integer gioiTinh,
 			boolean xoa, String cmnd, Date ngaySinh, String diaChi,
-			String soDienThoai, double luong,
+			String dienThoai, double luong,
 			Set<PhieuNhapDienThoai> dsPhieuNhapDienThoai,
 			Set<PhieuNhapPhuKien> dsPhieuNhapPhuKien) {
 		super(username, pass, trangThai, ho, dem, ten, email, gioiTinh, xoa);
 		this.cmnd = cmnd;
 		this.ngaySinh = ngaySinh;
 		this.diaChi = diaChi;
-		this.soDienThoai = soDienThoai;
+		this.dienThoai = dienThoai;
 		this.luong = luong;
 		this.dsPhieuNhapDienThoai = dsPhieuNhapDienThoai;
 		this.dsPhieuNhapPhuKien = dsPhieuNhapPhuKien;
@@ -76,12 +76,12 @@ public class NhanVien extends qt.dto.Account implements java.io.Serializable {
 		this.diaChi = diaChi;
 	}
 
-	public String getSoDienThoai() {
-		return this.soDienThoai;
+	public String getDienThoai() {
+		return this.dienThoai;
 	}
 
-	public void setSoDienThoai(String soDienThoai) {
-		this.soDienThoai = soDienThoai;
+	public void setDienThoai(String dienThoai) {
+		this.dienThoai = dienThoai;
 	}
 
 	public double getLuong() {

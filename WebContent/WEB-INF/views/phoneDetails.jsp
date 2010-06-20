@@ -659,7 +659,7 @@ pageEncoding="UTF-8" %>
 								                			</div>
 								                			
 								                			<!-- Function for employees -->
-															<c:if test="${(sessionScope.userType eq 'NhanVien') or (sessionScope.userType eq 'NhanVienQuanLy')}">
+															<c:if test="${(sessionScope.userType eq 'NhanVien') or (sessionScope.userType eq 'NhanVienQuanLy') or (sessionScope.userType eq 'NhanVienBanHang')}">
 																<div class="employeeTaskBox01">
 																	<c:set var="v" value="Hiển thị"/>
 																	<c:if test="${c.hienThi eq true}">

@@ -369,7 +369,7 @@ pageEncoding="UTF-8" %>
 										<div class="itemPrice"><fmt:formatNumber value="${p.giaHienHanh}" minFractionDigits="0" maxFractionDigits="0"/> VND</div>
 										
 										<!-- Function for employees -->
-										<c:if test="${(sessionScope.userType eq 'NhanVien') or (sessionScope.userType eq 'NhanVienQuanLy')}">
+										<c:if test="${(sessionScope.userType eq 'NhanVien') or (sessionScope.userType eq 'NhanVienQuanLy') or (sessionScope.userType eq 'NhanVienBanHang')}">
 											<div class="employeeTaskBox">
 											
 												<input type="button" value="Cập nhật"/>

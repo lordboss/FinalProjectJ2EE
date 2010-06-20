@@ -207,6 +207,9 @@
 	<bean id="nhanVienDAO" class="qt.dao.NhanVienDAO">
 		<property name="factory" ref="mySessionFactory" />
 	</bean>
+	<bean id="nhanVienBanHangDAO" class="qt.dao.NhanVienBanHangDAO">
+		<property name="factory" ref="mySessionFactory" />
+	</bean>
 	<bean id="nhanVienQuanLyDAO" class="qt.dao.NhanVienQuanLyDAO">
 		<property name="factory" ref="mySessionFactory" />
 	</bean>
@@ -288,6 +291,9 @@
 	</bean>
 	<bean id="nhanVienBUS" class="qt.bus.NhanVienBUS">
 		<property name="nhanVienDAO" ref="nhanVienDAO" />
+	</bean>
+	<bean id="nhanVienBanHangBUS" class="qt.bus.NhanVienBanHangBUS">
+		<property name="nhanVienBanHangDAO" ref="nhanVienBanHangDAO" />
 	</bean>
 	<bean id="nhanVienQuanLyBUS" class="qt.bus.NhanVienQuanLyBUS">
 		<property name="nhanVienQuanLyDAO" ref="nhanVienQuanLyDAO" />
@@ -707,4 +713,25 @@
 		<property name="congTyBUS" ref="congTyBUS"/>
 		<property name="accountBUS" ref="accountBUS"/>
 	</bean>	
+	
+	<!-- Add account validation -->
+	<bean name="addAccountValidator" class="qt.bus.validator.AddEmployeeAccountValidator">
+		<property name="accountBUS" ref="accountBUS"/>
+	</bean>
+	
+	<!-- add new employee account form -->
+	<bean name="/addEmployeeAccount.html" class="qt.web.admin.AddNewEmployeeAccountFormController">
+		<property name="sessionForm" value="true"/>
+		<!-- Command used for binding -->
+		<property name="commandName" value="nhanVien"/>
+		<property name="commandClass" value="qt.dto.NhanVien"/>
+		<!-- Validator -->
+		<property name="validator" ref="addAccountValidator"/>
+		<!-- Form view -->
+		<property name="formView" value="admin/createEmployeeAccount"/>
+		<property name="successView" value="admin/createEmployeeAccount"/>
+		<!-- Service object -->
+		<property name="nhanVienBUS" ref="nhanVienBUS"/>
+		<property name="accountBUS" ref="accountBUS"/>
+	</bean>
 </beans>

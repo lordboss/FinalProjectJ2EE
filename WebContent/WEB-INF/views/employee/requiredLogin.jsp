@@ -7,6 +7,6 @@ pageEncoding="UTF-8" %>
 	<c:redirect url="requiredLogin.html"/>
 </c:if>
 
-<c:if test="${(not sessionScope.userType eq 'NhanVien') or (not sessionScope.userType eq 'NhanVienQuanLy')}">
+<c:if test="${(not sessionScope.userType eq 'NhanVien') or (not sessionScope.userType eq 'NhanVienQuanLy') or (not sessionScope.userType eq 'NhanVienBanHang')}">
 	<c:redirect url="requiredLogin.html"/>
 </c:if>

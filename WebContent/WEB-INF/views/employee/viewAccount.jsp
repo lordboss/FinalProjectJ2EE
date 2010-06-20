@@ -104,7 +104,7 @@ pageEncoding="UTF-8" %>
 													</tr>
 													<tr  class="userInfoRow">
 														<td>Điện thoại:</td>
-														<td><c:out value="${e.soDienThoai}"/></td>
+														<td><c:out value="${e.dienThoai}"/></td>
 													</tr>
 													<tr  class="userInfoRow">
 														<td>Lương:</td>
