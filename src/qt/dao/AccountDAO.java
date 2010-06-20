@@ -69,6 +69,7 @@ public class AccountDAO {
 
 		return (Account) factory.getCurrentSession().createCriteria(
 				Account.class).add(Restrictions.eq("xoa", false)).add(
+				Restrictions.eq("trangThai", 1)).add(
 				Restrictions.eq("username", username)).add(
 				Restrictions.eq("pass", hashedPassword)).uniqueResult();
 	}

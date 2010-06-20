@@ -96,6 +96,7 @@
 				<value>qt/dto/TinGiamGiaPhuKien.hbm.xml</value>
 				<value>qt/dto/TinhNangNoiBat.hbm.xml</value>
 				<value>qt/dto/DongSanPham.hbm.xml</value>
+				<value>qt/dto/CongTy.hbm.xml</value>
 			</list>
 		</property>
 	</bean>
@@ -116,6 +117,9 @@
 	<!-- =================================================================== -->
 	<!-- Vùng DAO Kiếm :) -->
 	<!-- =================================================================== -->
+	<bean id="congTyDAO" class="qt.dao.CongTyDAO">
+		<property name="factory" ref="mySessionFactory" />
+	</bean>
 	<bean id="dienThoaiDAO" class="qt.dao.DienThoaiDAO">
 		<property name="factory" ref="mySessionFactory" />
 	</bean>
@@ -203,6 +207,9 @@
 	<bean id="nhanVienDAO" class="qt.dao.NhanVienDAO">
 		<property name="factory" ref="mySessionFactory" />
 	</bean>
+	<bean id="nhanVienBanHangDAO" class="qt.dao.NhanVienBanHangDAO">
+		<property name="factory" ref="mySessionFactory" />
+	</bean>
 	<bean id="nhanVienQuanLyDAO" class="qt.dao.NhanVienQuanLyDAO">
 		<property name="factory" ref="mySessionFactory" />
 	</bean>
@@ -225,6 +232,9 @@
 	<!-- =================================================================== -->
 	<!-- BUS bean -->
 	<!-- =================================================================== -->
+	<bean id="congTyBUS" class="qt.bus.CongTyBUS">
+		<property name="congTyDAO" ref="congTyDAO"/>
+	</bean>
 	<bean id="accountBUS" class="qt.bus.AccountBUS">
 		<property name="accountDAO" ref="accountDAO" />
 	</bean>
@@ -281,6 +291,9 @@
 	</bean>
 	<bean id="nhanVienBUS" class="qt.bus.NhanVienBUS">
 		<property name="nhanVienDAO" ref="nhanVienDAO" />
+	</bean>
+	<bean id="nhanVienBanHangBUS" class="qt.bus.NhanVienBanHangBUS">
+		<property name="nhanVienBanHangDAO" ref="nhanVienBanHangDAO" />
 	</bean>
 	<bean id="nhanVienQuanLyBUS" class="qt.bus.NhanVienQuanLyBUS">
 		<property name="nhanVienQuanLyDAO" ref="nhanVienQuanLyDAO" />
@@ -494,11 +507,235 @@
 		<!-- Validator -->
 		<property name="validator" ref="suggestionValidator"/>
 		<!-- Form view -->
-		<property name="formView" value="user/suggestion"/>
-		<property name="successView" value="user/suggestion"/>
+		<property name="formView" value="user/addSuggestion"/>
+		<property name="successView" value="user/addSuggestion"/>
 		
 		<property name="gopYBUS" ref="gopYBUS"/>
 		<property name="trangThaiGopYBUS" ref="trangThaiGopYBUS"/>
 		<property name="khachHangBUS" ref="khachHangBUS"/>
+	</bean>
+	
+	<bean name="/viewSuggestionList.html" class="qt.web.user.ViewSuggestionListController">
+		<property name="gopYBUS" ref="gopYBUS"/>
+	</bean>
+	
+	<bean name="/requiredLogin.html" class="qt.web.RequiredLoginController"/>
+	<bean name="/employee/requiredLogin.html" class="qt.web.RequiredLoginController"/>
+	<bean name="/removeAllCartItems.html" class="qt.web.user.RemoveAllCartItemsController"/>
+	
+	<bean name="addBillValidator" class="qt.bus.validator.AddBillValidator"/>
+	
+	<!-- add new bill form -->
+	<bean name="/addBill.html" class="qt.web.user.AddBillFormController">
+		<property name="sessionForm" value="true"/>
+		<!-- Command used for binding -->
+		<property name="commandName" value="donHang"/>
+		<property name="commandClass" value="qt.dto.DonHang"/>
+		<!-- Validator -->
+		<property name="validator" ref="addBillValidator"/>
+		<!-- Form view -->
+		<property name="formView" value="user/addBill"/>
+		<property name="successView" value="user/addBill"/>
+		
+		<property name="trangThaiDonHangBUS" ref="trangThaiDonHangBUS"/>
+		<property name="donHangBUS" ref="donHangBUS"/>
+		<property name="khachHangBUS" ref="khachHangBUS"/>
+	</bean>
+	
+	<bean name="/viewBill.html" class="qt.web.user.ViewBillController">
+		<property name="donHangBUS" ref="donHangBUS"/>
+	</bean>
+	
+	<bean name="/deleteBill.html" class="qt.web.user.DeleteBillController">
+		<property name="donHangBUS" ref="donHangBUS"/>
+	</bean>
+	
+	<!-- ============================================================================= -->
+	<!-- Employee -->
+	<!-- ============================================================================= -->
+	<bean name="/manageBill.html" class="qt.web.employee.ViewBillController">
+		<property name="donHangBUS" ref="donHangBUS"/>
+	</bean>
+	
+	<bean name="/manageBillPaging.html" class="qt.web.employee.ViewBillWithPagingController">
+		<property name="donHangBUS" ref="donHangBUS"/>
+	</bean>
+	
+	<bean name="/updateBillStatus.html" class="qt.web.employee.UpdateBillStatusController">
+		<property name="donHangBUS" ref="donHangBUS"/>
+		<property name="trangThaiDonHangBUS" ref="trangThaiDonHangBUS"/>
+	</bean>
+	<bean name="/updateOneBill.html" class="qt.web.employee.UpdateOneBillController"/>
+	
+	
+	<bean name="/viewEmployeeAccount.html" class="qt.web.employee.AccountController">
+		<property name="nhanVienBUS" ref="nhanVienBUS"/>
+	</bean>
+	
+	<bean name="changeEmployeePasswordValidator" class="qt.bus.validator.ChangeEmployeePasswordValidator">
+		<property name="nhanVienBUS" ref="nhanVienBUS"/>
+	</bean>
+	
+	<!-- change employee password form -->
+	<bean name="/changeEmployeePassword.html" class="qt.web.employee.ChangeEmployeePasswordFormController">
+		<property name="sessionForm" value="true"/>
+		<!-- Command used for binding -->
+		<property name="commandName" value="nhanVien"/>
+		<property name="commandClass" value="qt.dto.NhanVien"/>
+		<!-- Validator -->
+		<property name="validator" ref="changeEmployeePasswordValidator"/>
+		<!-- Form view -->
+		<property name="formView" value="employee/changePassword"/>
+		<property name="successView" value="employee/changePassword"/>
+		
+		<!-- Service object -->
+		<property name="nhanVienBUS" ref="nhanVienBUS"/>
+		<property name="accountBUS" ref="accountBUS"/>
+	</bean>
+	
+	<!-- Ajax: set product visibility -->
+	<bean name="/setVisibility.html" class="qt.web.employee.ajax.SetVisibilityProductController">
+		<property name="sanPhamBUS" ref="sanPhamBUS"/>
+	</bean>
+	
+	<bean name="/manageSuggestion.html" class="qt.web.employee.ViewSugesstionController">
+		<property name="gopYBUS" ref="gopYBUS"/>
+	</bean>
+	
+	<!-- Ajax: set suggestion status -->
+	<bean name="/setSuggestionStatus.html" class="qt.web.employee.ajax.SetSuggestionStatusController">
+		<property name="gopYBUS" ref="gopYBUS"/>
+		<property name="trangThaiGopYBUS" ref="trangThaiGopYBUS"/>
+	</bean>
+	
+	<bean name="/manageNews.html" class="qt.web.employee.ViewNewsController">
+		<property name="tinTucBUS" ref="tinTucBUS"/>
+	</bean>
+	
+	<!-- Ajax: set news type -->
+	<bean name="/setNewsType.html" class="qt.web.employee.ajax.SetNewsTypeController">
+		<property name="loaiTinTucBUS" ref="loaiTinTucBUS"/>
+		<property name="tinTucBUS" ref="tinTucBUS"/>
+	</bean>
+	
+	<!-- Ajax: set news visibility -->
+	<bean name="/setNewsVisibility.html" class="qt.web.employee.ajax.SetVisibilityNewsController">
+		<property name="tinTucBUS" ref="tinTucBUS"/>
+	</bean>
+	
+	<bean name="/deleteNews.html" class="qt.web.employee.DeleteNewsController">
+		<property name="tinTucBUS" ref="tinTucBUS"/>
+	</bean>
+	
+	<!-- Update news validator -->
+	<bean name="updateNewsValidator" class="qt.bus.validator.UpdateNewsValidator"/>
+	
+	<!-- update news form -->
+	<bean name="/updateNews.html" class="qt.web.employee.UpdateNewsFormController">
+		<property name="sessionForm" value="true"/>
+		<!-- Command used for binding -->
+		<property name="commandName" value="tinTuc"/>
+		<property name="commandClass" value="qt.dto.TinTuc"/>
+		<!-- Validator -->
+		<property name="validator" ref="updateNewsValidator"/>
+		<!-- Form view -->
+		<property name="formView" value="employee/updateNews"/>
+		<property name="successView" value="employee/updateNews"/>
+		<!-- Service object -->
+		<property name="tinTucBUS" ref="tinTucBUS"/>
+		<property name="loaiTinTucBUS" ref="loaiTinTucBUS"/>
+	</bean>	
+	
+	<!-- update news form -->
+	<bean name="/addNews.html" class="qt.web.employee.AddNewsFormController">
+		<property name="sessionForm" value="true"/>
+		<!-- Command used for binding -->
+		<property name="commandName" value="tinTuc"/>
+		<property name="commandClass" value="qt.dto.TinTuc"/>
+		<!-- Validator -->
+		<property name="validator" ref="updateNewsValidator"/>
+		<!-- Form view -->
+		<property name="formView" value="employee/addNews"/>
+		<property name="successView" value="employee/addNews"/>
+		<!-- Service object -->
+		<property name="tinTucBUS" ref="tinTucBUS"/>
+	</bean>	
+	
+	<!-- Ajax: set comment visibility -->
+	<bean name="/setCommentVisibility.html" class="qt.web.employee.ajax.SetCommentVisibilityController">
+		<property name="nhanXetDienThoaiBUS" ref="nhanXetDienThoaiBUS"/>
+	</bean>
+	
+	<!-- Add comment validator -->
+	<bean name="addCommentValidator" class="qt.bus.validator.AddCommentValidator"/>
+	
+	<!-- update news form -->
+	<bean name="/addComment.html" class="qt.web.AddCommentFormController">
+		<property name="sessionForm" value="true"/>
+		<!-- Command used for binding -->
+		<property name="commandName" value="nhanXetDienThoai"/>
+		<property name="commandClass" value="qt.dto.NhanXetDienThoai"/>
+		<!-- Validator -->
+		<property name="validator" ref="addCommentValidator"/>
+		<!-- Form view -->
+		<property name="formView" value="addComment"/>
+		<property name="successView" value="addComment"/>
+		<!-- Service object -->
+		<property name="nhanXetDienThoaiBUS" ref="nhanXetDienThoaiBUS"/>
+		<property name="dienThoaiBUS" ref="dienThoaiBUS"/>
+		<property name="khachHangBUS" ref="khachHangBUS"/>
+	</bean>	
+	
+	<bean name="/viewCommentByUser.html" class="qt.web.employee.ViewCommentByUserController">
+		<property name="nhanXetDienThoaiBUS" ref="nhanXetDienThoaiBUS"/>
+	</bean>
+	
+	<bean name="/viewCompanyInfo.html" class="qt.web.admin.ViewCompanyInfoController">
+		<property name="accountBUS" ref="accountBUS"/>
+		<property name="congTyBUS" ref="congTyBUS"/>
+	</bean>
+	
+	<!-- Update company info validator -->
+	<bean name="updateCompanyInfoValidator" class="qt.bus.validator.EditCompanyInfoValidator"/>
+	
+	<!-- update news form -->
+	<bean name="/updateCompanyInfo.html" class="qt.web.admin.UpdateCompanyInfoFormController">
+		<property name="sessionForm" value="true"/>
+		<!-- Command used for binding -->
+		<property name="commandName" value="congTy"/>
+		<property name="commandClass" value="qt.dto.CongTy"/>
+		<!-- Validator -->
+		<property name="validator" ref="updateCompanyInfoValidator"/>
+		<!-- Form view -->
+		<property name="formView" value="admin/editCompanyInfo"/>
+		<property name="successView" value="admin/editCompanyInfo"/>
+		<!-- Service object -->
+		<property name="congTyBUS" ref="congTyBUS"/>
+		<property name="accountBUS" ref="accountBUS"/>
+	</bean>	
+	
+	<!-- Add account validation -->
+	<bean name="addAccountValidator" class="qt.bus.validator.AddEmployeeAccountValidator">
+		<property name="accountBUS" ref="accountBUS"/>
+	</bean>
+	
+	<!-- add new employee account form -->
+	<bean name="/addEmployeeAccount.html" class="qt.web.admin.AddNewEmployeeAccountFormController">
+		<property name="sessionForm" value="true"/>
+		<!-- Command used for binding -->
+		<property name="commandName" value="nhanVien"/>
+		<property name="commandClass" value="qt.dto.NhanVien"/>
+		<!-- Validator -->
+		<property name="validator" ref="addAccountValidator"/>
+		<!-- Form view -->
+		<property name="formView" value="admin/createEmployeeAccount"/>
+		<property name="successView" value="admin/createEmployeeAccount"/>
+		<!-- Service object -->
+		<property name="nhanVienBUS" ref="nhanVienBUS"/>
+		<property name="accountBUS" ref="accountBUS"/>
+	</bean>
+	
+	<bean name="/viewAccounts.html" class="qt.web.admin.ViewAccountsController">
+		<property name="accountBUS" ref="accountBUS"/>
 	</bean>
 </beans>

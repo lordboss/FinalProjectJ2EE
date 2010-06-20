@@ -1,6 +1,6 @@
 package qt.dto;
 
-// Generated Jun 20, 2010 4:44:09 PM by Hibernate Tools 3.3.0.GA
+// Generated Jun 21, 2010 1:02:40 AM by Hibernate Tools 3.3.0.GA
 
 import java.util.Date;
 import java.util.HashSet;
@@ -15,7 +15,7 @@ public class NhanVien extends qt.dto.Account implements java.io.Serializable {
 	private Date ngaySinh;
 	private String diaChi;
 	private String dienThoai;
-	private double luong;
+	private Double luong;
 	private Set<PhieuNhapDienThoai> dsPhieuNhapDienThoai = new HashSet<PhieuNhapDienThoai>(
 			0);
 	private Set<PhieuNhapPhuKien> dsPhieuNhapPhuKien = new HashSet<PhieuNhapPhuKien>(
@@ -27,7 +27,7 @@ public class NhanVien extends qt.dto.Account implements java.io.Serializable {
 	public NhanVien(String username, String pass, Integer trangThai, String ho,
 			String ten, String email, Integer gioiTinh, boolean xoa,
 			String cmnd, Date ngaySinh, String diaChi, String dienThoai,
-			double luong) {
+			Double luong) {
 		super(username, pass, trangThai, ho, ten, email, gioiTinh, xoa);
 		this.cmnd = cmnd;
 		this.ngaySinh = ngaySinh;
@@ -39,7 +39,7 @@ public class NhanVien extends qt.dto.Account implements java.io.Serializable {
 	public NhanVien(String username, String pass, Integer trangThai, String ho,
 			String dem, String ten, String email, Integer gioiTinh,
 			boolean xoa, String cmnd, Date ngaySinh, String diaChi,
-			String dienThoai, double luong,
+			String dienThoai, Double luong,
 			Set<PhieuNhapDienThoai> dsPhieuNhapDienThoai,
 			Set<PhieuNhapPhuKien> dsPhieuNhapPhuKien) {
 		super(username, pass, trangThai, ho, dem, ten, email, gioiTinh, xoa);
@@ -84,11 +84,11 @@ public class NhanVien extends qt.dto.Account implements java.io.Serializable {
 		this.dienThoai = dienThoai;
 	}
 
-	public double getLuong() {
+	public Double getLuong() {
 		return this.luong;
 	}
 
-	public void setLuong(double luong) {
+	public void setLuong(Double luong) {
 		this.luong = luong;
 	}
 

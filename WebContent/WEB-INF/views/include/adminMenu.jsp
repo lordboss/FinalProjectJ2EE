@@ -27,6 +27,7 @@ pageEncoding="UTF-8" %>
             		<a href="#">TÀI KHOẢN</a>
             		<ul>
             			<li style="width: 200px;"><a href="addEmployeeAccount.html">TẠO TÀI KHOẢN NHÂN VIÊN</a></li>
+            			<li style="width: 200px;"><a href="viewAccounts.html">DANH SÁCH TÀI KHOẢN</a></li>
             		</ul>
             	</li>
             </ul>
