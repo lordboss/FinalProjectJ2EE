@@ -819,4 +819,7 @@
 		<property name="accountBUS" ref="accountBUS"/>
 	</bean>
 	
+	<bean name="/setAccountsActivition.html" class="qt.web.admin.SetAccountsActivitionController">
+		<property name="accountBUS" ref="accountBUS"/>
+	</bean>	
 </beans>

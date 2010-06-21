@@ -15,7 +15,8 @@ pageEncoding="UTF-8" %>
         <link href="css/3_col.css" media="all" rel="stylesheet" />
         <script type="text/javascript" src="js/jquery-1.4.2.js"></script>
         <script type="text/javascript" src="js/setAccountActivition.js"></script>
-
+		<script type="text/javascript" src="js/changeBackground.js"></script>
+		
         <script type="text/javascript">
         	$(document).ready(function() {
 				$("div#newsTitle1").click(function(){
@@ -84,98 +85,125 @@ pageEncoding="UTF-8" %>
 							<!-- Users -->
 							<c:choose>
 								<c:when test="${! empty type}">
-									<c:forEach var="n" items="${type}">
-										<c:if test="${true}">
-											<div class="newsItem">
-												<!-- Inner Left Column -->
-							                	<div id="newsItemInnerLeftColumn">
-							                		<!-- Bill Icon -->
-													<div class="newsIcon">
-														<center><a href="#" ><img src="img/icon/male_user.png" width="75px" height="75"/></a></center>
-														<div class="newsType">
-															<span><c:out value="${n.class.simpleName}"/></span>
-														</div>
-													</div>
-							                	</div>
-			                	
-							                	<!-- Inner Right Column -->
-							                	<div id="newsItemInnerRightColumn">
-							                		<div class="newsItemInfo">
-							                			<div class="detailTitle">Chi tiết tài khoản</div>
-							                			<div class="newsInfoContent">
-															<table width="100%" bgcolor="f8f8ff" border="0" cellspacing="0" cellpadding="3">
-																<tr>
-															    	<td align="right" width="25%"></td>
-															    	<td width="75%" align="left">
-															    		<div>
-															    			<a style="color: green;font-weight: bold;text-decoration: none;text-transform: uppercase">
-															    				<span id="t<c:out value="${n.id}"/>" ><c:out value="${n.class.simpleName}"/></span>
-															    			</a>
-															    		</div>
-															    	</td>
-															    </tr>
-															    <tr>
-															    	<td align="right" width="25%">Username:</td>
-															    	<td width="40%">
-															    		<c:out value="${n.username}"/>
-															    	</td>
-															    </tr>
-															    <tr>
-															    	<td align="right">Email:</td>
-															    	<td width="40%">
-															    		<c:out value="${n.email}"/>
-															    	</td>
-															    </tr>
-															    <!-- Active or deactive -->
-																<tr>
-															    	<td align="right" width="25%">Trạng thái:</td>
-															    	<td width="40%">
-															    		<c:choose>
-															    			<c:when test="${n.trangThai eq 1}"><c:set var="state" value="Active"/></c:when>
-															    			<c:when test="${n.trangThai eq 0}"><c:set var="state" value="Chưa kích hoạt"/></c:when>
-															    			<c:otherwise><c:set var="state" value="Invalid state"/></c:otherwise>
-															    		</c:choose>
-															    		<!-- will be set by ajax -->
-															    		<span id="<c:out value="stateLabel${n.id}" />" style="color: highlight;font-weight: bold;">${state}</span>
-															    	</td>
-															    </tr>
-															</table>
-															
-															<!-- Admin Task -->
-															<div style="text-align: right">
-																
-																
-																<table align="right">
-																	<tbody>
-																		<tr>
-																			<td>
-																				<a href="sendEmail.html?aid=${n.id}"><input type="button" value="Gởi email" /></a>
-																			</td>
-																			<td>
-																				<a href="resetAccount.html?aid=${n.id}"><input type="button" value="Reset mật khẩu" /></a>
-																			</td>
-																			<td>
-																				<a href="deleteAccount.html?aid=${n.id}"><input type="button" value="Xóa" onclick="return confirmDeletion();"/></a>
-																			</td>
-																			<c:set var="v" value="Kích hoạt"/>
-																			<c:if test="${n.trangThai eq 1}">
-																				<c:set var="v" value="Vô hiệu hóa"/>
-																			</c:if>
-																			<td>	
-																				<!-- will be set by ajax -->
-																				<input id="<c:out value="stateButton${n.id}" />" type="button" value="${ v }" onclick="changeActivition('setAccountActivition.html?aid=<c:out value="${n.id}"/>',<c:out value="${n.id}"/>)" />
-																			</td>
-																		</tr>
-																	</tbody>
-																</table>
+									<form method="post" action="setAccountsActivition.html">
+										<c:set var="minId" value="${type[0].id}"/>
+										<c:set var="maxId" value="${type[0].id}"/>
+										<c:forEach var="n" items="${type}">
+										
+											<c:if test="${n.id < minId}">
+												<c:set var="minId" value="${n.id}"/>
+											</c:if>
+											
+											<c:if test="${n.id > maxId}">
+												<c:set var="maxId" value="${n.id}"/>
+											</c:if>
+											
+											<c:if test="${true}">
+												<div class="newsItem">
+													<!-- Inner Left Column -->
+								                	<div id="newsItemInnerLeftColumn">
+								                		<!-- Bill Icon -->
+														<div class="newsIcon">
+															<center><a href="#" ><img src="img/icon/male_user.png" width="75px" height="75"/></a></center>
+															<div class="newsType">
+																<span><c:out value="${n.class.simpleName}"/></span>
 															</div>
-							                			</div>
-							                		</div>
-							                	</div> <%-- end innner right column --%>
-							                	<div style="clear: both;"></div>
-											</div>
-										</c:if>
-									</c:forEach>
+														</div>
+								                	</div>
+				                	
+								                	<!-- Inner Right Column -->
+								                	<div id="newsItemInnerRightColumn">
+								                		<div class="newsItemInfo">
+								                			<div class="detailTitle">
+								                				<input type="checkbox" 
+								                					   name="account"
+								                					   value="${n.id}" 
+								                					   id="account${n.id}"
+								                					   onclick="changeBackground(${n.id})" />
+								                				Chi tiết tài khoản
+								                			</div>
+								                			<div class="newsInfoContent" id="accountBody${n.id}">
+																<table id="table${n.id}" width="100%" bgcolor="f8f8ff" border="0" cellspacing="0" cellpadding="3">
+																	<tr>
+																    	<td align="right" width="25%"></td>
+																    	<td width="75%" align="left">
+																    		<div>
+																    			<a style="color: green;font-weight: bold;text-decoration: none;text-transform: uppercase">
+																    				<span id="t<c:out value="${n.id}"/>" ><c:out value="${n.class.simpleName}"/></span>
+																    			</a>
+																    		</div>
+																    	</td>
+																    </tr>
+																    <tr>
+																    	<td align="right" width="25%">Username:</td>
+																    	<td width="40%">
+																    		<c:out value="${n.username}"/>
+																    	</td>
+																    </tr>
+																    <tr>
+																    	<td align="right">Email:</td>
+																    	<td width="40%">
+																    		<c:out value="${n.email}"/>
+																    	</td>
+																    </tr>
+																    <!-- Active or deactive -->
+																	<tr>
+																    	<td align="right" width="25%">Trạng thái:</td>
+																    	<td width="40%">
+																    		<c:choose>
+																    			<c:when test="${n.trangThai eq 1}"><c:set var="state" value="Active"/></c:when>
+																    			<c:when test="${n.trangThai eq 0}"><c:set var="state" value="Chưa kích hoạt"/></c:when>
+																    			<c:otherwise><c:set var="state" value="Invalid state"/></c:otherwise>
+																    		</c:choose>
+																    		<!-- will be set by ajax -->
+																    		<span id="<c:out value="stateLabel${n.id}" />" style="color: highlight;font-weight: bold;">${state}</span>
+																    	</td>
+																    </tr>
+																</table>
+																
+																<!-- Admin Task -->
+																<div style="text-align: right">
+																	
+																	
+																	<table align="right">
+																		<tbody>
+																			<tr>
+																				<td>
+																					<a href="sendEmail.html?aid=${n.id}"><input type="button" value="Gởi email" /></a>
+																				</td>
+																				<td>
+																					<a href="resetAccount.html?aid=${n.id}"><input type="button" value="Reset mật khẩu" /></a>
+																				</td>
+																				<td>
+																					<a href="deleteAccount.html?aid=${n.id}"><input type="button" value="Xóa" onclick="return confirmDeletion();"/></a>
+																				</td>
+																				<c:set var="v" value="Kích hoạt"/>
+																				<c:if test="${n.trangThai eq 1}">
+																					<c:set var="v" value="Vô hiệu hóa"/>
+																				</c:if>
+																				<td>	
+																					<!-- will be set by ajax -->
+																					<input id="<c:out value="stateButton${n.id}" />" type="button" value="${ v }" onclick="changeActivition('setAccountActivition.html?aid=<c:out value="${n.id}"/>',<c:out value="${n.id}"/>)" />
+																				</td>
+																			</tr>
+																		</tbody>
+																	</table>
+																</div>
+								                			</div>
+								                		</div>
+								                	</div> <%-- end innner right column --%>
+								                	<div style="clear: both;"></div>
+												</div>
+											</c:if>
+										</c:forEach>
+										
+										<input type="hidden" value="${minId}" name="minId"/>
+										<input type="hidden" value="${maxId}" name="maxId"/>
+										
+										<div style="margin-top: 5px;background-color: #ffffcc;">
+											<input type="submit" value="Vô hiệu hóa"/>
+										</div>
+									</form>
 									
 									<%--
 									<!-- Paging content -->
