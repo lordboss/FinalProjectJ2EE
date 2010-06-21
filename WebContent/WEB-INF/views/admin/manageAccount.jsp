@@ -149,7 +149,7 @@ pageEncoding="UTF-8" %>
 																	<tbody>
 																		<tr>
 																			<td>
-																				<a href="updateAccount.html?aid=${n.id}"><input type="button" value="Cập nhật" /></a>
+																				<a href="sendEmail.html?aid=${n.id}"><input type="button" value="Gởi email" /></a>
 																			</td>
 																			<td>
 																				<a href="resetAccount.html?aid=${n.id}"><input type="button" value="Reset mật khẩu" /></a>

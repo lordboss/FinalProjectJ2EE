@@ -4,8 +4,6 @@
 package qt.web.admin;
 
 import java.util.Date;
-import java.util.HashMap;
-import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -19,29 +17,22 @@ import org.springframework.web.servlet.view.RedirectView;
 
 import qt.bus.AccountBUS;
 import qt.dto.Account;
-import qt.dto.Email;
 import qt.dto.NhanVienQuanTri;
-import qt.mail.SimpleAccountManager;
 
 /**
  * @author tqthe
  * 
  */
-public class ResetPasswordController implements Controller {
+public class DeleteAccountController implements Controller {
 
 	protected Log logger = LogFactory.getLog(getClass());
 	private AccountBUS accountBUS;
-	private static final String TITLE = "Thông báo reset mật khẩu";
-	/**
-	 * Mail helper (using GMail)
-	 */
-	private SimpleAccountManager mailHelper;
 
 	@Override
 	public ModelAndView handleRequest(HttpServletRequest request,
 			HttpServletResponse response) throws Exception {
 
-		logger.info("Handle reset account password at " + new Date());
+		logger.info("Handle deleting account at " + new Date());
 
 		// make login
 		HttpSession session = request.getSession(false);
@@ -71,47 +62,26 @@ public class ResetPasswordController implements Controller {
 			return new ModelAndView(new RedirectView("requiredLogin.html"));
 		}
 
-		Email email = null; 
-		
 		try {
 			int aid = Integer.parseInt(request.getParameter("aid"));
 			Account a = accountBUS.findById(aid);
 
 			if (a != null) {
-				// genarate new password
-				String newPassword = generateNewPassword();
+				// mark as delete
+				accountBUS.markAsDeleted(a);
 
-				// set new password and save change
-				accountBUS.resetPassword(a, newPassword);
-
-				email = mailHelper.createResetPasswordMail(a.getEmail(), TITLE, newPassword);
-				
-				logger.info("Reset password for account: " + a.getUsername()
-						+ " done!");
+				logger.info("Delete (mark as deleted) account: "
+						+ a.getUsername() + " done!");
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
-			logger.error("An error occurs when reseting account password at "
+			logger.error("An error occurs when deleting (mark as deleted) account at "
 					+ new Date());
 		}
-		
-		Map<String, Object> model = new HashMap<String, Object>();
-		model.put("email", email);
-		
-		request.setAttribute("email", email);
-		
-		return new ModelAndView("forward:/sendEmail.html", "model", model);
+
+		return new ModelAndView(new RedirectView("viewAccounts.html"));
 	}
 
-	private String generateNewPassword() {
-		return "123";
-	}
-
-	@SuppressWarnings("unused")
-	private void sendMail(Account a, String newPassword) {
-		mailHelper.sendNewPassword(a.getEmail(), TITLE, newPassword);
-	}
-	
 	/**
 	 * @param accountBUS
 	 *            the accountBUS to set
@@ -125,20 +95,6 @@ public class ResetPasswordController implements Controller {
 	 */
 	public AccountBUS getAccountBUS() {
 		return accountBUS;
-	}
-
-	/**
-	 * @param mailHelper the mailHelper to set
-	 */
-	public void setMailHelper(SimpleAccountManager mailHelper) {
-		this.mailHelper = mailHelper;
-	}
-
-	/**
-	 * @return the mailHelper
-	 */
-	public SimpleAccountManager getMailHelper() {
-		return mailHelper;
 	}
 
 }

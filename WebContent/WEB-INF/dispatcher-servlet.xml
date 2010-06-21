@@ -113,7 +113,33 @@
 		<property name="sessionFactory"> <ref bean="mySessionFactory" />
 		</property> </bean>
 	-->
+	
+	
+	<!-- =================================================================== -->
+	<!-- Spring Mail -->
+	<!-- =================================================================== -->
 
+	<!-- this is a template message that we can pre-load with default state -->
+	<bean id="templateMessage" class="org.springframework.mail.SimpleMailMessage">
+	  <property name="from" value="tran.q.the@gmail.com" />
+	</bean>
+	
+	<!-- Mail helper -->
+	<bean id="mailHelper" class="qt.mail.SimpleAccountManager">
+	  <property name="myMailSender" ref="myMailSender"/>
+	  <property name="templateMessage" ref="templateMessage"/>
+	</bean>
+	
+	<!-- Using Gmail -->
+	<bean id="myMailSender" class="qt.test.mail.MyMailSender"
+          p:host="smtp.gmail.com" 
+          p:port="25" 
+          p:username="tran.q.the@gmail.com" 
+          p:password="admin6g6yt1s"
+          p:smtpSSLEnabled="true"/>
+          
+          
+	
 	<!-- =================================================================== -->
 	<!-- Vùng DAO Kiếm :) -->
 	<!-- =================================================================== -->
@@ -745,5 +771,29 @@
 	
 	<bean name="/resetAccount.html" class="qt.web.admin.ResetPasswordController">
 		<property name="accountBUS" ref="accountBUS"/>
+		<property name="mailHelper" ref="mailHelper"/>
+	</bean>
+	
+	<bean name="/deleteAccount.html" class="qt.web.admin.DeleteAccountController">
+		<property name="accountBUS" ref="accountBUS"/>
+	</bean>
+	
+	<!-- Send email validator  -->
+	<bean name="sendEmailValidator" class="qt.bus.validator.SendEmailValidator"/>
+	
+	<!-- Send email form -->
+	<bean name="/sendEmail.html" class="qt.web.admin.SendEmailFormController">
+		<property name="sessionForm" value="true"/>
+		<!-- Command used for binding -->
+		<property name="commandName" value="email"/>
+		<property name="commandClass" value="qt.dto.Email"/>
+		<!-- Validator -->
+		<property name="validator" ref="sendEmailValidator"/>
+		<!-- Form view -->
+		<property name="formView" value="admin/reviewEmail"/>
+		<property name="successView" value="admin/reviewEmail"/>
+		<!-- Service object -->
+		<property name="accountBUS" ref="accountBUS"/>
+		<property name="mailHelper" ref="mailHelper"/>
 	</bean>
 </beans>
