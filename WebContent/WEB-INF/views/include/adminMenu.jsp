@@ -34,6 +34,11 @@ pageEncoding="UTF-8" %>
         </li>
     </ul>
     <ul>
+    	<li>
+    		<a href="changeAdminPassword.html">THAY ĐỔI MẬT KHẨU</a>
+    	</li>
+    </ul>
+    <ul>
         <li>
             <a href="#">LIÊN HỆ</a>
         </li>

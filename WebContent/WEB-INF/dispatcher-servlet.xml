@@ -796,4 +796,27 @@
 		<property name="accountBUS" ref="accountBUS"/>
 		<property name="mailHelper" ref="mailHelper"/>
 	</bean>
+	
+	<!-- Change admin password validator -->
+	<bean name="changeAdminPasswordValidator" class="qt.bus.validator.ChangeAdminPasswordValidator">
+		<property name="nhanVienQuanTriBUS" ref="nhanVienQuanTriBUS"/>
+	</bean>
+	
+	<!-- change employee password form -->
+	<bean name="/changeAdminPassword.html" class="qt.web.admin.ChangeAdminPasswordFormController">
+		<property name="sessionForm" value="true"/>
+		<!-- Command used for binding -->
+		<property name="commandName" value="nhanVienQuanTri"/>
+		<property name="commandClass" value="qt.dto.NhanVienQuanTri"/>
+		<!-- Validator -->
+		<property name="validator" ref="changeAdminPasswordValidator"/>
+		<!-- Form view -->
+		<property name="formView" value="admin/changePassword"/>
+		<property name="successView" value="admin/changePassword"/>
+		
+		<!-- Service object -->
+		<property name="nhanVienQuanTriBUS" ref="nhanVienQuanTriBUS"/>
+		<property name="accountBUS" ref="accountBUS"/>
+	</bean>
+	
 </beans>
